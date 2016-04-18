@@ -1,0 +1,116 @@
+
+<<<
+
+== Usage
+
+[small]#Rfr: link:++http://www.assimp.org/lib_html/usage.html++[Assimp usage] -
+link:++http://www.assimp.org/lib_html/cimport_8h.html++[cimport.h].#
+
+
+
+Albeit presenting an object-oriented interface, MoonAssimp actually binds to the
+Assimp C API, so loading a scene with MoonAssimp in Lua is very similar to loading
+a scene with Assimp in C.
+
+For example, to load a scene from a 3D model file named 'mymodel.obj', one could
+do the following:
+
+[source,lua]
+----
+ai = require("moonassimp")
+
+scene, errmsg = ai.import_file("mymodel.obj", -- post-processing flags:
+                               "triangulate", "join identical vertices", "sort by type")
+assert(scene, errmsg) -- check that nothing went wrong
+
+----
+
+If the file is loaded with success, the <<import_file, ai.import_file>>( ) function in 
+the above example returns an instance of the <<scene, scene>> object type. The contents
+of the scene can then be retrieved with the methods of the scene object and of the
+contained objects. 
+
+The scene is garbage collected, together with the contained objects, so the
+*aiReleaseImport*( ) function is not exposed (if needed, you can force garbage collection
+by setting to _nil_ all the references to the _scene_ object and invoking Lua's GC).
+
+Objects' methods are described in the <<methods, next chapter>>, while herafter are described
+the general functions provided in the *ai* table for importing models, logging, etc.
+These are bindings to Assimp C API functions contained in the
+link:++http://www.assimp.org/lib_html/cimport_8h.html++[cimport.h] file, and typically
+preserve their semantics (notice that not all Assimp functions are used or exposed by
+MoonAssimp, though).
+
+
+
+=== Scene import functions
+
+[[import_file]]
+* *ai.import_file* (_filename_, <<postprocessflags, _postprocessflags_>>) +
+-> <<scene, _scene_>> +
+[small]#Loads the model file from _filename_ (a string) and returns a <<scene, _scene>> object.
+On error, it returns _nil_ and an error message.#
+
+* *ai.import_file_from_memory* (_data_, <<postprocessflags, _postprocessflags_>> [, _hint_]) +
+-> <<scene, _scene_>> +
+[small]#Loads the model file from the _data_ binary string and returns a <<scene, _scene_>> object.
+The optional _hint_ parameter (a string) can be used to suggest Assimp the model file format.
+On error, it returns _nil_ and an error message.#
+
+* *ai.apply_post_processing* (<<scene, _scene_>>,  <<postprocessflags, _postprocessflags_>>) +
+-> <<scene, _scene_>> +
+[small]#Applies the specified post-processing to the passed _scene_ and returns
+a new <<scene, _scene>> object.
+On error, it returns _nil_ and an error message.#
+
+* *ai.get_memory_requirements* (<<scene, _scene_>>) +
+-> _mem_ +
+[small]#Returns a table with the memory requirements of the scene object. 
+The _mem_ table contains the following fields:
+_mem.total_, _mem.nodes_, _mem.meshes_, _mem.materials_, _mem.cameras_, _mem.lights_,
+and _mem.animations_. The value of each field is an integer indicating 
+the memory (in bytes) used by the various items contained in the scene.#
+
+=== Querying for supported formats
+
+* *ai.is_extension_supported* (_ext_) +
+-> _boolean_ +
+[small]#Returns _true_ if the format with the given extension is supported by Assimp,
+_false_ otherwise 
+(_ext_ must be a string with the extension and a leading dot, e.g. '_.3ds_').#
+
+* *ai.get_extension_list* ( ) +
+-> _string_ +
+[small]#Returns a string indicating all the supported extensions
+(the string can be easily converted to a table of extensions with
+the code snippet below).#
+
+[source,lua]
+----
+-- How to convert the extension list string to an array of extensions:
+s = ai.get_extension_list() 
+-- s = "*.3d;*.3ds;*.ac; ..."
+t = {}
+for v in string.gmatch(s, "%*%.(%w+);") do t[#t+1] = v end
+-- t = { "3d", "3ds", "ac", ... }
+----
+
+=== Logging facilities
+
+* *ai.enable_verbose_logging* (_boolean_) +
+[small]#Enables or disables verbose logging.#
+
+* *ai.attach_log_stream* (<<logstream, _logstream_>> [, _arg_]) +
+[small]#Attaches a log stream.
+If _logstream_ is '_file_', then the _arg_ parameter 
+must be a filename. 
+If _logstream_ is '_user_', then the _arg_ parameter must be a function, that will
+be executed as *func(message)* for every message (string) to be logged.
+If _logstream_ is '_stdout_' or '_stderr_', the _arg_ parameter is ignored.#
+
+* *ai.detach_log_stream* (<<logstream, _logstream_>>) +
+[small]#Detaches a log stream.#
+
+* *ai.detach_all_log_streams* ( ) +
+[small]#Detaches all log streams.#
+

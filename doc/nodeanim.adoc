@@ -1,0 +1,46 @@
+
+<<<
+
+[[nodeanim]]
+===  nodeanim
+
+[small]#Rfr: link:++http://www.assimp.org/lib_html/structai_node_anim.html++[aiNodeAnim].#
+
+* *nodeanim:node_name* ( ) +
+-> _name_
+
+* *nodeanim:num_position_keys* ( ) +
+*nodeanim:num_rotation_keys* ( ) +
+*nodeanim:num_scaling_keys* ( ) +
+-> _n_
+
+* *nodeanim:position_keys* ( ) +
+-> _list_ +
+[small]#Returns the list of position keys. Each entry of the list is a table
+with the following fields: _list[i].time_ (a number denoting time) and
+_list[i].value_ (an array of 3 numbers representing the position vector).#
+
+* *nodeanim:rotation_keys* ( ) +
+-> _list_ +
+[small]#Returns the list of rotation keys. Each entry of the list is a table
+with the following fields: _list[i].time_ (a number denoting time) and
+_list[i].value_ (an array of 4 numbers representing the rotation quaternion).#
+
+* *nodeanim:scaling_keys* ( ) +
+-> _list_ +
+[small]#Returns the list of scaling keys. Each entry of the list is a table
+with the following fields: _list[i].time_ (a number denoting time) and
+_list[i].value_ (an array of 3 numbers representing the scaling factors).#
+
+
+* *nodeanim:pre_state* ( ) +
+*nodeanim:post_state* ( ) +
+-> <<animbehaviour, _animbehaviour_>>
+
+////
+* *nodeanim:* ( ) +
+-> __
+
+////
+
+

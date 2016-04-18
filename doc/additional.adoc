@@ -1,0 +1,39 @@
+
+<<<
+
+[[additional]]
+== Additional utilities
+
+
+* *ai.postprocessflags* (_code_) +
+-> _s1_, _s2_, _..._ +
+[small]#Converts a <<postprocessflags, postprocessflags>> bitfield from an integer code to a sequence of strings.#
+
+* *ai.postprocessflags* (_s1_, _s2_, _..._) +
+-> _code_ +
+[small]#Converts a <<postprocessflags, postprocessflags>> bitfield from a sequence of strings to an integer code.#
+
+* *ai.primtypes* (_code_) +
+-> _s1_, _s2_, _..._ +
+[small]#Converts a <<primtypes, primtypes>> bitfield from an integer code to a sequence of strings.#
+
+* *ai.primtypes* (_s1_, _s2_, _..._) +
+-> _code_ +
+[small]#Converts a <<primtypes, primtypes>> bitfield from a sequence of strings to an integer code.#
+
+* *ai.sceneflags* (_code_) +
+-> _s1_, _s2_, _..._ +
+[small]#Converts a <<sceneflags, sceneflags>> bitfield from an integer code to a sequence of strings.#
+
+* *ai.sceneflags* (_s1_, _s2_, _..._) +
+-> _code_ +
+[small]#Converts a <<sceneflags, sceneflags>> bitfield from a sequence of strings to an integer code.#
+
+* *ai.textureflags* (_code_) +
+-> _s1_, _s2_, _..._ +
+[small]#Converts a <<textureflags, textureflags>> bitfield from an integer code to a sequence of strings.#
+
+* *ai.textureflags* (_s1_, _s2_, _..._) +
+-> _code_ +
+[small]#Converts a <<textureflags, textureflags>> bitfield from a sequence of strings to an integer code.#
+

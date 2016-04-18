@@ -1,0 +1,51 @@
+
+<<<
+
+[[node]]
+=== node
+
+[small]#Rfr: link:++http://www.assimp.org/lib_html/structai_node.html++[aiNode].#
+
+
+* *node:name* ( ) +
+-> _name_
+
+[[node.num_xxx]]
+* *node:num_children* ( ) +
+*node:num_meshes* ( ) +
+-> _n_
+
+* *node:child* (_i_) +
+-> _node_ +
+[small]#Returns the i-th child node of this node (_i_ = 1 .. <<node.num_xxx, node:num_children>>( )).#
+
+* *node:children* ( ) +
+-> _list_ +
+[small]#Returns a table containing the children of this node
+(_list[i]_ is the i-th child node, _i_ = 1 .. <<node.num_xxx, node:num_children>>( )).#
+
+* *node:mesh* (_i_) +
+-> <<mesh, _mesh_>> +
+[small]#Returns the node's i-th <<mesh, _mesh_>> (_i_ = 1 .. <<node.num_xxx, node:num_meshes>>( )).#
+
+* *node:meshes* ( ) +
+-> _list_ +
+[small]#Returns a table containing this node's <<mesh, meshes>>
+(_list[i]_ is the i-th mesh, _i_ = 1 .. <<node.num_xxx, node:num_meshes>>( )). +
+Note that this is a subset of the <<scene, scene>>'s meshes list.#
+
+* *node:parent* ( ) +
+-> _node_ +
+[small]#Returns the parent node for this node, or _nil_ if this node is the root.#
+
+* *node:transformation* ( ) +
+-> _a~11~_, _a~12~_, _..._, _a~44~_ +
+[small]#Returns the elements of the transformation matrix, in row-major order.#
+
+////
+* *node:* ( ) +
+-> __
+
+////
+
+

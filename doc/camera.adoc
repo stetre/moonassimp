@@ -1,0 +1,30 @@
+
+[[camera]]
+=== camera
+
+[small]#Rfr: link:++http://www.assimp.org/lib_html/structai_camera.html++[aiCamera].#
+
+* *camera:name* ( ) +
+-> _name_
+
+* *camera:aspect* ( ) +
+*camera:clip_plane_near* ( ) +
+*camera:clip_plane_far* ( ) +
+*camera:horizontal_fov* ( ) +
+-> _number_
+
+
+* *camera:position* ( ) +
+*camera:up* ( ) +
+*camera:look_at* ( ) +
+-> _x_, _y_, _z_
+
+
+
+////
+* *camera:* ( ) +
+-> __
+
+////
+
+

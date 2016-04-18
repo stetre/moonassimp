@@ -1,0 +1,53 @@
+= MoonAssimp Reference Manual
+Stefano Trettel
+v0.1, 2016-04-15
+:toc: left
+:toclevels: 4
+:stylesdir: ./
+:stylesheet: colony.css
+:source-highlighter: pygments
+:pygments-style: autumn
+:source-language: lua
+:exampledir: ../examples
+
+image::powered-by-lua.png[Lua logo, link=http://www.lua.org]
+
+include::preface.adoc[]
+
+include::import.adoc[]
+
+<<<
+
+[[methods]]
+== Methods
+
+include::scene.adoc[]
+
+include::node.adoc[]
+
+include::mesh.adoc[]
+
+include::animmesh.adoc[]
+
+include::face.adoc[]
+
+include::bone.adoc[]
+
+include::material.adoc[]
+
+include::texture.adoc[]
+
+include::light.adoc[]
+
+include::camera.adoc[]
+
+include::animation.adoc[]
+
+include::nodeanim.adoc[]
+
+include::meshanim.adoc[]
+
+include::enumerations.adoc[]
+
+include::additional.adoc[]
+

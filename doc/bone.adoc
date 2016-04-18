@@ -1,0 +1,36 @@
+
+[[bone]]
+===  bone
+
+[small]#Rfr: link:++http://www.assimp.org/lib_html/structai_bone.html++[aiBone].#
+
+* *bone:name* ( ) +
+-> _name_
+
+[[bone.num_weights]]
+* *bone:num_weights* ( ) +
+-> _n_
+
+* *bone:weights* ( ) +
+-> _t_ +
+[small]#Returns a (possibly sparse) array _t_, where _t[v]_ is the weight of the vertex
+indexed by _v_ in the <<mesh, _mesh_>>'s list of vertices (_t[v]_=_nil_ if the vertex 
+is not part of the bone).#
+
+* *bone:ordered_weights* ( ) +
+-> _t_ +
+[small]#Returns an array _t_ of <<bone.num_weights, num_weights>> tables, each having two elements: 
+_t[i].vertex_ and _t[i].weight_, denoting the index of a vertex and its weight, respectively.
+The vertices are in the same order as in the underlying aiBone structure#
+
+* *bone:offset_matrix* ( ) +
+-> _a~11~_, _a~12~_, _..._, _a~44~_ +
+[small]#Returns the elements of the offset matrix, in row-major order.#
+
+////
+* *bone:* ( ) +
+-> __
+
+////
+
+

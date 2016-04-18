@@ -1,0 +1,99 @@
+
+<<<
+
+[[material]]
+=== material
+
+[small]#Rfr: link:++http://www.assimp.org/lib_html/structai_material.html++[aiMaterial].#
+
+NOTE: All these functions return _nil_ if the given property is not defined for the material.
+
+* *material:name* ( ) +
+-> _name_
+
+* *material:twosided* ( ) +
+-> _boolean_
+
+* *material:shading* ( ) +
+-> <<shadingmode, _shadingmode_>>
+
+* *material:wireframe* ( ) +
+-> _boolean_
+
+* *material:blend* ( ) +
+-> <<blendmode, _blendmode_>>
+
+* *material:opacity* ( ) +
+*material:bumpscaling* ( ) +
+*material:shininess* ( ) +
+*material:shinpercent* ( ) +
+*material:reflectivity* ( ) +
+*material:refraction* ( ) +
+-> _number_
+
+* *material:color_ambient* ( ) +
+*material:color_diffuse* ( ) +
+*material:color_emissive* ( ) +
+*material:color_reflective* ( ) +
+*material:color_specular* ( ) +
+*material:color_transparent* ( ) +
+-> _r_, _g_, _b_, _a_
+
+* *material:global_bg_image* ( ) +
+-> _string_
+
+'''
+
+[[material.texture_count]]
+* *material:texture_count* (<<texturetype, _texturetype_>>) +
+-> _n_ +
+[small]#Returns the number of texture of the given texture type.#
+
+The following methods refer to the i-th texture of the given <<texturetype, _texture type_>>,
+where _i_ must be in the range 1 .. <<material.texture_count, texture_count>>.
+
+* *material:texture_path* (<<texturetype, _texturetype_>>, _i_) +
+-> _string_
+
+* *material:texture_channel* (<<texturetype, _texturetype_>>, _i_) +
+-> _channel_
+
+* *material:texture_op* (<<texturetype, _texturetype_>>, _i_) +
+-> <<textureop, _op_>>
+
+* *material:texture_mapping* (<<texturetype, _texturetype_>>, _i_) +
+-> <<texturemapping, _mapping_>>
+
+* *material:texture_blend* (<<texturetype, _texturetype_>>, _i_) +
+-> _number_
+
+* *material:texture_mapmode* (<<texturetype, _texturetype_>>, _i_) +
+-> <<texturemapmode, _mapmode_u_>>, <<texturemapmode, _mapmode_v_>>
+
+* *material:texture_axis* (<<texturetype, _texturetype_>>, _i_) +
+-> _x_, _y_, _z_
+
+* *material:texture_translation* (<<texturetype, _texturetype_>>, _i_) +
+-> _x_, _y_
+
+* *material:texture_scaling* (<<texturetype, _texturetype_>>, _i_) +
+-> _x_, _y_
+
+* *material:texture_rotation* (<<texturetype, _texturetype_>>, _i_) +
+-> _radians_
+
+* *material:texture_flags* (<<texturetype, _texturetype_>>, _i_) +
+-> <<textureflags, _textureflags_>>
+
+////
+* *material:* ( ) +
+-> __
+
+* *material:texture_* (<<texturetype, _texturetype_>>, _i_) +
+
+* *material:* ( ) +
+-> <<, __>>
+
+////
+
+

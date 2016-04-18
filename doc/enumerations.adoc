@@ -1,0 +1,65 @@
+
+<<<
+
+== Enumerations and bitfields
+An *enumeration* is a string (a literal) from a well defined set of values.
+
+A *bitfield*, when used as a function argument it may be passed either as an integer code, or as a sequence of strings from a well defined set of values. When it is not the last argument of the function, it may be passed only as an integer code. Functions returning a *bitfield* return the integer code only (utilities are provided to <<additional, encode/decode bitfields>>, if needed).
+
+[[animbehaviour]] 
+* *animbehaviour*: enumeration. +
+[small]#Values: '_default_', '_constant_', '_linear_', '_repeat_'.#
+
+
+[[blendmode]] 
+* *blendmode*: enumeration. +
+[small]#Values: '_default_', '_additive_'.#
+
+[[lightsourcetype]] 
+* *lightsourcetype*: enumeration. +
+[small]#Values:'_wrap_', '_clamp_', '_decal_', '_mirror_'.# 
+
+[[logstream]] 
+* *logstream*: enumeration. +
+[small]#Values: '_file_', '_stdout_', '_stderr_', '_user_'.#
+
+[[postprocessflags]]
+* *postprocessflags*: bitfield. +
+[small]#Code: a combination of ai.Process_Xxx values (corresponding to aiProcess_Xxx values in Assimp). +
+Strings: '_none_', '_calc tangent space_', '_join identical vertices_', '_make left handed_', '_triangulate_', '_remove components_', '_gen normals_', '_gen smooth normals_', '_split large meshes_', '_pre transform vertices_', '_limit bone weights_', '_validate data structure_', '_improve cache locality_', '_remove redundant materials_', '_fix infacing normals_', '_sort by type_', '_find degenerates_', '_find invalid data_', '_gen uv coords_', '_transform uv coords_', '_find instances_', '_optimize mesh_', '_optimize graph_', '_flip uvs_', '_flip winding order_', '_split by bone count_', '_debone_'.#
+
+[[primtypes]]
+* *primtypes*: bitfield. +
+[small]#Code: a combination of ai.PrimitiveType_Xxx values (corresponding to aiPrimitiveType_Xxx values in Assimp). +
+Strings: '_point_', '_line_', '_triangle_', '_polygon_'.#
+
+[[sceneflags]]
+* *sceneflags*: bitfield. +
+[small]#Code: a combination of ai.SCENE_FLAGS_XXX values (corresponding to AI_SCENE_FLAGS_XXX defines in Assimp). +
+Strings: '_incomplete_', '_validated_', '_validation warning_', '_non verbose format_', '_terrain_'.#
+
+
+[[shadingmode]] 
+* *shadingmode*: enumeration. +
+[small]#Values: '_flat_', '_gouraud_', '_phong_', '_blinn_', '_toon_', '_oren nayar_', '_minnaert_', '_cook torrance_', '_no shading_', '_fresnel_'.#
+
+[[textureflags]]
+* *textureflags*: bitfield. +
+[small]#Code: a combination of ai.TextureFlags_Xxx values (corresponding to aiTextureFlags_Xxx values in Assimp). +
+Strings: '_invert_', '_use alpha_', '_ignore alpha_'.#
+
+[[texturemapmode]] 
+* *texturemapmode*: enumeration. +
+[small]#Values:'_undefined_', '_directional_', '_point_', '_spot_'.#
+
+[[texturemapping]] 
+* *texturemapping*: enumeration. +
+[small]#Values: '_uv_', '_sphere_', '_cylinder_', '_box_', '_plane_', '_other_'.# 
+
+[[textureop]] 
+* *textureop*: enumeration. +
+[small]#Values: '_multiply_', '_add_', '_subtract_', '_divide_', '_smooth add_', '_signed add_'.#
+
+[[texturetype]] 
+* *texturetype*: enumeration. +
+[small]#Values: '_diffuse_', '_specular_', '_ambient_', '_emissive_', '_height_', '_normals_', '_shininess_', '_opacity_', '_displacement_', '_lightmap_', '_reflection_', '_unknown_'.#

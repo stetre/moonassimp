@@ -1,0 +1,99 @@
+
+<<<
+
+[[mesh]]
+=== mesh
+
+[small]#Rfr: link:++http://www.assimp.org/lib_html/structai_mesh.html++[aiMesh].#
+
+* *mesh:name* ( ) +
+-> _name_
+
+* *mesh:primitive_types* ( ) +
+-> <<primtypes, _primtypes_>>
+
+* *mesh:has_positions* ( ) +
+*mesh:has_normals* ( ) +
+*mesh:has_tangents* ( ) +
+*mesh:has_faces* ( ) +
+*mesh:has_bones* ( ) +
+*mesh:has_anim_meshes* ( ) +
+-> _boolean_
+
+* *mesh:has_colors* (_channel_) +
+*mesh:has_texture_coords* (_channel_) +
+-> _boolean_
+
+[[mesh.num_xxx]]
+* *mesh:num_vertices* ( ) +
+*mesh:num_faces* ( ) +
+*mesh:num_bones* ( ) +
+*mesh:num_anim_meshes* ( ) +
+*mesh:num_color_channels* ( ) +
+*mesh:num_texture_coords_channels* ( ) +
+-> _n_
+
+[[num_texture_coords_components]]
+* *mesh:num_texture_coords_components* (_channel_) +
+-> _n_
+
+* *mesh:position* (_i_) +
+*mesh:normal* (_i_) +
+*mesh:tangent* (_i_) +
+*mesh:bitangent* (_i_) +
+-> _x_, _y_, _z_ +
+[small]#Returns the components of the affected 3D vector for the vertex indexed by _i_,
+where _i_ = 1 .. <<mesh.num_xxx, num_vertices>>.#
+
+* *mesh:color* (_channel_, _i_) +
+-> _r_, _g_, _b_, _a_ +
+[small]#Returns the _channel_ color components for the vertex indexed by _i_,
+where _channel_ = 1 .. <<mesh.num_xxx, num_color_channels>> 
+and _i_ = 1 .. <<mesh.num_xxx, num_vertices>>.#
+
+* *mesh:texture_coords* (_channel_, _i_) +
+-> _u_, _v_, _w_ +
+[small]#Returns the _channel_ texture components for the vertex indexed by _i_,
+where _channel_ = 1 .. <<mesh.num_xxx, num_texture_coords_channels>> 
+and _i_ = 1 .. <<mesh.num_xxx, num_vertices>> 
+(only
+<<num_texture_coords_components, num_texture_coords_components>>(_channel_) are returned).#
+
+* *mesh:material* ( ) +
+-> <<material, _material_>> +
+[small]#Returns the mesh's <<material, material>>.#
+
+* *mesh:face* (_i_) +
+-> <<face, _face_>> +
+[small]#Returns the i-th <<face, face>> of the mesh, 
+where _i_ = 1 .. <<mesh.num_xxx, num_faces>>.#
+
+* *mesh:bone* (_i_) +
+-> <<bone, _bone_>> +
+[small]#Returns the i-th <<bone, bone>> of the mesh, 
+where _i_ = 1 .. <<mesh.num_xxx, num_bones>>.#
+
+* *mesh:anim_mesh* (_i_) +
+-> <<animmesh, _animmesh_>> +
+[small]#Returns the i-th <<animmesh, anim mesh>> of the mesh, 
+where _i_ = 1 .. <<mesh.num_xxx, num_anim_mesh>>.#
+
+* *mesh:faces* ( ) +
+-> _list_ +
+[small]#Returns the list of the mesh's <<face, faces>>.#
+
+* *mesh:bones* ( ) +
+-> _list_ +
+[small]#Returns the list of the mesh's <<bone, bones>>.# 
+
+* *mesh:anim_meshes* ( ) +
+-> _list_ +
+[small]#Returns the list of the mesh's <<animmesh, anim meshes>>.# 
+
+////
+* *mesh:* ( ) +
+-> __
+
+////
+
+
