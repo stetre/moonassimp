@@ -1,6 +1,6 @@
 = MoonAssimp Reference Manual
 Stefano Trettel
-v0.1, 2016-04-15
+v0.2, 2016-05-15
 :toc: left
 :toclevels: 4
 :stylesdir: ./
