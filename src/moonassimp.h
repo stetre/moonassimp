@@ -41,7 +41,7 @@
 #include <assimp/postprocess.h>
 #include <assimp/material.h>
 
-#define MOONASSIMP_VERSION        "0.2"
+#define MOONASSIMP_VERSION        "0.3"
 
 #endif /* moonassimpDEFINED */
 
