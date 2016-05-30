@@ -3,7 +3,7 @@
 MoonAssimp is a Lua binding library for the 
 [Open Asset Import Library](http://www.assimp.org/).
 
-It runs on GNU/Linux and requires 
+It runs on GNU/Linux and on Windows (MSYS2/MinGW) and requires 
 [Lua](http://www.lua.org/) (>=5.3) and 
 [Assimp](http://www.assimp.org/main_downloads.html) (>=3.0).
 
@@ -15,9 +15,13 @@ _Authored by:_ _[Stefano Trettel](https://www.linkedin.com/in/stetre)_
 
 MIT/X11 license (same as Lua). See [LICENSE](./LICENSE).
 
-#### Documentation, Getting and installing, etc.
+#### Documentation
 
 See the [Reference Manual](https://stetre.github.io/moonassimp/doc/index.html).
+
+#### Getting and installing
+
+See [INSTALL](./INSTALL.md).
 
 #### Example
 

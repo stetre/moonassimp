@@ -22,6 +22,11 @@ http://www.assimp.org/main_doc.html[Assimp Documentation].
 
 === Getting and installing
 
+For installation intructions, refer to the README file in the 
+https://github.com/stetre/moonassimp[*MoonAssimp official repository*]
+on GitHub.
+
+////
 The *official repository* of MoonAssimp is on GitHub at the following link:
 *https://github.com/stetre/moonassimp* .
 
@@ -55,6 +60,7 @@ in `/home/joe/local`:
 [moonassimp-0.1]$ make
 [moonassimp-0.1]$ make install PREFIX=/home/joe/local
 ----
+////
 
 === Module organization
 
