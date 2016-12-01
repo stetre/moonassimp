@@ -1,40 +1,33 @@
 
-<<<
 
 [[texture]]
 === texture
 
 [small]#Rfr: link:++http://www.assimp.org/lib_html/structai_texture.html++[aiTexture].#
 
-* *texture:is_compressed* ( ) +
--> _boolean_ +
+* _boolean_ = *:is_compressed*( ) +
 [small]#Returns _true_ if the texture data is in a compressed format, _false_ otherwise.#
 
-* *texture:format_hint* ( ) +
--> _fmt_ +
+* _fmt_ = *:format_hint*( ) +
 [small]#Returns the format hint as a string, or 
 _nil_ if the texture data is not in a compressed format.#
 
 
 [[texture.dim]]
-* *texture:width* ( ) +
-*texture:height* ( ) +
--> _val_
+*  _w_ = *:width*( ) +
+_h_ = *:height*( )
 
-* *texture:size* ( ) +
--> _n_ +
+* _n_ = *:size*( ) +
 [small]#Returns the size in byte of the texture data, or 
 _nil_ if the texture data is not in a compressed format.#
 
-* *texture:data* ( ) +
--> _data_ +
+* _data_ = *:data*( ) +
 [small]#Returns the texture data as a binary string, or 
 _nil_ if the texture data is not in a compressed format.#
 
 
 [[texture.texel]]
-* *texture:texel* (_u_, _v_) +
--> _r_, _g_, _b_, _a_ +
+* _r_, _g_, _b_, _a_ = *:texel*(_u_, _v_) +
 [small]#Returns the RGBA values of the texel with texture coordinates (_u_, _v_),
 or _nil_ if the texture is in a compressed format.
 The coordinates _u_ and _v_ must be in the ranges 
@@ -42,30 +35,18 @@ The coordinates _u_ and _v_ must be in the ranges
 1 .. <<texture.dim, height>>, respectively.
 The values are returned as normalized floating points.#
 
-* *texture:btexel* (_u_, _v_) +
--> _r_, _g_, _b_, _a_ +
-[small]#Same as <<texture.texel, texture:texel>>( ), but returns the RGBA values 
+* _r_, _g_, _b_, _a_ = *:btexel*(_u_, _v_) +
+[small]#Same as <<texture.texel, texel>>( ), but returns the RGBA values 
 as bytes (0..255).#
 
 [[texture.texels]]
-* *texture:texels* ( ) +
--> _t_ +
+* _t_ = *:texels*( ) +
 [small]#Returns all the texels in a (table) matrix _t_, where _t[u][v]_ = _{ r, g, b, a }_
 are the RGBA values of the texel with texture coordinates (_u_, _v_).
 The RGBA values are normalized floating points.#
 
-* *texture:btexels* ( ) +
--> _t_ +
-[small]#Same as <<texture.texels, texture:texels>>( ), but returns the RGBA values 
+* _t_ = *:btexels*( ) +
+[small]#Same as <<texture.texels, texels>>( ), but returns the RGBA values 
 as bytes (0..255).#
-
-
-
-
-////
-* *texture:* ( ) +
--> __
-
-////
 
 

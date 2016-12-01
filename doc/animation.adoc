@@ -1,45 +1,30 @@
 
-<<<
-
 [[animation]]
 === animation
 
 [small]#Rfr: link:++http://www.assimp.org/lib_html/structai_animation.html++[aiAnimation].#
 
 
-* *animation:name* ( ) +
--> _name_
+* _name_ = *:name*( )
 
-* *animation:duration* ( ) +
--> _duration_
+* _duration_ = *:duration*( ) +
 
-* *animation:ticks_per_second* ( ) +
--> _ticks_
+* _ticks_ = *:ticks_per_second*( ) +
 
-* *animation:num_node_anims* ( ) +
-*animation:num_mesh_anims* ( ) +
--> _n_
+* _n_ = *:num_node_anims*( ) +
+_n_ = *:num_mesh_anims*( )
 
-* *animation:node_anim* (_name_) +
--> <<nodeanim, _nodeanim_>> +
+* <<nodeanim, _nodeanim_>> = *:node_anim*(_name_) +
 [small]#Returns the <<nodeanim, nodeanim>> for the given <<node, node>> _name_, or _nil_
 if not found.#
 
-* *animation:node_anims* ( ) +
--> _list_ +
+* _list_ = *:node_anims*( ) +
 [small]#Returns the list of <<nodeanim, nodeanims>>.#
 
-
-* *animation:mesh_anims* ([_name_]) +
--> _list_ +
+* _list_ = *:mesh_anims*([_name_]) +
 [small]#Returns the list of <<meshanim, meshanims>>. 
 If the optional _name_ parameter (a string) is passed, only meshanims with such name
 are added to the list.#
 
-////
-* *animation:* ( ) +
--> __
-
-////
 
 

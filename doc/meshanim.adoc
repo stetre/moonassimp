@@ -1,5 +1,4 @@
 
-<<<
 
 [[meshanim]]
 ===  meshanim
@@ -7,16 +6,12 @@
 [small]#Rfr: link:++http://www.assimp.org/lib_html/structai_mesh_anim.html++[aiMeshAnim].#
 
 [[meshanim.mesh_name]]
-* *meshanim:mesh_name* ( ) +
--> _name_
+* _name_ = *:mesh_name*( )
 
-
-* *meshanim:num_keys* ( ) +
--> _n_
+* _n_ = *:num_keys*( )
 
 [[meshanim.keys]]
-* *meshanim:keys* ( ) +
--> _list_ +
+* _list_ = *:keys*( ) +
 [small]#Returns the list of keys (or, more precisely, of  
 link:++https://en.wikipedia.org/wiki/Key_frame++[key frames]).
 Each entry of the list is a table having the following fields:
@@ -28,10 +23,5 @@ one or more <<mesh, _meshes_>> to be animated with this set of keys. Each of the
 should then have, in its own list of <<animmesh, anim meshes>>, the data for its animation
 at the indices contained in the keys returned by <<meshanim.keys, meshanim:keys>>( ).
 
-////
-* *meshanim:* ( ) +
--> __
-
-////
 
 

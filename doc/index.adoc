@@ -16,7 +16,6 @@ include::preface.adoc[]
 
 include::import.adoc[]
 
-<<<
 
 [[methods]]
 == Methods

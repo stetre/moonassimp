@@ -1,39 +1,23 @@
 
-<<<
-
 [[light]]
 === light
 
 [small]#Rfr: link:++http://www.assimp.org/lib_html/structai_light.html++[aiLight].#
 
-* *light:name* ( ) +
--> _name_
+* _name_ = *:name*( )
 
-* *light:source_type* ( ) +
--> <<lightsourcetype, _lightsourcetype_>>
+* <<lightsourcetype, _lightsourcetype_>> = *:source_type*( )
 
-* *light:attenuation_constant* ( ) +
-*light:attenuation_linear* ( ) +
-*light:attenuation_quadratic* ( ) +
-*light:angle_inner_cone* ( ) +
-*light:angle_outer_cone* ( ) +
-*light:* ( ) +
--> _number_
+* _number_ = *:attenuation_constant*( ) +
+_number_ = *:attenuation_linear*( ) +
+_number_ = *:attenuation_quadratic*( ) +
+_number_ = *:angle_inner_cone*( ) +
+_number_ = *:angle_outer_cone*( )
 
-* *light:position* ( ) +
-*light:direction* ( ) +
--> _x_, _y_, _z_
+* _x_, _y_, _z_ = *:position*( ) +
+_x_, _y_, _z_ = *:direction*( )
 
-* *light:color_diffuse* ( ) +
-*light:color_specular* ( ) +
-*light:color_ambient* ( ) +
--> _r_, _g_, _b_
-
-
-////
-* *light:* ( ) +
--> __
-
-////
-
+* _r_, _g_, _b_ = *:color_diffuse*( ) +
+_r_, _g_, _b_ = *:color_specular*( ) +
+_r_, _g_, _b_ = *:color_ambient*( )
 

@@ -4,27 +4,16 @@
 
 [small]#Rfr: link:++http://www.assimp.org/lib_html/structai_camera.html++[aiCamera].#
 
-* *camera:name* ( ) +
--> _name_
+* _name_ = *:name*( ) +
 
-* *camera:aspect* ( ) +
-*camera:clip_plane_near* ( ) +
-*camera:clip_plane_far* ( ) +
-*camera:horizontal_fov* ( ) +
--> _number_
+* _number_ = *:aspect*( ) +
+_number_ = *:clip_plane_near*( ) +
+_number_ = *:clip_plane_far*( ) +
+_number_ = *:horizontal_fov*( )
 
 
-* *camera:position* ( ) +
-*camera:up* ( ) +
-*camera:look_at* ( ) +
--> _x_, _y_, _z_
-
-
-
-////
-* *camera:* ( ) +
--> __
-
-////
+* _x_, _y_, _z_ = *:position*( ) +
+_x_, _y_, _z_ = *:up*( ) +
+_x_, _y_, _z_ = *:look_at*( )
 
 

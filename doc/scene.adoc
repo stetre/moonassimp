@@ -4,58 +4,45 @@
 
 [small]#Rfr: link:++http://www.assimp.org/lib_html/structai_scene.html++[aiScene].#
 
-* *scene:has_animations* ( ) +
-*scene:has_cameras* ( ) +
-*scene:has_lights* ( ) +
-*scene:has_materials* ( ) +
-*scene:has_meshes* ( ) +
-*scene:has_textures* ( ) +
--> _boolean_ +
+* _boolean_ = *:has_animations*( ) +
+_boolean_ = *:has_cameras*( ) +
+_boolean_ = *:has_lights*( ) +
+_boolean_ = *:has_materials*( ) +
+_boolean_ = *:has_meshes*( ) +
+_boolean_ = *:has_textures*( ) +
 [small]#Returns _true_ if _scene_ contains one or more objects of the given type,
 _false_ otherwise.#
 
-* *scene:flags* ( ) +
--> _flag1_, _..._ +
+* _flag1_, _..._ = *:flags*( ) +
 [small]#Returns the _scene_'s <<sceneflags, flags>>.#
 
 [[num_xxx]]
-* *scene:num_animations* ( ) +
-*scene:num_cameras* ( ) +
-*scene:num_lights* ( ) +
-*scene:num_materials* ( ) +
-*scene:num_meshes* ( ) +
-*scene:num_textures* ( ) +
--> _n_ +
+* _n_ = *:num_animations*( ) +
+_n_ = *:num_cameras*( ) +
+_n_ = *:num_lights*( ) +
+_n_ = *:num_materials*( ) +
+_n_ = *:num_meshes*( ) +
+_n_ = *:num_textures*( ) +
 [small]#Returns the number of objects, contained in _scene_, of the given type.#
 
 
-* *scene:root_node* ( ) +
--> <<node, _node_>> +
+* <<node, _node_>> = *:root_node*( ) +
 [small]#Returns the root <<node, _node_>> of the _scene_.#
 
-* *scene:animation* (_i_) +
-*scene:camera* (_i_) +
-*scene:light* (_i_) +
-*scene:material* (_i_) +
-*scene:mesh* (_i_) +
-*scene:texture* (_i_) +
--> _object_ +
+* <<animation, _animation_>> = *:animation*(_i_) +
+<<camera, _camera_>> = *:camera*(_i_) +
+<<light, _light_>> = *:light*(_i_) +
+<<material, _material_>> = *:material*(_i_) +
+<<mesh, _mesh_>> = *:mesh*(_i_) +
+<<texture, _texture_>> = *:texture*(_i_) +
 [small]#Returns the i-th object of the given type (_i_ = 1 .. <<num_xxx, num_xxx>>( )).#
 
-* *scene:animations* ( ) +
-*scene:cameras* ( ) +
-*scene:lights* ( ) +
-*scene:materials* ( ) +
-*scene:meshes* ( ) +
-*scene:textures* ( ) +
--> _list_ +
+* _list_ = *:animations*( ) +
+_list_ = *:cameras*( ) +
+_list_ = *:lights*( ) +
+_list_ = *:materials*( ) +
+_list_ = *:meshes*( ) +
+_list_ = *:textures*( ) +
 [small]#Returns a table containing the objects of the given type
 (_list[i]_ is the i-th object, _i_ = 1 .. <<num_xxx, num_xxx>>( )).#
-
-
-////
-* *scene:* ( ) +
--> __
-
-////
 

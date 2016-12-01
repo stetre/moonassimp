@@ -1,6 +1,4 @@
 
-<<<
-
 == Enumerations and bitfields
 An *enumeration* is a string (a literal) from a well defined set of values.
 

@@ -1,6 +1,4 @@
 
-<<<
-
 [[material]]
 === material
 
@@ -8,92 +6,62 @@
 
 NOTE: All these functions return _nil_ if the given property is not defined for the material.
 
-* *material:name* ( ) +
--> _name_
+* _name_ = *:name*( ) +
 
-* *material:twosided* ( ) +
--> _boolean_
+* _boolean_ = *:twosided*( ) +
 
-* *material:shading* ( ) +
--> <<shadingmode, _shadingmode_>>
+* <<shadingmode, _shadingmode_>> = *:shading*( ) +
 
-* *material:wireframe* ( ) +
--> _boolean_
+* _boolean_ = *:wireframe*( ) +
 
-* *material:blend* ( ) +
--> <<blendmode, _blendmode_>>
+* <<blendmode, _blendmode_>> = *:blend*( ) +
 
-* *material:opacity* ( ) +
-*material:bumpscaling* ( ) +
-*material:shininess* ( ) +
-*material:shinpercent* ( ) +
-*material:reflectivity* ( ) +
-*material:refraction* ( ) +
--> _number_
+* _number_ = *:opacity*( ) +
+_number_ = *:bumpscaling*( ) +
+_number_ = *:shininess*( ) +
+_number_ = *:shinpercent*( ) +
+_number_ = *:reflectivity*( ) +
+_number_ = *:refraction*( ) +
 
-* *material:color_ambient* ( ) +
-*material:color_diffuse* ( ) +
-*material:color_emissive* ( ) +
-*material:color_reflective* ( ) +
-*material:color_specular* ( ) +
-*material:color_transparent* ( ) +
--> _r_, _g_, _b_, _a_
+* _r_, _g_, _b_, _a_ = *:color_ambient*( ) +
+_r_, _g_, _b_, _a_ = *:color_diffuse*( ) +
+_r_, _g_, _b_, _a_ = *:color_emissive*( ) +
+_r_, _g_, _b_, _a_ = *:color_reflective*( ) +
+_r_, _g_, _b_, _a_ = *:color_specular*( ) +
+_r_, _g_, _b_, _a_ = *:color_transparent*( ) +
 
-* *material:global_bg_image* ( ) +
--> _string_
+* _string_ = *:global_bg_image*( ) +
 
 '''
 
 [[material.texture_count]]
-* *material:texture_count* (<<texturetype, _texturetype_>>) +
--> _n_ +
+* _n_ = *:texture_count*(<<texturetype, _texturetype_>>) +
 [small]#Returns the number of texture of the given texture type.#
 
 The following methods refer to the i-th texture of the given <<texturetype, _texture type_>>,
 where _i_ must be in the range 1 .. <<material.texture_count, texture_count>>.
 
-* *material:texture_path* (<<texturetype, _texturetype_>>, _i_) +
--> _string_
+* _string_ = *:texture_path*(<<texturetype, _texturetype_>>, _i_)
 
-* *material:texture_channel* (<<texturetype, _texturetype_>>, _i_) +
--> _channel_
+* _channel_ = *:texture_channel*(<<texturetype, _texturetype_>>, _i_)
 
-* *material:texture_op* (<<texturetype, _texturetype_>>, _i_) +
--> <<textureop, _op_>>
+* <<textureop, _op_>> = *:texture_op*(<<texturetype, _texturetype_>>, _i_)
 
-* *material:texture_mapping* (<<texturetype, _texturetype_>>, _i_) +
--> <<texturemapping, _mapping_>>
+* <<texturemapping, _mapping_>> = *:texture_mapping*(<<texturetype, _texturetype_>>, _i_)
 
-* *material:texture_blend* (<<texturetype, _texturetype_>>, _i_) +
--> _number_
+* _number_ = *:texture_blend*(<<texturetype, _texturetype_>>, _i_)
 
-* *material:texture_mapmode* (<<texturetype, _texturetype_>>, _i_) +
--> <<texturemapmode, _mapmode_u_>>, <<texturemapmode, _mapmode_v_>>
+* <<texturemapmode, _mapmode_u_>>, <<texturemapmode, _mapmode_v_>> 
+= *:texture_mapmode*(<<texturetype, _texturetype_>>, _i_)
 
-* *material:texture_axis* (<<texturetype, _texturetype_>>, _i_) +
--> _x_, _y_, _z_
+* _x_, _y_, _z_ = *:texture_axis*(<<texturetype, _texturetype_>>, _i_)
 
-* *material:texture_translation* (<<texturetype, _texturetype_>>, _i_) +
--> _x_, _y_
+* _x_, _y_ = *:texture_translation*(<<texturetype, _texturetype_>>, _i_)
 
-* *material:texture_scaling* (<<texturetype, _texturetype_>>, _i_) +
--> _x_, _y_
+* _x_, _y_ = *:texture_scaling*(<<texturetype, _texturetype_>>, _i_)
 
-* *material:texture_rotation* (<<texturetype, _texturetype_>>, _i_) +
--> _radians_
+* _radians_ = *:texture_rotation*(<<texturetype, _texturetype_>>, _i_)
 
-* *material:texture_flags* (<<texturetype, _texturetype_>>, _i_) +
--> <<textureflags, _textureflags_>>
-
-////
-* *material:* ( ) +
--> __
-
-* *material:texture_* (<<texturetype, _texturetype_>>, _i_) +
-
-* *material:* ( ) +
--> <<, __>>
-
-////
+* <<textureflags, _textureflags_>> = *:texture_flags*(<<texturetype, _texturetype_>>, _i_)
 
 

@@ -1,31 +1,22 @@
 
-<<<
-
 [[animmesh]]
 ===  animmesh
 
 [small]#Rfr: link:++http://www.assimp.org/lib_html/structai_anim_mesh.html++[aiAnimMesh].#
 
-* *animmesh:mesh* ( ) +
--> <<mesh, _mesh_>> +
+* <<mesh, _mesh_>> = *:mesh*( ) +
 [small]#The <<mesh, _mesh_>> it belongs to (and is a replacement for).#
 
-* *animmesh:has_positions* ( ) +
-*animmesh:has_normals* ( ) +
-*animmesh:has_tangents* ( ) +
-*animmesh:has_colors* (_channel_) +
-*animmesh:has_texture_coords* (_channel_) +
-*animmesh:position* (_i_) +
-*animmesh:normal* (_i_) +
-*animmesh:tangent* (_i_) +
-*animmesh:bitangent* (_i_) +
-*animmesh:color* (_channel_, _i_) +
-*animmesh:texture_coords* (_channel_, _i_) +
+* *:has_positions*( ) +
+*:has_normals*( ) +
+*:has_tangents*( ) +
+*:has_colors*(_channel_) +
+*:has_texture_coords*(_channel_) +
+*:position*(_i_) +
+*:normal*(_i_) +
+*:tangent*(_i_) +
+*:bitangent*(_i_) +
+*:color*(_channel_, _i_) +
+*:texture_coords*(_channel_, _i_) +
 [small]#Replacements for <<mesh, _mesh_>> methods.#
-
-////
-* *animmesh:* ( ) +
--> __
-
-////
 
