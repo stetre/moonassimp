@@ -8,7 +8,7 @@
 * _name_ = *:name*( )
 
 [[node.num_xxx]]
-* *:num_children*( ) +
+* _n_ = *:num_children*( ) +
 _n_ = *:num_meshes*( )
 
 * _node_ = *:child*(_i_) +
