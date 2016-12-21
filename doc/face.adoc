@@ -8,7 +8,7 @@
 
 * _i~1~_, _..._, _i~N~_ = *:indices*( ) +
 [small]#Returns the indices of the face's vertices in the <<mesh, _mesh_>>'s list of
-vertices (_N_ = <<face.num_indices, num_indices>>).#
+vertices (_N_ = <<face.num_indices, num_indices>>(&nbsp;)).#
 
 * _i~1~-1_, _..._, _i~N~-1_ = *:zero_based_indices*( )
 

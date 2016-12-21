@@ -31,12 +31,12 @@ _nil_ if the texture data is not in a compressed format.#
 [small]#Returns the RGBA values of the texel with texture coordinates (_u_, _v_),
 or _nil_ if the texture is in a compressed format.
 The coordinates _u_ and _v_ must be in the ranges 
-1 .. <<texture.dim, width>> and
-1 .. <<texture.dim, height>>, respectively.
+1 .. <<texture.dim, width>>(&nbsp;) and
+1 .. <<texture.dim, height>>(&nbsp;), respectively.
 The values are returned as normalized floating points.#
 
 * _r_, _g_, _b_, _a_ = *:btexel*(_u_, _v_) +
-[small]#Same as <<texture.texel, texel>>( ), but returns the RGBA values 
+[small]#Same as <<texture.texel, texel>>(&nbsp;), but returns the RGBA values 
 as bytes (0..255).#
 
 [[texture.texels]]
@@ -46,7 +46,7 @@ are the RGBA values of the texel with texture coordinates (_u_, _v_).
 The RGBA values are normalized floating points.#
 
 * _t_ = *:btexels*( ) +
-[small]#Same as <<texture.texels, texels>>( ), but returns the RGBA values 
+[small]#Same as <<texture.texels, texels>>(&nbsp;), but returns the RGBA values 
 as bytes (0..255).#
 
 

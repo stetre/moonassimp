@@ -32,14 +32,12 @@ _r_, _g_, _b_, _a_ = *:color_transparent*( ) +
 
 * _string_ = *:global_bg_image*( ) +
 
-'''
-
 [[material.texture_count]]
 * _n_ = *:texture_count*(<<texturetype, _texturetype_>>) +
 [small]#Returns the number of texture of the given texture type.#
 
 The following methods refer to the i-th texture of the given <<texturetype, _texture type_>>,
-where _i_ must be in the range 1 .. <<material.texture_count, texture_count>>.
+where _i_ must be in the range 1 .. <<material.texture_count, texture_count>>(&nbsp;).
 
 * _string_ = *:texture_path*(<<texturetype, _texturetype_>>, _i_)
 

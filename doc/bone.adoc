@@ -15,7 +15,8 @@ indexed by _v_ in the <<mesh, _mesh_>>'s list of vertices (_t[v]_=_nil_ if the v
 is not part of the bone).#
 
 * _t_ = *:ordered_weights*( ) +
-[small]#Returns an array _t_ of <<bone.num_weights, num_weights>> tables, each having two elements: 
+[small]#Returns an array _t_ of <<bone.num_weights, num_weights>>(&nbsp;) tables, 
+each having two elements: 
 _t[i].vertex_ and _t[i].weight_, denoting the index of a vertex and its weight, respectively.
 The vertices are in the same order as in the underlying aiBone structure#
 

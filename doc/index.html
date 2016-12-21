@@ -926,8 +926,8 @@ MoonAssimp, though).</p>
 <ul>
 <li>
 <p><a href="#scene"><em>scene</em></a> = <strong>ai.import_file</strong>(<em>filename</em>, <a href="#postprocessflags"><em>postprocessflags</em></a>)<br>
-<span class="small">Loads the model file from <em>filename</em> (a string) and returns a <a href="#scene"><em>scene</a> object.
-On error, it returns _nil</em> and an error message.</span></p>
+<span class="small">Loads the model file from <em>filename</em> (a string) and returns a <a href="#scene"><em>scene</em></a> object.
+On error, it returns <em>nil</em> and an error message.</span></p>
 </li>
 <li>
 <p><a href="#scene"><em>scene</em></a> = <strong>ai.import_file_from_memory</strong>(<em>data</em>, <a href="#postprocessflags"><em>postprocessflags</em></a> [, <em>hint</em>])<br>
@@ -1094,21 +1094,21 @@ If <em>logstream</em> is '<em>stdout</em>' or '<em>stderr</em>', the <em>arg</em
 </li>
 <li>
 <p><em>node</em> = <strong>:child</strong>(<em>i</em>)<br>
-<span class="small">Returns the i-th child node of this node (<em>i</em> = 1 .. <a href="#node.num_xxx">node:num_children</a>( )).</span></p>
+<span class="small">Returns the i-th child node of this node (<em>i</em> = 1 .. <a href="#node.num_xxx">num_children</a>( )).</span></p>
 </li>
 <li>
 <p><em>list</em> = <strong>:children</strong>( )<br>
 <span class="small">Returns a table containing the children of this node
-(<em>list[i]</em> is the i-th child node, <em>i</em> = 1 .. <a href="#node.num_xxx">node:num_children</a>( )).</span></p>
+(<em>list[i]</em> is the i-th child node, <em>i</em> = 1 .. <a href="#node.num_xxx">num_children</a>( )).</span></p>
 </li>
 <li>
 <p><a href="#mesh"><em>mesh</em></a> = <strong>:mesh</strong>(<em>i</em>)<br>
-<span class="small">Returns the node&#8217;s i-th <a href="#mesh"><em>mesh</em></a> (<em>i</em> = 1 .. <a href="#node.num_xxx">node:num_meshes</a>( )).</span></p>
+<span class="small">Returns the node&#8217;s i-th <a href="#mesh"><em>mesh</em></a> (<em>i</em> = 1 .. <a href="#node.num_xxx">num_meshes</a>( )).</span></p>
 </li>
 <li>
 <p><em>list</em> = <strong>:meshes</strong>( )<br>
 <span class="small">Returns a table containing this node&#8217;s <a href="#mesh">meshes</a>
-(<em>list[i]</em> is the i-th mesh, <em>i</em> = 1 .. <a href="#node.num_xxx">node:num_meshes</a>( )).<br>
+(<em>list[i]</em> is the i-th mesh, <em>i</em> = 1 .. <a href="#node.num_xxx">num_meshes</a>( )).<br>
 Note that this is a subset of the <a href="#scene">scene</a>'s meshes list.</span></p>
 </li>
 <li>
@@ -1141,10 +1141,8 @@ Note that this is a subset of the <a href="#scene">scene</a>'s meshes list.</spa
 <em>boolean</em> = <strong>:has_tangents</strong>( )<br>
 <em>boolean</em> = <strong>:has_faces</strong>( )<br>
 <em>boolean</em> = <strong>:has_bones</strong>( )<br>
-<em>boolean</em> = <strong>:has_anim_meshes</strong>( )<br></p>
-</li>
-<li>
-<p><em>boolean</em> = <strong>:has_colors</strong>(<em>channel</em>)<br>
+<em>boolean</em> = <strong>:has_anim_meshes</strong>( )<br>
+<em>boolean</em> = <strong>:has_colors</strong>(<em>channel</em>)<br>
 <em>boolean</em> = <strong>:has_texture_coords</strong>(<em>channel</em>)</p>
 </li>
 </ul>
@@ -1172,21 +1170,20 @@ Note that this is a subset of the <a href="#scene">scene</a>'s meshes list.</spa
 <em>x</em>, <em>y</em>, <em>z</em> = <strong>:tangent</strong>(<em>i</em>)<br>
 <em>x</em>, <em>y</em>, <em>z</em> = <strong>:bitangent</strong>(<em>i</em>)<br>
 <span class="small">Returns the components of the affected 3D vector for the vertex indexed by <em>i</em>,
-where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_vertices</a>.</span></p>
+where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_vertices</a>(&nbsp;).</span></p>
 </li>
 <li>
 <p><em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <strong>:color</strong>(<em>channel</em>, <em>i</em>)<br>
 <span class="small">Returns the <em>channel</em> color components for the vertex indexed by <em>i</em>,
-where <em>channel</em> = 1 .. <a href="#mesh.num_xxx">num_color_channels</a>
-and <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_vertices</a>.</span></p>
+where <em>channel</em> = 1 .. <a href="#mesh.num_xxx">num_color_channels</a>(&nbsp;)
+and <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_vertices</a>(&nbsp;).</span></p>
 </li>
 <li>
 <p><em>u</em>, <em>v</em>, <em>w</em> = <strong>:texture_coords</strong>(<em>channel</em>, <em>i</em>)<br>
 <span class="small">Returns the <em>channel</em> texture components for the vertex indexed by <em>i</em>,
 where <em>channel</em> = 1 .. <a href="#mesh.num_xxx">num_texture_coords_channels</a>
-and <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_vertices</a>
-(only
-<a href="#num_texture_coords_components">num_texture_coords_components</a>(<em>channel</em>) are returned).</span></p>
+and <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_vertices</a>(&nbsp;).
+Only <a href="#num_texture_coords_components">num_texture_coords_components</a>(<em>channel</em>) are returned.</span></p>
 </li>
 <li>
 <p><a href="#material"><em>material</em></a> = <strong>:material</strong>( )<br>
@@ -1195,17 +1192,17 @@ and <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_vertices</a>
 <li>
 <p><a href="#face"><em>face</em></a> = <strong>:face</strong>(<em>i</em>)<br>
 <span class="small">Returns the i-th <a href="#face">face</a> of the mesh,
-where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_faces</a>.</span></p>
+where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_faces</a>(&nbsp;).</span></p>
 </li>
 <li>
 <p><a href="#bone"><em>bone</em></a> = <strong>:bone</strong>(<em>i</em>)<br>
 <span class="small">Returns the i-th <a href="#bone">bone</a> of the mesh,
-where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_bones</a>.</span></p>
+where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_bones</a>(&nbsp;).</span></p>
 </li>
 <li>
 <p><a href="#animmesh"><em>animmesh</em></a> = <strong>:anim_mesh</strong>(<em>i</em>)<br>
 <span class="small">Returns the i-th <a href="#animmesh">anim mesh</a> of the mesh,
-where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_anim_mesh</a>.</span></p>
+where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_anim_mesh</a>(&nbsp;).</span></p>
 </li>
 <li>
 <p><em>list</em> = <strong>:faces</strong>( )<br>
@@ -1263,7 +1260,7 @@ where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_anim_mesh</a>.</span></p>
 <li>
 <p><em>i<sub>1</sub></em>, <em>&#8230;&#8203;</em>, <em>i<sub>N</sub></em> = <strong>:indices</strong>( )<br>
 <span class="small">Returns the indices of the face&#8217;s vertices in the <a href="#mesh"><em>mesh</em></a>'s list of
-vertices (<em>N</em> = <a href="#face.num_indices">num_indices</a>).</span></p>
+vertices (<em>N</em> = <a href="#face.num_indices">num_indices</a>(&nbsp;)).</span></p>
 </li>
 <li>
 <p><em>i<sub>1</sub>-1</em>, <em>&#8230;&#8203;</em>, <em>i<sub>N</sub>-1</em> = <strong>:zero_based_indices</strong>( )</p>
@@ -1296,7 +1293,8 @@ is not part of the bone).</span></p>
 </li>
 <li>
 <p><em>t</em> = <strong>:ordered_weights</strong>( )<br>
-<span class="small">Returns an array <em>t</em> of <a href="#bone.num_weights">num_weights</a> tables, each having two elements:
+<span class="small">Returns an array <em>t</em> of <a href="#bone.num_weights">num_weights</a>(&nbsp;) tables,
+each having two elements:
 <em>t[i].vertex</em> and <em>t[i].weight</em>, denoting the index of a vertex and its weight, respectively.
 The vertices are in the same order as in the underlying aiBone structure</span></p>
 </li>
@@ -1362,7 +1360,6 @@ All these functions return <em>nil</em> if the given property is not defined for
 </li>
 </ul>
 </div>
-<hr>
 <div id="material.texture_count" class="ulist">
 <ul>
 <li>
@@ -1373,7 +1370,7 @@ All these functions return <em>nil</em> if the given property is not defined for
 </div>
 <div class="paragraph">
 <p>The following methods refer to the i-th texture of the given <a href="#texturetype"><em>texture type</em></a>,
-where <em>i</em> must be in the range 1 .. <a href="#material.texture_count">texture_count</a>.</p>
+where <em>i</em> must be in the range 1 .. <a href="#material.texture_count">texture_count</a>(&nbsp;).</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1457,13 +1454,13 @@ where <em>i</em> must be in the range 1 .. <a href="#material.texture_count">tex
 <span class="small">Returns the RGBA values of the texel with texture coordinates (<em>u</em>, <em>v</em>),
 or <em>nil</em> if the texture is in a compressed format.
 The coordinates <em>u</em> and <em>v</em> must be in the ranges
-1 .. <a href="#texture.dim">width</a> and
-1 .. <a href="#texture.dim">height</a>, respectively.
+1 .. <a href="#texture.dim">width</a>(&nbsp;) and
+1 .. <a href="#texture.dim">height</a>(&nbsp;), respectively.
 The values are returned as normalized floating points.</span></p>
 </li>
 <li>
 <p><em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <strong>:btexel</strong>(<em>u</em>, <em>v</em>)<br>
-<span class="small">Same as <a href="#texture.texel">texel</a>( ), but returns the RGBA values
+<span class="small">Same as <a href="#texture.texel">texel</a>(&nbsp;), but returns the RGBA values
 as bytes (0..255).</span></p>
 </li>
 </ul>
@@ -1478,7 +1475,7 @@ The RGBA values are normalized floating points.</span></p>
 </li>
 <li>
 <p><em>t</em> = <strong>:btexels</strong>( )<br>
-<span class="small">Same as <a href="#texture.texels">texels</a>( ), but returns the RGBA values
+<span class="small">Same as <a href="#texture.texels">texels</a>(&nbsp;), but returns the RGBA values
 as bytes (0..255).</span></p>
 </li>
 </ul>
@@ -1692,7 +1689,7 @@ at the indices contained in the keys returned by <a href="#meshanim.keys">meshan
 <ul>
 <li>
 <p><strong>lightsourcetype</strong>: enumeration.<br>
-<span class="small">Values:'<em>wrap</em>', '<em>clamp</em>', '<em>decal</em>', '<em>mirror</em>'.</span></p>
+<span class="small">Values: '<em>wrap</em>', '<em>clamp</em>', '<em>decal</em>', '<em>mirror</em>'.</span></p>
 </li>
 </ul>
 </div>
@@ -1708,7 +1705,8 @@ at the indices contained in the keys returned by <a href="#meshanim.keys">meshan
 <ul>
 <li>
 <p><strong>postprocessflags</strong>: bitfield.<br>
-<span class="small">Code: a combination of ai.Process_Xxx values (corresponding to aiProcess_Xxx values in Assimp).<br>
+<span class="small">Code: a combination of ai.Process_Xxx values (corresponding to
+<a href="http://www.assimp.org/lib_html/postprocess_8h.html">aiProcess_Xxx</a> values in Assimp).<br>
 Strings: '<em>none</em>', '<em>calc tangent space</em>', '<em>join identical vertices</em>', '<em>make left handed</em>', '<em>triangulate</em>', '<em>remove components</em>', '<em>gen normals</em>', '<em>gen smooth normals</em>', '<em>split large meshes</em>', '<em>pre transform vertices</em>', '<em>limit bone weights</em>', '<em>validate data structure</em>', '<em>improve cache locality</em>', '<em>remove redundant materials</em>', '<em>fix infacing normals</em>', '<em>sort by type</em>', '<em>find degenerates</em>', '<em>find invalid data</em>', '<em>gen uv coords</em>', '<em>transform uv coords</em>', '<em>find instances</em>', '<em>optimize mesh</em>', '<em>optimize graph</em>', '<em>flip uvs</em>', '<em>flip winding order</em>', '<em>split by bone count</em>', '<em>debone</em>'.</span></p>
 </li>
 </ul>

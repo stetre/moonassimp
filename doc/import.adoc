@@ -45,7 +45,7 @@ MoonAssimp, though).
 
 [[import_file]]
 * <<scene, _scene_>> = *ai.import_file*(_filename_, <<postprocessflags, _postprocessflags_>>) +
-[small]#Loads the model file from _filename_ (a string) and returns a <<scene, _scene>> object.
+[small]#Loads the model file from _filename_ (a string) and returns a <<scene, _scene_>> object.
 On error, it returns _nil_ and an error message.#
 
 * <<scene, _scene_>> = *ai.import_file_from_memory*(_data_, <<postprocessflags, _postprocessflags_>> [, _hint_]) +

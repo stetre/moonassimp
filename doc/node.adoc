@@ -12,18 +12,18 @@
 _n_ = *:num_meshes*( )
 
 * _node_ = *:child*(_i_) +
-[small]#Returns the i-th child node of this node (_i_ = 1 .. <<node.num_xxx, node:num_children>>( )).#
+[small]#Returns the i-th child node of this node (_i_ = 1 .. <<node.num_xxx, num_children>>( )).#
 
 * _list_ = *:children*( ) +
 [small]#Returns a table containing the children of this node
-(_list[i]_ is the i-th child node, _i_ = 1 .. <<node.num_xxx, node:num_children>>( )).#
+(_list[i]_ is the i-th child node, _i_ = 1 .. <<node.num_xxx, num_children>>( )).#
 
 * <<mesh, _mesh_>> = *:mesh*(_i_) +
-[small]#Returns the node's i-th <<mesh, _mesh_>> (_i_ = 1 .. <<node.num_xxx, node:num_meshes>>( )).#
+[small]#Returns the node's i-th <<mesh, _mesh_>> (_i_ = 1 .. <<node.num_xxx, num_meshes>>( )).#
 
 * _list_ = *:meshes*( ) +
 [small]#Returns a table containing this node's <<mesh, meshes>>
-(_list[i]_ is the i-th mesh, _i_ = 1 .. <<node.num_xxx, node:num_meshes>>( )). +
+(_list[i]_ is the i-th mesh, _i_ = 1 .. <<node.num_xxx, num_meshes>>( )). +
 Note that this is a subset of the <<scene, scene>>'s meshes list.#
 
 * _node_ = *:parent*( ) +

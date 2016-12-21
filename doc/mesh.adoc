@@ -15,8 +15,7 @@ _boolean_ = *:has_tangents*( ) +
 _boolean_ = *:has_faces*( ) +
 _boolean_ = *:has_bones*( ) +
 _boolean_ = *:has_anim_meshes*( ) +
-
-* _boolean_ = *:has_colors*(_channel_) +
+_boolean_ = *:has_colors*(_channel_) +
 _boolean_ = *:has_texture_coords*(_channel_)
 
 [[mesh.num_xxx]]
@@ -35,34 +34,33 @@ _x_, _y_, _z_ = *:normal*(_i_) +
 _x_, _y_, _z_ = *:tangent*(_i_) +
 _x_, _y_, _z_ = *:bitangent*(_i_) +
 [small]#Returns the components of the affected 3D vector for the vertex indexed by _i_,
-where _i_ = 1 .. <<mesh.num_xxx, num_vertices>>.#
+where _i_ = 1 .. <<mesh.num_xxx, num_vertices>>(&nbsp;).#
 
 * _r_, _g_, _b_, _a_ = *:color*(_channel_, _i_) +
 [small]#Returns the _channel_ color components for the vertex indexed by _i_,
-where _channel_ = 1 .. <<mesh.num_xxx, num_color_channels>> 
-and _i_ = 1 .. <<mesh.num_xxx, num_vertices>>.#
+where _channel_ = 1 .. <<mesh.num_xxx, num_color_channels>>(&nbsp;) 
+and _i_ = 1 .. <<mesh.num_xxx, num_vertices>>(&nbsp;).#
 
 * _u_, _v_, _w_ = *:texture_coords*(_channel_, _i_) +
 [small]#Returns the _channel_ texture components for the vertex indexed by _i_,
 where _channel_ = 1 .. <<mesh.num_xxx, num_texture_coords_channels>> 
-and _i_ = 1 .. <<mesh.num_xxx, num_vertices>> 
-(only
-<<num_texture_coords_components, num_texture_coords_components>>(_channel_) are returned).#
+and _i_ = 1 .. <<mesh.num_xxx, num_vertices>>(&nbsp;). 
+Only <<num_texture_coords_components, num_texture_coords_components>>(_channel_) are returned.#
 
 * <<material, _material_>> = *:material*( ) +
 [small]#Returns the mesh's <<material, material>>.#
 
 * <<face, _face_>> = *:face*(_i_) +
 [small]#Returns the i-th <<face, face>> of the mesh, 
-where _i_ = 1 .. <<mesh.num_xxx, num_faces>>.#
+where _i_ = 1 .. <<mesh.num_xxx, num_faces>>(&nbsp;).#
 
 * <<bone, _bone_>> = *:bone*(_i_) +
 [small]#Returns the i-th <<bone, bone>> of the mesh, 
-where _i_ = 1 .. <<mesh.num_xxx, num_bones>>.#
+where _i_ = 1 .. <<mesh.num_xxx, num_bones>>(&nbsp;).#
 
 * <<animmesh, _animmesh_>> = *:anim_mesh*(_i_) +
 [small]#Returns the i-th <<animmesh, anim mesh>> of the mesh, 
-where _i_ = 1 .. <<mesh.num_xxx, num_anim_mesh>>.#
+where _i_ = 1 .. <<mesh.num_xxx, num_anim_mesh>>(&nbsp;).#
 
 * _list_ = *:faces*( ) +
 [small]#Returns the list of the mesh's <<face, faces>>.#
