@@ -87,6 +87,9 @@ Other examples can be found in the **examples/** directory.
 * Image and model loading:
 [MoonSOIL](https://github.com/stetre/moonsoil).
 
+* Font rendering:
+[MoonFreeType](https://github.com/stetre/moonfreetype).
+
 * Audio:
 [LuaJACK](https://github.com/stetre/luajack).
 
