@@ -1,4 +1,4 @@
-##MoonAssimp: Lua bindings for Assimp
+## MoonAssimp: Lua bindings for Assimp
 
 MoonAssimp is a Lua binding library for the 
 [Open Asset Import Library](http://www.assimp.org/).
