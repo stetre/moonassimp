@@ -37,7 +37,7 @@ static int Textureflags(lua_State *L)
     return 1;
     }
 
-static int Primtype(lua_State *L)
+static int Primtypes(lua_State *L)
     {
     if(lua_type(L, 1) == LUA_TNUMBER)
         return pushprimitivetype(L, luaL_checkinteger(L, 1), 0);
@@ -70,7 +70,7 @@ static int Sceneflags(lua_State *L)
 static const struct luaL_Reg Functions[] = 
     {
         { "textureflags", Textureflags },
-        { "primtype", Primtype },
+        { "primtypes", Primtypes },
         { "postprocessflags", Postprocessflags },
         { "sceneflags", Sceneflags },
         { NULL, NULL } /* sentinel */
