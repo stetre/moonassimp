@@ -191,9 +191,9 @@ extern int trace_enabled;
 int trace(const char *fmt, ...);
 
 #define TRACE trace
-#define TRACE_CREATE(p, what) do { trace("create "what" 0x%.16llx\n", (void*)(p)); } while(0)
+#define TRACE_CREATE(p, what) do { trace("create "what" 0x%p\n", (void*)(p)); } while(0)
 #define TRACE_CREATE_N(n, what) do { trace("create %d "what"\n", (n)); } while(0)
-#define TRACE_DELETE(p, what) do { trace("delete "what" 0x%.16llx\n", (void*)(p)); } while(0)
+#define TRACE_DELETE(p, what) do { trace("delete "what" 0x%p\n", (void*)(p)); } while(0)
 #define TRACE_DELETE_N(n, what) do { trace("delete %d "what"\n", (n)); } while(0)
 
 /*----------------------------------------------------------------*/
