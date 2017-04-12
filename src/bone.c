@@ -28,7 +28,7 @@
 int newbone(lua_State *L, scene_t *scene, mesh_t *mesh, bone_t *bone)
     {
     ud_t *ud;
-    DBG("creating bone %p\n", (void*)bone);
+    TRACE_CREATE(bone, "bone");
     ud = newuserdata(L, (void*)bone, BONE_MT);
     ud->scene = scene;
     ud->mesh = mesh;
@@ -37,7 +37,7 @@ int newbone(lua_State *L, scene_t *scene, mesh_t *mesh, bone_t *bone)
 
 int freebone(lua_State *L, bone_t *bone)
     {
-    DBG("releasing bone %p\n", (void*)bone);
+    TRACE_DELETE(bone, "bone");
     freeuserdata(L, bone);
     return 0;
     }

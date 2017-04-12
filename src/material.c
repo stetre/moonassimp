@@ -28,7 +28,7 @@
 int newmaterial(lua_State *L, scene_t *scene, material_t *material)
     {
     ud_t *ud;
-    DBG("creating material %p\n", (void*)material);
+    TRACE_CREATE(material, "material");
     ud = newuserdata(L, (void*)material, MATERIAL_MT);
     ud->scene = scene;
     return 1;   
@@ -36,7 +36,7 @@ int newmaterial(lua_State *L, scene_t *scene, material_t *material)
 
 int freematerial(lua_State *L, material_t *material)
     {
-    DBG("releasing material %p ud=%p\n", (void*)material, (void*)userdata(material));
+    TRACE_DELETE(material, "material");
     freeuserdata(L, material);
     return 0;
     }

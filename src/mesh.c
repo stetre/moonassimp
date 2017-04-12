@@ -29,24 +29,24 @@ int newmesh(lua_State *L, scene_t *scene, mesh_t *mesh)
     {
     unsigned int i;
     ud_t *ud;
-    DBG("creating mesh %p\n", (void*)mesh);
+    TRACE_CREATE(mesh, "mesh");
     if(mesh->mFaces != NULL && mesh->mNumFaces > 0)
         {
         for(i = 0; i < mesh->mNumFaces; i++)
             { newface(L, scene, mesh, &(mesh->mFaces[i])); lua_pop(L, 1); }
-        DBG("created %u faces\n", i);
+        TRACE_CREATE_N(i, "faces");
         }
     if(mesh->mBones != NULL && mesh->mNumBones > 0)
         {
         for(i = 0; i < mesh->mNumBones; i++)
             { newbone(L, scene, mesh, mesh->mBones[i]); lua_pop(L, 1); }
-        DBG("created %u bones\n", i);
+        TRACE_CREATE_N(i, "bones");
         }
     if(mesh->mAnimMeshes != NULL && mesh->mNumAnimMeshes > 0)
         {
         for(i = 0; i < mesh->mNumAnimMeshes; i++)
             { newanimmesh(L, scene, mesh, mesh->mAnimMeshes[i]); lua_pop(L, 1); }
-        DBG("created %u animmesh\n", i);
+        TRACE_CREATE_N(i, "animmeshes");
         }
     ud = newuserdata(L, (void*)mesh, MESH_MT);
     ud->scene = scene;
@@ -56,25 +56,25 @@ int newmesh(lua_State *L, scene_t *scene, mesh_t *mesh)
 int freemesh(lua_State *L, mesh_t *mesh)
     {
     unsigned int i;
-    DBG("releasing mesh %p\n", (void*)mesh);
     if(mesh->mFaces != NULL && mesh->mNumFaces > 0)
         {
         for(i = 0; i < mesh->mNumFaces; i++)
             freeface(L, &(mesh->mFaces[i]));
-        DBG("released %u faces\n", i);
+        TRACE_DELETE_N(i, "faces");
         }
     if(mesh->mBones != NULL && mesh->mNumBones > 0)
         {
         for(i = 0; i < mesh->mNumBones; i++)
             freebone(L, mesh->mBones[i]);
-        DBG("released %u bones\n", i);
+        TRACE_DELETE_N(i, "bones");
         }
     if(mesh->mAnimMeshes != NULL && mesh->mNumAnimMeshes > 0)
         {
         for(i = 0; i < mesh->mNumAnimMeshes; i++)
             freeanimmesh(L, mesh->mAnimMeshes[i]);
-        DBG("released %u animmesh\n", i);
+        TRACE_DELETE_N(i, "animmeshes");
         }
+    TRACE_DELETE(mesh, "mesh");
     freeuserdata(L, mesh);
     return 0;
     }

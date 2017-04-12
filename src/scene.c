@@ -30,7 +30,7 @@ int newscene(lua_State *L, scene_t *scene)
  * the root node and its children, and all other nested objects */
     {
     unsigned int i;
-    DBG("creating scene %p\n", (void*)scene);
+    TRACE_CREATE(scene, "scene");
     if(scene->mRootNode)
         {
         newnode(L, scene, scene->mRootNode);
@@ -55,7 +55,6 @@ static int Delete(lua_State *L)
     unsigned int i;
     scene_t *scene = testscene(L, 1);
     if(!scene) return 0; /* already deleted */
-    DBG("releasing scene %p\n", (void*)scene);
     /* first, release all userdata */
 #define Free(what, freefunc) do {                   \
     if(scene->mNum##what > 0)                       \
@@ -73,6 +72,7 @@ static int Delete(lua_State *L)
 #undef Free
     if(scene->mRootNode)
         freenode(L, scene->mRootNode);
+    TRACE_DELETE(scene, "scene");
     freeuserdata(L, scene);
     /* finally, release the scene */
     aiReleaseImport(scene);

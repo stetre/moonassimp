@@ -30,7 +30,7 @@ int newnode(lua_State *L, scene_t *scene, node_t *node)
     {
     ud_t *ud;
     unsigned int i;
-    DBG("creating node %p\n", (void*)node);
+    TRACE_CREATE(node, "node");
     for(i = 0; i < node->mNumChildren; i++)
         {
         newnode(L, scene, node->mChildren[i]);
@@ -45,9 +45,9 @@ int freenode(lua_State *L, node_t *node)
 /* recursively deletes the userdata for the node and its children */
     {
     unsigned int i;
-    DBG("releasing node %p\n", (void*)node);
     for(i = 0; i < node->mNumChildren; i++)
         freenode(L, node->mChildren[i]);
+    TRACE_DELETE(node, "node");
     freeuserdata(L, node);
     return 0;
     }

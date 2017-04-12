@@ -28,7 +28,7 @@
 int newnodeanim(lua_State *L, scene_t *scene, animation_t *animation, nodeanim_t *nodeanim)
     {
     ud_t *ud;
-    //DBG("creating nodeanim %p\n", (void*)nodeanim);
+//  TRACE_CREATE(nodeanim, "nodeanim");
     ud = newuserdata(L, (void*)nodeanim, NODEANIM_MT);
     ud->scene = scene;
     ud->animation = animation;
@@ -37,7 +37,7 @@ int newnodeanim(lua_State *L, scene_t *scene, animation_t *animation, nodeanim_t
 
 int freenodeanim(lua_State *L, nodeanim_t *nodeanim)
     {
-    //DBG("releasing nodeanim %p\n", (void*)nodeanim);
+//  TRACE_DELETE(nodeanim, "nodeanim");
     freeuserdata(L, nodeanim);
     return 0;
     }

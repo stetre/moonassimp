@@ -25,6 +25,21 @@
 
 #include "internal.h"
 
+int trace_enabled = 0;
+int trace(const char *fmt, ...)
+    {
+    va_list args;
+    if(!trace_enabled)
+        return 0;
+    if(fmt)
+        {
+        va_start(args,fmt);
+        vprintf(fmt,args);
+        va_end(args);
+        }
+    return 0;
+    }
+
 int noprintf(const char *fmt, ...) 
     { (void)fmt; return 0; }
 

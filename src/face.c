@@ -28,7 +28,7 @@
 int newface(lua_State *L, scene_t *scene, mesh_t *mesh, face_t *face)
     {
     ud_t *ud;
-//  printf("creating face %p\n", (void*)face);
+//  TRACE_CREATE(face, "face");
     ud = newuserdata(L, (void*)face, FACE_MT);
     ud->scene = scene;
     ud->mesh = mesh;
@@ -37,7 +37,7 @@ int newface(lua_State *L, scene_t *scene, mesh_t *mesh, face_t *face)
 
 int freeface(lua_State *L, face_t *face)
     {
-//  printf("releasing face %p\n", (void*)face);
+//  TRACE_DELETE(face, "face");
     freeuserdata(L, face);
     return 0;
     }

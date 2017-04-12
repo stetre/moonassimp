@@ -28,7 +28,7 @@
 int newcamera(lua_State *L, scene_t *scene, camera_t *camera)
     {
     ud_t *ud;
-    DBG("creating camera %p\n", (void*)camera);
+    TRACE_CREATE(camera, "camera");
     ud = newuserdata(L, (void*)camera, CAMERA_MT);
     ud->scene = scene;
     return 1;   
@@ -36,7 +36,7 @@ int newcamera(lua_State *L, scene_t *scene, camera_t *camera)
 
 int freecamera(lua_State *L, camera_t *camera)
     {
-    DBG("releasing camera %p\n", (void*)camera);
+    TRACE_DELETE(camera, "camera");
     freeuserdata(L, camera);
     return 0;
     }

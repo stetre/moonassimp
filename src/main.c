@@ -123,6 +123,13 @@ static int AddConstants(lua_State *L)
     return 0;
     }
 
+static int TraceObjects(lua_State *L)
+    {
+    trace_enabled = checkboolean(L, 1);
+    return 0;
+    }
+
+
 /*------------------------------------------------------------------------------*
  | Registration                                                                 |
  *------------------------------------------------------------------------------*/
@@ -137,6 +144,7 @@ static const struct luaL_Reg Functions[] =
         { "get_version", GetVersion },
         { "get_legal_string", GetLegalString },
         { "get_compile_flags", GetCompileFlags },
+        { "trace_objects", TraceObjects },
         { NULL, NULL } /* sentinel */
     };
 

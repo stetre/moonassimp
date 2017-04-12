@@ -28,7 +28,7 @@
 int newtexture(lua_State *L, scene_t *scene, texture_t *texture)
     {
     ud_t *ud;
-    DBG("creating texture %p\n", (void*)texture);
+    TRACE_CREATE(texture, "texture");
     ud = newuserdata(L, (void*)texture, TEXTURE_MT);
     ud->scene = scene;
     return 1;   
@@ -36,7 +36,7 @@ int newtexture(lua_State *L, scene_t *scene, texture_t *texture)
 
 int freetexture(lua_State *L, texture_t *texture)
     {
-    DBG("releasing texture %p\n", (void*)texture);
+    TRACE_DELETE(texture, "texture");
     freeuserdata(L, texture);
     return 0;
     }

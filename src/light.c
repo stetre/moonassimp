@@ -28,7 +28,7 @@
 int newlight(lua_State *L, scene_t *scene, light_t *light)
     {
     ud_t *ud;
-    DBG("creating light %p\n", (void*)light);
+    TRACE_CREATE(light, "light");
     ud = newuserdata(L, (void*)light, LIGHT_MT);
     ud->scene = scene;
     return 1;   
@@ -36,7 +36,7 @@ int newlight(lua_State *L, scene_t *scene, light_t *light)
 
 int freelight(lua_State *L, light_t *light)
     {
-    DBG("releasing light %p\n", (void*)light);
+    TRACE_DELETE(light, "light");
     freeuserdata(L, light);
     return 0;
     }

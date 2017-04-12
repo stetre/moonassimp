@@ -184,6 +184,19 @@ void moonassimp_open_additional(lua_State *L);
 #define pushvalue(L, ref) /* returns LUA_TXXX */    \
     lua_rawgeti((L), LUA_REGISTRYINDEX, (ref)) 
 
+/* objects tracing -----------------------------------------------*/
+#define trace_enabled moonvulkan_trace_enabled
+extern int trace_enabled;
+#define trace moonassimp_trace
+int trace(const char *fmt, ...);
+
+#define TRACE trace
+#define TRACE_CREATE(p, what) do { trace("create "what" 0x%.16llx\n", (void*)(p)); } while(0)
+#define TRACE_CREATE_N(n, what) do { trace("create %d "what"\n", (n)); } while(0)
+#define TRACE_DELETE(p, what) do { trace("delete "what" 0x%.16llx\n", (void*)(p)); } while(0)
+#define TRACE_DELETE_N(n, what) do { trace("delete %d "what"\n", (n)); } while(0)
+
+/*----------------------------------------------------------------*/
 
 /* If this is printed, it denotes a suspect bug: */
 #define UNEXPECTED_ERROR "unexpected error (%s, %d)", __FILE__, __LINE__

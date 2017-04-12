@@ -28,7 +28,7 @@
 int newanimmesh(lua_State *L, scene_t *scene, mesh_t *mesh, animmesh_t *animmesh)
     {
     ud_t *ud;
-//  DBG("creating animmesh %p\n", (void*)animmesh);
+//  TRACE_CREATE(animmesh, "animmesh");
     ud = newuserdata(L, (void*)animmesh, ANIMMESH_MT);
     ud->scene = scene;
     ud->mesh = mesh;
@@ -37,7 +37,7 @@ int newanimmesh(lua_State *L, scene_t *scene, mesh_t *mesh, animmesh_t *animmesh
 
 int freeanimmesh(lua_State *L, animmesh_t *animmesh)
     {
-//  DBG("releasing animmesh %p\n", (void*)animmesh);
+//  TRACE_DELETE(animmesh, "animmesh");
     freeuserdata(L, animmesh);
     return 0;
     }

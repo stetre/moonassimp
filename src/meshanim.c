@@ -28,7 +28,7 @@
 int newmeshanim(lua_State *L, scene_t *scene, animation_t *animation, meshanim_t *meshanim)
     {
     ud_t *ud;
-    //DBG("creating meshanim %p\n", (void*)meshanim);
+//  TRACE_CREATE(meshanim, "meshanim");
     ud = newuserdata(L, (void*)meshanim, MESHANIM_MT);
     ud->scene = scene;
     ud->animation = animation;
@@ -37,7 +37,7 @@ int newmeshanim(lua_State *L, scene_t *scene, animation_t *animation, meshanim_t
 
 int freemeshanim(lua_State *L, meshanim_t *meshanim)
     {
-    //DBG("releasing meshanim %p\n", (void*)meshanim);
+//  TRACE_DELETE(meshanim, "meshanim");
     freeuserdata(L, meshanim);
     return 0;
     }

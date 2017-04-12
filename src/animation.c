@@ -29,18 +29,18 @@ int newanimation(lua_State *L, scene_t *scene, animation_t *animation)
     {
     unsigned int i;
     ud_t *ud;
-    DBG("creating animation %p\n", (void*)animation);
+    TRACE_CREATE(animation, "animation");
     if(animation->mChannels != NULL && animation->mNumChannels > 0)
         {
         for(i = 0; i < animation->mNumChannels; i++)
             { newnodeanim(L, scene, animation, animation->mChannels[i]); lua_pop(L, 1); }
-        DBG("created %u nodeanims\n", i);
+        TRACE_CREATE_N(i, "nodeanims");
         }
     if(animation->mMeshChannels != NULL && animation->mNumMeshChannels > 0)
         {
         for(i = 0; i < animation->mNumMeshChannels; i++)
             { newmeshanim(L, scene, animation, animation->mMeshChannels[i]); lua_pop(L, 1); }
-        DBG("created %u meshanims\n", i);
+        TRACE_CREATE_N(i, "meshanims");
         }
     ud = newuserdata(L, (void*)animation, ANIMATION_MT);
     ud->scene = scene;
@@ -50,19 +50,19 @@ int newanimation(lua_State *L, scene_t *scene, animation_t *animation)
 int freeanimation(lua_State *L, animation_t *animation)
     {
     unsigned int i;
-    DBG("releasing animation %p\n", (void*)animation);
     if(animation->mChannels != NULL && animation->mNumChannels > 0)
         {
         for(i = 0; i < animation->mNumChannels; i++)
             freenodeanim(L, animation->mChannels[i]);
-        DBG("released %u nodeanims\n", i);
+        TRACE_DELETE_N(i, "nodeanims");
         }
     if(animation->mMeshChannels != NULL && animation->mNumMeshChannels > 0)
         {
         for(i = 0; i < animation->mNumMeshChannels; i++)
             freemeshanim(L, animation->mMeshChannels[i]);
-        DBG("released %u meshanims\n", i);
+        TRACE_DELETE_N(i, "meshanims");
         }
+    TRACE_DELETE(animation, "animation");
 
     freeuserdata(L, animation);
     return 0;

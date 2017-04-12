@@ -110,3 +110,6 @@ If _logstream_ is '_stdout_' or '_stderr_', the _arg_ parameter is ignored.#
 * *ai.detach_all_log_streams*( ) +
 [small]#Detaches all log streams.#
 
+* *ai.trace_objects*(_boolean_) +
+[small]#Enable/disable tracing on stdout of objects creation and deletion (default=disabled).#
+
