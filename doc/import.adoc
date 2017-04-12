@@ -28,9 +28,9 @@ the above example returns an instance of the <<scene, scene>> object type. The c
 of the scene can then be retrieved with the methods of the scene object and of the
 contained objects. 
 
-The scene is garbage collected, together with the contained objects, so the
-*aiReleaseImport*( ) function is not exposed (if needed, you can force garbage collection
-by setting to _nil_ all the references to the _scene_ object and invoking Lua's GC).
+The scene is garbage collected at exit, together with the contained objects, so the
+<<release_import, ai.release_import>>(&nbsp;) function need not be called unless one wants
+to release memory when the scene is no more needed and the application is not exiting.
 
 Objects' methods are described in the <<methods, next chapter>>, while herafter are described
 the general functions provided in the *ai* table for importing models, logging, etc.
@@ -64,6 +64,10 @@ The _mem_ table contains the following fields:
 _mem.total_, _mem.nodes_, _mem.meshes_, _mem.materials_, _mem.cameras_, _mem.lights_,
 and _mem.animations_. The value of each field is an integer indicating 
 the memory (in bytes) used by the various items contained in the scene.#
+
+[[release_import]]
+* *ai.release_import*(<<scene, _scene_>>) +
+[small]#Note that this invalidates all the references to imported objects.#
 
 === Querying for supported formats
 

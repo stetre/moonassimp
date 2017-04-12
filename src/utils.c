@@ -333,8 +333,6 @@ int pushmatrix4(lua_State *L, matrix4_t *mat, int how)
     }
 
 
-
-
 /*------------------------------------------------------------------------------*
  | userdata handling                                                            |
  *------------------------------------------------------------------------------*/
@@ -345,16 +343,37 @@ ud_t *newuserdata(lua_State *L, void *ptr, const char *mt)
     ud = (ud_t*)udata_new(L, sizeof(ud_t), ptr, mt);
     memset(ud, 0, sizeof(ud_t));
     ud->obj = ptr ? ptr : (void*)ud;
+    MarkValid(ud);
     return ud;
     }
 
 int freeuserdata(lua_State *L, void *ptr)
     {
     ud_t *ud = userdata(ptr);
-    if(!ud)
+    if(!ud || !IsValid(ud))
         return 0; /* already deleted */
+    CancelValid(ud);
     udata_free(L, ptr);
     return 1;
     }
 
+void* testxxx(lua_State *L, int arg, const char *mt)
+    {
+    ud_t *ud = (ud_t*)udata_test(L, arg, mt);
+    if(ud && IsValid(ud))
+        return ud->obj;
+    return NULL;
+    }
+
+void* checkxxx(lua_State *L, int arg, const char *mt)
+    {
+    void *p = testxxx(L, arg, mt);
+    if(p) return p;
+    lua_pushfstring(L, "not a %s", mt);
+    luaL_argerror(L, arg, lua_tostring(L, -1));
+    return NULL;
+    }
+
+int pushxxx(lua_State *L, void *p)
+    { return udata_push(L, p); }
 

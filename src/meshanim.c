@@ -25,27 +25,6 @@
 
 #include "internal.h"
 
-/*------------------------------------------------------------------------------*
- | Check/test/push                                                              |
- *------------------------------------------------------------------------------*/
-
-meshanim_t* testmeshanim(lua_State *L, int arg)
-    {
-    ud_t *ud = (ud_t*)udata_test(L, arg, MESHANIM_MT);
-    return (meshanim_t*)(ud ? ud->obj : NULL);
-    }
-
-meshanim_t* checkmeshanim(lua_State *L, int arg)
-    {
-    meshanim_t *p = testmeshanim(L, arg);
-    if(p) return p;
-    luaL_argerror(L, arg, "not a meshanim");
-    return NULL;
-    }
-
-int pushmeshanim(lua_State *L, meshanim_t *p)
-    { return udata_push(L, p); }
-
 int newmeshanim(lua_State *L, scene_t *scene, animation_t *animation, meshanim_t *meshanim)
     {
     ud_t *ud;

@@ -25,27 +25,6 @@
 
 #include "internal.h"
 
-/*------------------------------------------------------------------------------*
- | Check/test/push                                                              |
- *------------------------------------------------------------------------------*/
-
-nodeanim_t* testnodeanim(lua_State *L, int arg)
-    {
-    ud_t *ud = (ud_t*)udata_test(L, arg, NODEANIM_MT);
-    return (nodeanim_t*)(ud ? ud->obj : NULL);
-    }
-
-nodeanim_t* checknodeanim(lua_State *L, int arg)
-    {
-    nodeanim_t *p = testnodeanim(L, arg);
-    if(p) return p;
-    luaL_argerror(L, arg, "not a nodeanim");
-    return NULL;
-    }
-
-int pushnodeanim(lua_State *L, nodeanim_t *p)
-    { return udata_push(L, p); }
-
 int newnodeanim(lua_State *L, scene_t *scene, animation_t *animation, nodeanim_t *nodeanim)
     {
     ud_t *ud;

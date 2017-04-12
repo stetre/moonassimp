@@ -25,27 +25,6 @@
 
 #include "internal.h"
 
-/*------------------------------------------------------------------------------*
- | Check/test/push                                                              |
- *------------------------------------------------------------------------------*/
-
-animation_t* testanimation(lua_State *L, int arg)
-    {
-    ud_t *ud = (ud_t*)udata_test(L, arg, ANIMATION_MT);
-    return (animation_t*)(ud ? ud->obj : NULL);
-    }
-
-animation_t* checkanimation(lua_State *L, int arg)
-    {
-    animation_t *p = testanimation(L, arg);
-    if(p) return p;
-    luaL_argerror(L, arg, "not a animation");
-    return NULL;
-    }
-
-int pushanimation(lua_State *L, animation_t *p)
-    { return udata_push(L, p); }
-
 int newanimation(lua_State *L, scene_t *scene, animation_t *animation)
     {
     unsigned int i;

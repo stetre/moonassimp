@@ -25,27 +25,6 @@
 
 #include "internal.h"
 
-/*------------------------------------------------------------------------------*
- | Check/test/push                                                              |
- *------------------------------------------------------------------------------*/
-
-animmesh_t* testanimmesh(lua_State *L, int arg)
-    {
-    ud_t *ud = (ud_t*)udata_test(L, arg, ANIMMESH_MT);
-    return (animmesh_t*)(ud ? ud->obj : NULL);
-    }
-
-animmesh_t* checkanimmesh(lua_State *L, int arg)
-    {
-    animmesh_t *p = testanimmesh(L, arg);
-    if(p) return p;
-    luaL_argerror(L, arg, "not a animmesh");
-    return NULL;
-    }
-
-int pushanimmesh(lua_State *L, animmesh_t *p)
-    { return udata_push(L, p); }
-
 int newanimmesh(lua_State *L, scene_t *scene, mesh_t *mesh, animmesh_t *animmesh)
     {
     ud_t *ud;

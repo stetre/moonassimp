@@ -25,27 +25,6 @@
 
 #include "internal.h"
 
-/*------------------------------------------------------------------------------*
- | Check/test/push                                                              |
- *------------------------------------------------------------------------------*/
-
-face_t* testface(lua_State *L, int arg)
-    {
-    ud_t *ud = (ud_t*)udata_test(L, arg, FACE_MT);
-    return (face_t*)(ud ? ud->obj : NULL);
-    }
-
-face_t* checkface(lua_State *L, int arg)
-    {
-    face_t *p = testface(L, arg);
-    if(p) return p;
-    luaL_argerror(L, arg, "not a face");
-    return NULL;
-    }
-
-int pushface(lua_State *L, face_t *p)
-    { return udata_push(L, p); }
-
 int newface(lua_State *L, scene_t *scene, mesh_t *mesh, face_t *face)
     {
     ud_t *ud;

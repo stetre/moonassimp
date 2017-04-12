@@ -25,27 +25,6 @@
 
 #include "internal.h"
 
-/*------------------------------------------------------------------------------*
- | Check/test/push                                                              |
- *------------------------------------------------------------------------------*/
-
-node_t* testnode(lua_State *L, int arg)
-    {
-    ud_t *ud = (ud_t*)udata_test(L, arg, NODE_MT);
-    return (node_t*)(ud ? ud->obj : NULL);
-    }
-
-node_t* checknode(lua_State *L, int arg)
-    {
-    node_t *p = testnode(L, arg);
-    if(p) return p;
-    luaL_argerror(L, arg, "not a node");
-    return NULL;
-    }
-
-int pushnode(lua_State *L, node_t *p)
-    { return udata_push(L, p); }
-
 int newnode(lua_State *L, scene_t *scene, node_t *node)
 /* recursively creates the userdata for the node and its children */
     {

@@ -25,28 +25,6 @@
 
 #include "internal.h"
 
-/*------------------------------------------------------------------------------*
- | Check/test/push                                                              |
- *------------------------------------------------------------------------------*/
-
-scene_t* testscene(lua_State *L, int arg)
-    {
-    ud_t *ud = (ud_t*)udata_test(L, arg, SCENE_MT);
-    return (scene_t*)(ud ? ud->obj : NULL);
-    }
-
-scene_t* checkscene(lua_State *L, int arg)
-    {
-    scene_t *p = testscene(L, arg);
-    if(p) return p;
-    luaL_argerror(L, arg, "not a scene");
-    return NULL;
-    }
-
-int pushscene(lua_State *L, scene_t *p)
-    { return udata_push(L, p); }
-
-
 int newscene(lua_State *L, scene_t *scene)
 /* recursively creates the userdata for the scene,
  * the root node and its children, and all other nested objects */
@@ -75,7 +53,8 @@ int newscene(lua_State *L, scene_t *scene)
 static int Delete(lua_State *L)
     {
     unsigned int i;
-    scene_t *scene = checkscene(L, 1);
+    scene_t *scene = testscene(L, 1);
+    if(!scene) return 0; /* already deleted */
     DBG("releasing scene %p\n", (void*)scene);
     /* first, release all userdata */
 #define Free(what, freefunc) do {                   \
@@ -104,7 +83,7 @@ static int Delete(lua_State *L)
 static int Has##what(lua_State *L)              \
     {                                           \
     scene_t *scene = checkscene(L, 1);          \
-    lua_pushboolean(L, scene->m##what != NULL && scene->mNum##what > 0);    \
+    lua_pushboolean(L, scene->m##what != NULL && scene->mNum##what > 0); \
     return 1;                                   \
     }                                           \
 static int Num##what(lua_State *L)              \
@@ -239,6 +218,7 @@ static const struct luaL_Reg MetaMethods[] =
 
 static const struct luaL_Reg Functions[] = 
     {
+        { "release_import",  Delete }, //@@DOC
         { NULL, NULL } /* sentinel */
     };
 

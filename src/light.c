@@ -25,27 +25,6 @@
 
 #include "internal.h"
 
-/*------------------------------------------------------------------------------*
- | Check/test/push                                                              |
- *------------------------------------------------------------------------------*/
-
-light_t* testlight(lua_State *L, int arg)
-    {
-    ud_t *ud = (ud_t*)udata_test(L, arg, LIGHT_MT);
-    return (light_t*)(ud ? ud->obj : NULL);
-    }
-
-light_t* checklight(lua_State *L, int arg)
-    {
-    light_t *p = testlight(L, arg);
-    if(p) return p;
-    luaL_argerror(L, arg, "not a light");
-    return NULL;
-    }
-
-int pushlight(lua_State *L, light_t *p)
-    { return udata_push(L, p); }
-
 int newlight(lua_State *L, scene_t *scene, light_t *light)
     {
     ud_t *ud;

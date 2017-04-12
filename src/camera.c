@@ -25,27 +25,6 @@
 
 #include "internal.h"
 
-/*------------------------------------------------------------------------------*
- | Check/test/push                                                              |
- *------------------------------------------------------------------------------*/
-
-camera_t* testcamera(lua_State *L, int arg)
-    {
-    ud_t *ud = (ud_t*)udata_test(L, arg, CAMERA_MT);
-    return (camera_t*)(ud ? ud->obj : NULL);
-    }
-
-camera_t* checkcamera(lua_State *L, int arg)
-    {
-    camera_t *p = testcamera(L, arg);
-    if(p) return p;
-    luaL_argerror(L, arg, "not a camera");
-    return NULL;
-    }
-
-int pushcamera(lua_State *L, camera_t *p)
-    { return udata_push(L, p); }
-
 int newcamera(lua_State *L, scene_t *scene, camera_t *camera)
     {
     ud_t *ud;

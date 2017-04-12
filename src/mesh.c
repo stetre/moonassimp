@@ -25,27 +25,6 @@
 
 #include "internal.h"
 
-/*------------------------------------------------------------------------------*
- | Check/test/push                                                              |
- *------------------------------------------------------------------------------*/
-
-mesh_t* testmesh(lua_State *L, int arg)
-    {
-    ud_t *ud = (ud_t*)udata_test(L, arg, MESH_MT);
-    return (mesh_t*)(ud ? ud->obj : NULL);
-    }
-
-mesh_t* checkmesh(lua_State *L, int arg)
-    {
-    mesh_t *p = testmesh(L, arg);
-    if(p) return p;
-    luaL_argerror(L, arg, "not a mesh");
-    return NULL;
-    }
-
-int pushmesh(lua_State *L, mesh_t *p)
-    { return udata_push(L, p); }
-
 int newmesh(lua_State *L, scene_t *scene, mesh_t *mesh)
     {
     unsigned int i;

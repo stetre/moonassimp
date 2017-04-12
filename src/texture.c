@@ -25,27 +25,6 @@
 
 #include "internal.h"
 
-/*------------------------------------------------------------------------------*
- | Check/test/push                                                              |
- *------------------------------------------------------------------------------*/
-
-texture_t* testtexture(lua_State *L, int arg)
-    {
-    ud_t *ud = (ud_t*)udata_test(L, arg, TEXTURE_MT);
-    return (texture_t*)(ud ? ud->obj : NULL);
-    }
-
-texture_t* checktexture(lua_State *L, int arg)
-    {
-    texture_t *p = testtexture(L, arg);
-    if(p) return p;
-    luaL_argerror(L, arg, "not a texture");
-    return NULL;
-    }
-
-int pushtexture(lua_State *L, texture_t *p)
-    { return udata_push(L, p); }
-
 int newtexture(lua_State *L, scene_t *scene, texture_t *texture)
     {
     ud_t *ud;

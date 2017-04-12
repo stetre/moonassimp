@@ -25,27 +25,6 @@
 
 #include "internal.h"
 
-/*------------------------------------------------------------------------------*
- | Check/test/push                                                              |
- *------------------------------------------------------------------------------*/
-
-material_t* testmaterial(lua_State *L, int arg)
-    {
-    ud_t *ud = (ud_t*)udata_test(L, arg, MATERIAL_MT);
-    return (material_t*)(ud ? ud->obj : NULL);
-    }
-
-material_t* checkmaterial(lua_State *L, int arg)
-    {
-    material_t *p = testmaterial(L, arg);
-    if(p) return p;
-    luaL_argerror(L, arg, "not a material");
-    return NULL;
-    }
-
-int pushmaterial(lua_State *L, material_t *p)
-    { return udata_push(L, p); }
-
 int newmaterial(lua_State *L, scene_t *scene, material_t *material)
     {
     ud_t *ud;

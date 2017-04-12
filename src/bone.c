@@ -25,27 +25,6 @@
 
 #include "internal.h"
 
-/*------------------------------------------------------------------------------*
- | Check/test/push                                                              |
- *------------------------------------------------------------------------------*/
-
-bone_t* testbone(lua_State *L, int arg)
-    {
-    ud_t *ud = (ud_t*)udata_test(L, arg, BONE_MT);
-    return (bone_t*)(ud ? ud->obj : NULL);
-    }
-
-bone_t* checkbone(lua_State *L, int arg)
-    {
-    bone_t *p = testbone(L, arg);
-    if(p) return p;
-    luaL_argerror(L, arg, "not a bone");
-    return NULL;
-    }
-
-int pushbone(lua_State *L, bone_t *p)
-    { return udata_push(L, p); }
-
 int newbone(lua_State *L, scene_t *scene, mesh_t *mesh, bone_t *bone)
     {
     ud_t *ud;

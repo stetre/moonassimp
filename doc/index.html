@@ -908,9 +908,9 @@ of the scene can then be retrieved with the methods of the scene object and of t
 contained objects.</p>
 </div>
 <div class="paragraph">
-<p>The scene is garbage collected, together with the contained objects, so the
-<strong>aiReleaseImport</strong>( ) function is not exposed (if needed, you can force garbage collection
-by setting to <em>nil</em> all the references to the <em>scene</em> object and invoking Lua&#8217;s GC).</p>
+<p>The scene is garbage collected at exit, together with the contained objects, so the
+<a href="#release_import">ai.release_import</a>(&nbsp;) function need not be called unless one wants
+to release memory when the scene is no more needed and the application is not exiting.</p>
 </div>
 <div class="paragraph">
 <p>Objects' methods are described in the <a href="#methods">next chapter</a>, while herafter are described
@@ -948,6 +948,14 @@ The <em>mem</em> table contains the following fields:
 <em>mem.total</em>, <em>mem.nodes</em>, <em>mem.meshes</em>, <em>mem.materials</em>, <em>mem.cameras</em>, <em>mem.lights</em>,
 and <em>mem.animations</em>. The value of each field is an integer indicating
 the memory (in bytes) used by the various items contained in the scene.</span></p>
+</li>
+</ul>
+</div>
+<div id="release_import" class="ulist">
+<ul>
+<li>
+<p><strong>ai.release_import</strong>(<a href="#scene"><em>scene</em></a>)<br>
+<span class="small">Note that this invalidates all the references to imported objects.</span></p>
 </li>
 </ul>
 </div>
