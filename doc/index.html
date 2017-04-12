@@ -783,6 +783,7 @@ p.tableblock.header { color: #6d6e71; }
 <li><a href="#_logging_facilities">Logging facilities</a></li>
 </ul>
 </li>
+<li><a href="#objects">Objects</a></li>
 <li><a href="#methods">Methods</a>
 <ul class="sectlevel2">
 <li><a href="#scene">scene</a></li>
@@ -913,7 +914,7 @@ contained objects.</p>
 to release memory when the scene is no more needed and the application is not exiting.</p>
 </div>
 <div class="paragraph">
-<p>Objects' methods are described in the <a href="#methods">next chapter</a>, while herafter are described
+<p>Objects' methods are described in the <a href="#methods">'Methods'</a> section, while herafter are described
 the general functions provided in the <strong>ai</strong> table for importing models, logging, etc.
 These are bindings to Assimp C API functions contained in the
 <a href="http://www.assimp.org/lib_html/cimport_8h.html">cimport.h</a> file, and typically
@@ -1020,6 +1021,35 @@ If <em>logstream</em> is '<em>stdout</em>' or '<em>stderr</em>', the <em>arg</em
 </div>
 </div>
 <div class="sect1">
+<h2 id="objects">Objects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following tree shows the MoonAssimp (<em>Assimp</em>) objects and their relationships.</p>
+</div>
+<div class="paragraph">
+<p><span class="small"><a href="#scene">scene</a> <em>(aiScene)</em><br>
+&#9500;&#9472;&#8192;<a href="#node">node</a> <em>(aiNode)</em>: root node<br>
+&#9474;&#8192;&#8192;&#8192;&#9500;&#9472;&#8192;{<a href="#mesh">mesh</a>} <em>(aiMesh)</em>: subset of the scene&#8217;s {mesh} list<br>
+&#9474;&#8192;&#8192;&#8192;&#9492;&#9472;&#8192;{<a href="#node">node</a>} <em>(aiNode)</em>: children nodes<br>
+&#9474;&#8192;&#8192;&#8192;&#8192;&#8192;&#8192;&#8192;&#9500;&#9472;&#8192;{<a href="#mesh">mesh</a>}<br>
+&#9474;&#8192;&#8192;&#8192;&#8192;&#8192;&#8192;&#8192;&#9492;&#9472;&#8192;{<a href="#node">node</a>}<br>
+&#9474;&#8192;&#8192;&#8192;&#8192;&#8192;&#8192;&#8192;&#8192;&#8192;&#8192;&#8192;&#9492;&#9472;&#8192;&#8230;&#8203;<br>
+&#9500;&#9472;&#8192;{<a href="#mesh">mesh</a>} <em>(aiMesh)</em><br>
+&#9474;&#8192;&#8192;&#8192;&#9500;&#9472;&#8192;<a href="#material">material</a> <em>(aiMaterial)</em>: element of the scene&#8217;s {material} list<br>
+&#9474;&#8192;&#8192;&#8192;&#9500;&#9472;&#8192;{<a href="#face">face</a>} <em>(aiFace)</em><br>
+&#9474;&#8192;&#8192;&#8192;&#9500;&#9472;&#8192;{<a href="#bone">bone</a>} <em>(aiBone)</em><br>
+&#9474;&#8192;&#8192;&#8192;&#9492;&#9472;&#8192;{<a href="#animmesh">animmesh</a>} <em>(aiAnimMesh)</em><br>
+&#9500;&#9472;&#8192;{<a href="#material">material</a>} <em>(aiMaterial)</em><br>
+&#9500;&#9472;&#8192;{<a href="#light">light</a>} <em>(aiLight)</em><br>
+&#9500;&#9472;&#8192;{<a href="#texture">texture</a>} <em>(aiTexture)</em><br>
+&#9500;&#9472;&#8192;{<a href="#camera">camera</a>} <em>(aiCamera)</em><br>
+&#9492;&#9472;&#8192;{<a href="#animation">animation</a>} <em>(aiAnimation)</em><br>
+&#8192;&#8192;&#8192;&#8192;&#9500;&#9472;&#8192;{<a href="#nodeanim">nodeanim</a>} <em>(aiNodeAnim)</em><br>
+&#8192;&#8192;&#8192;&#8192;&#9492;&#9472;&#8192;{<a href="#meshanim">meshanim</a>} <em>(aiMeshAnim)</em></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="methods">Methods</h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -1058,7 +1088,7 @@ If <em>logstream</em> is '<em>stdout</em>' or '<em>stderr</em>', the <em>arg</em
 </li>
 <li>
 <p><a href="#node"><em>node</em></a> = <strong>:root_node</strong>( )<br>
-<span class="small">Returns the root <a href="#node"><em>node</em></a> of the <em>scene</em>.</span></p>
+<span class="small">Returns the root node of the <em>scene</em>.</span></p>
 </li>
 <li>
 <p><a href="#animation"><em>animation</em></a> = <strong>:animation</strong>(<em>i</em>)<br>
@@ -1067,17 +1097,16 @@ If <em>logstream</em> is '<em>stdout</em>' or '<em>stderr</em>', the <em>arg</em
 <a href="#material"><em>material</em></a> = <strong>:material</strong>(<em>i</em>)<br>
 <a href="#mesh"><em>mesh</em></a> = <strong>:mesh</strong>(<em>i</em>)<br>
 <a href="#texture"><em>texture</em></a> = <strong>:texture</strong>(<em>i</em>)<br>
-<span class="small">Returns the i-th object of the given type (<em>i</em> = 1 .. <a href="#num_xxx">num_xxx</a>( )).</span></p>
+<span class="small">Each of these methods the i-th object of the given type (<em>i</em> = 1 .. <a href="#num_xxx">num_xxx</a>( )).</span></p>
 </li>
 <li>
-<p><em>list</em> = <strong>:animations</strong>( )<br>
-<em>list</em> = <strong>:cameras</strong>( )<br>
-<em>list</em> = <strong>:lights</strong>( )<br>
-<em>list</em> = <strong>:materials</strong>( )<br>
-<em>list</em> = <strong>:meshes</strong>( )<br>
-<em>list</em> = <strong>:textures</strong>( )<br>
-<span class="small">Returns a table containing the objects of the given type
-(<em>list[i]</em> is the i-th object, <em>i</em> = 1 .. <a href="#num_xxx">num_xxx</a>( )).</span></p>
+<p>{<a href="#animation"><em>animation</em></a>} = <strong>:animations</strong>( )<br>
+{<a href="#camera"><em>camera</em></a>} = <strong>:cameras</strong>( )<br>
+{<a href="#light"><em>light</em></a>} = <strong>:lights</strong>( )<br>
+{<a href="#material"><em>material</em></a>} = <strong>:materials</strong>( )<br>
+{<a href="#mesh"><em>mesh</em></a>} = <strong>:meshes</strong>( )<br>
+{<a href="#texture"><em>texture</em></a>} = <strong>:textures</strong>( )<br>
+<span class="small">Each of these methods returns a table containing the objects of the given type.</span></p>
 </li>
 </ul>
 </div>
@@ -1105,18 +1134,16 @@ If <em>logstream</em> is '<em>stdout</em>' or '<em>stderr</em>', the <em>arg</em
 <span class="small">Returns the i-th child node of this node (<em>i</em> = 1 .. <a href="#node.num_xxx">num_children</a>( )).</span></p>
 </li>
 <li>
-<p><em>list</em> = <strong>:children</strong>( )<br>
-<span class="small">Returns a table containing the children of this node
-(<em>list[i]</em> is the i-th child node, <em>i</em> = 1 .. <a href="#node.num_xxx">num_children</a>( )).</span></p>
+<p>{<em>node</em>} = <strong>:children</strong>( )<br>
+<span class="small">Returns a table containing the children of this node.</span></p>
 </li>
 <li>
 <p><a href="#mesh"><em>mesh</em></a> = <strong>:mesh</strong>(<em>i</em>)<br>
 <span class="small">Returns the node&#8217;s i-th <a href="#mesh"><em>mesh</em></a> (<em>i</em> = 1 .. <a href="#node.num_xxx">num_meshes</a>( )).</span></p>
 </li>
 <li>
-<p><em>list</em> = <strong>:meshes</strong>( )<br>
-<span class="small">Returns a table containing this node&#8217;s <a href="#mesh">meshes</a>
-(<em>list[i]</em> is the i-th mesh, <em>i</em> = 1 .. <a href="#node.num_xxx">num_meshes</a>( )).<br>
+<p>{<a href="#mesh"><em>mesh</em></a>} = <strong>:meshes</strong>( )<br>
+<span class="small">Returns a table containing this node&#8217;s meshes.<br>
 Note that this is a subset of the <a href="#scene">scene</a>'s meshes list.</span></p>
 </li>
 <li>
@@ -1177,7 +1204,7 @@ Note that this is a subset of the <a href="#scene">scene</a>'s meshes list.</spa
 <em>x</em>, <em>y</em>, <em>z</em> = <strong>:normal</strong>(<em>i</em>)<br>
 <em>x</em>, <em>y</em>, <em>z</em> = <strong>:tangent</strong>(<em>i</em>)<br>
 <em>x</em>, <em>y</em>, <em>z</em> = <strong>:bitangent</strong>(<em>i</em>)<br>
-<span class="small">Returns the components of the affected 3D vector for the vertex indexed by <em>i</em>,
+<span class="small">Return the components of the affected 3D vector for the vertex indexed by <em>i</em>,
 where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_vertices</a>(&nbsp;).</span></p>
 </li>
 <li>
@@ -1195,34 +1222,34 @@ Only <a href="#num_texture_coords_components">num_texture_coords_components</a>(
 </li>
 <li>
 <p><a href="#material"><em>material</em></a> = <strong>:material</strong>( )<br>
-<span class="small">Returns the mesh&#8217;s <a href="#material">material</a>.</span></p>
+<span class="small">Returns the mesh&#8217;s material.</span></p>
 </li>
 <li>
 <p><a href="#face"><em>face</em></a> = <strong>:face</strong>(<em>i</em>)<br>
-<span class="small">Returns the i-th <a href="#face">face</a> of the mesh,
+<span class="small">Returns the i-th face of the mesh,
 where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_faces</a>(&nbsp;).</span></p>
 </li>
 <li>
 <p><a href="#bone"><em>bone</em></a> = <strong>:bone</strong>(<em>i</em>)<br>
-<span class="small">Returns the i-th <a href="#bone">bone</a> of the mesh,
+<span class="small">Returns the i-th bone of the mesh,
 where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_bones</a>(&nbsp;).</span></p>
 </li>
 <li>
 <p><a href="#animmesh"><em>animmesh</em></a> = <strong>:anim_mesh</strong>(<em>i</em>)<br>
-<span class="small">Returns the i-th <a href="#animmesh">anim mesh</a> of the mesh,
+<span class="small">Returns the i-th anim mesh of the mesh,
 where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_anim_mesh</a>(&nbsp;).</span></p>
 </li>
 <li>
-<p><em>list</em> = <strong>:faces</strong>( )<br>
-<span class="small">Returns the list of the mesh&#8217;s <a href="#face">faces</a>.</span></p>
+<p>{<a href="#face"><em>face</em></a>} = <strong>:faces</strong>( )<br>
+<span class="small">Returns the list of the faces for this mesh.</span></p>
 </li>
 <li>
-<p><em>list</em> = <strong>:bones</strong>( )<br>
-<span class="small">Returns the list of the mesh&#8217;s <a href="#bone">bones</a>.</span></p>
+<p>{<a href="#bone"><em>bone</em></a>} = <strong>:bones</strong>( )<br>
+<span class="small">Returns the list of the bones for this mesh.</span></p>
 </li>
 <li>
-<p><em>list</em> = <strong>:anim_meshes</strong>( )<br>
-<span class="small">Returns the list of the mesh&#8217;s <a href="#animmesh">anim meshes</a>.</span></p>
+<p>{<a href="#animmesh"><em>animmesh</em></a>} = <strong>:anim_meshes</strong>( )<br>
+<span class="small">Returns the list of the anim meshes for this mesh.</span></p>
 </li>
 </ul>
 </div>
@@ -1236,7 +1263,7 @@ where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_anim_mesh</a>(&nbsp;).</span
 <ul>
 <li>
 <p><a href="#mesh"><em>mesh</em></a> = <strong>:mesh</strong>( )<br>
-<span class="small">The <a href="#mesh"><em>mesh</em></a> it belongs to (and is a replacement for).</span></p>
+<span class="small">The mesh it belongs to (and is a replacement for).</span></p>
 </li>
 <li>
 <p><strong>:has_positions</strong>( )<br>
@@ -1372,12 +1399,12 @@ All these functions return <em>nil</em> if the given property is not defined for
 <ul>
 <li>
 <p><em>n</em> = <strong>:texture_count</strong>(<a href="#texturetype"><em>texturetype</em></a>)<br>
-<span class="small">Returns the number of texture of the given texture type.</span></p>
+<span class="small">Returns the number of textures of the given type.</span></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The following methods refer to the i-th texture of the given <a href="#texturetype"><em>texture type</em></a>,
+<p>The following methods refer to the i-th texture of the given texture type,
 where <em>i</em> must be in the range 1 .. <a href="#material.texture_count">texture_count</a>(&nbsp;).</p>
 </div>
 <div class="ulist">
@@ -1567,16 +1594,16 @@ as bytes (0..255).</span></p>
 </li>
 <li>
 <p><a href="#nodeanim"><em>nodeanim</em></a> = <strong>:node_anim</strong>(<em>name</em>)<br>
-<span class="small">Returns the <a href="#nodeanim">nodeanim</a> for the given <a href="#node">node</a> <em>name</em>, or <em>nil</em>
+<span class="small">Returns the node anim for the given <a href="#node">node</a> <em>name</em>, or <em>nil</em>
 if not found.</span></p>
 </li>
 <li>
-<p><em>list</em> = <strong>:node_anims</strong>( )<br>
-<span class="small">Returns the list of <a href="#nodeanim">nodeanims</a>.</span></p>
+<p>{<a href="#nodeanim"><em>nodeanim</em></a>} = <strong>:node_anims</strong>( )<br>
+<span class="small">Returns the list of node anims.</span></p>
 </li>
 <li>
-<p><em>list</em> = <strong>:mesh_anims</strong>([<em>name</em>])<br>
-<span class="small">Returns the list of <a href="#meshanim">meshanims</a>.
+<p>{<a href="#meshanim"><em>meshanim</em></a>} = <strong>:mesh_anims</strong>([<em>name</em>])<br>
+<span class="small">Returns the list of mesh anims.<br>
 If the optional <em>name</em> parameter (a string) is passed, only meshanims with such name
 are added to the list.</span></p>
 </li>
@@ -1599,22 +1626,22 @@ are added to the list.</span></p>
 <em>n</em> = <strong>:num_scaling_keys</strong>( )</p>
 </li>
 <li>
-<p><em>list</em> = <strong>:position_keys</strong>( )<br>
-<span class="small">Returns the list of position keys. Each entry of the list is a table
-with the following fields: <em>list[i].time</em> (a number denoting time) and
-<em>list[i].value</em> (an array of 3 numbers representing the position vector).</span></p>
+<p>{<em>key</em>} = <strong>:position_keys</strong>( )<br>
+<span class="small">Returns the list of position keys. Each entry of the list is a table with the following fields:<br>
+<em>key.time</em>: a number denoting time, and<br>
+<em>key.value</em>: an array of 3 numbers representing the position vector.</span></p>
 </li>
 <li>
-<p><em>list</em> = <strong>:rotation_keys</strong>( )<br>
-<span class="small">Returns the list of rotation keys. Each entry of the list is a table
-with the following fields: <em>list[i].time</em> (a number denoting time) and
-<em>list[i].value</em> (an array of 4 numbers representing the rotation quaternion).</span></p>
+<p>{<em>key</em>} = <strong>:rotation_keys</strong>( )<br>
+<span class="small">Returns the list of rotation keys. Each entry of the list is a table with the following fields:<br>
+<em>key.time</em>: a number denoting time, and<br>
+<em>key.value</em>: an array of 4 numbers representing the rotation quaternion.</span></p>
 </li>
 <li>
-<p><em>list</em> = <strong>:scaling_keys</strong>( )<br>
-<span class="small">Returns the list of scaling keys. Each entry of the list is a table
-with the following fields: <em>list[i].time</em> (a number denoting time) and
-<em>list[i].value</em> (an array of 3 numbers representing the scaling factors).</span></p>
+<p>{<em>key</em>} = <strong>:scaling_keys</strong>( )<br>
+<span class="small">Returns the list of scaling keys. Each entry of the list is a table with the following fields:<br>
+<em>key.time</em>: a number denoting time, and<br>
+<em>key.value</em>: an array of 3 numbers representing the scaling factors.</span></p>
 </li>
 <li>
 <p><a href="#animbehaviour"><em>animbehaviour</em></a> = <strong>:pre_state</strong>( )<br>
@@ -1641,12 +1668,12 @@ with the following fields: <em>list[i].time</em> (a number denoting time) and
 <div id="meshanim.keys" class="ulist">
 <ul>
 <li>
-<p><em>list</em> = <strong>:keys</strong>( )<br>
+<p>{<em>key</em>} = <strong>:keys</strong>( )<br>
 <span class="small">Returns the list of keys (or, more precisely, of
 <a href="https://en.wikipedia.org/wiki/Key_frame">key frames</a>).
-Each entry of the list is a table having the following fields:
-<em>list[i].time</em> (a number denoting time) and
-<em>list[i].value</em> (an index into the <a href="#mesh">mesh</a>'s list of <a href="#animmesh">anim meshes</a>).</span></p>
+Each entry of the list is a table having the following fields:<br>
+<em>key.time</em>: a number denoting time, and<br>
+<em>key.value</em>: an index into the <a href="#mesh">mesh</a>'s list of <a href="#animmesh">anim meshes</a>.</span></p>
 </li>
 </ul>
 </div>
@@ -1839,7 +1866,7 @@ Strings: '<em>invert</em>', '<em>use alpha</em>', '<em>ignore alpha</em>'.</span
 <div id="footer">
 <div id="footer-text">
 Version 0.5<br>
-Last updated 2016-12-21 10:32:16 CET
+Last updated 2017-04-12 11:51:30 CEST
 </div>
 </div>
 </body>

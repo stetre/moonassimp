@@ -5,7 +5,7 @@
 [small]#Rfr: link:++http://www.assimp.org/lib_html/structai_anim_mesh.html++[aiAnimMesh].#
 
 * <<mesh, _mesh_>> = *:mesh*( ) +
-[small]#The <<mesh, _mesh_>> it belongs to (and is a replacement for).#
+[small]#The mesh it belongs to (and is a replacement for).#
 
 * *:has_positions*( ) +
 *:has_normals*( ) +

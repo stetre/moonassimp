@@ -11,12 +11,12 @@
 * _n_ = *:num_keys*( )
 
 [[meshanim.keys]]
-* _list_ = *:keys*( ) +
+* {_key_} = *:keys*( ) +
 [small]#Returns the list of keys (or, more precisely, of  
-link:++https://en.wikipedia.org/wiki/Key_frame++[key frames]).
-Each entry of the list is a table having the following fields:
-_list[i].time_ (a number denoting time) and
-_list[i].value_ (an index into the <<mesh, mesh>>'s list of <<animmesh, anim meshes>>).#
+link:++https://en.wikipedia.org/wiki/Key_frame++[key frames]). 
+Each entry of the list is a table having the following fields: +
+_key.time_: a number denoting time, and +
+_key.value_: an index into the <<mesh, mesh>>'s list of <<animmesh, anim meshes>>.#
 
 NOTE: (In my understanding) the <<meshanim.mesh_name, mesh_name>> should allow to identify
 one or more <<mesh, _meshes_>> to be animated with this set of keys. Each of these meshes

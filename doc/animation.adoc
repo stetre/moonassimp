@@ -15,14 +15,14 @@
 _n_ = *:num_mesh_anims*( )
 
 * <<nodeanim, _nodeanim_>> = *:node_anim*(_name_) +
-[small]#Returns the <<nodeanim, nodeanim>> for the given <<node, node>> _name_, or _nil_
+[small]#Returns the node anim for the given <<node, node>> _name_, or _nil_
 if not found.#
 
-* _list_ = *:node_anims*( ) +
-[small]#Returns the list of <<nodeanim, nodeanims>>.#
+* {<<nodeanim, _nodeanim_>>} = *:node_anims*( ) +
+[small]#Returns the list of node anims.#
 
-* _list_ = *:mesh_anims*([_name_]) +
-[small]#Returns the list of <<meshanim, meshanims>>. 
+* {<<meshanim, _meshanim_>>} = *:mesh_anims*([_name_]) +
+[small]#Returns the list of mesh anims. +
 If the optional _name_ parameter (a string) is passed, only meshanims with such name
 are added to the list.#
 

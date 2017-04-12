@@ -33,7 +33,7 @@ _n_ = *:num_texture_coords_channels*( )
 _x_, _y_, _z_ = *:normal*(_i_) +
 _x_, _y_, _z_ = *:tangent*(_i_) +
 _x_, _y_, _z_ = *:bitangent*(_i_) +
-[small]#Returns the components of the affected 3D vector for the vertex indexed by _i_,
+[small]#Return the components of the affected 3D vector for the vertex indexed by _i_,
 where _i_ = 1 .. <<mesh.num_xxx, num_vertices>>(&nbsp;).#
 
 * _r_, _g_, _b_, _a_ = *:color*(_channel_, _i_) +
@@ -48,26 +48,26 @@ and _i_ = 1 .. <<mesh.num_xxx, num_vertices>>(&nbsp;).
 Only <<num_texture_coords_components, num_texture_coords_components>>(_channel_) are returned.#
 
 * <<material, _material_>> = *:material*( ) +
-[small]#Returns the mesh's <<material, material>>.#
+[small]#Returns the mesh's material.#
 
 * <<face, _face_>> = *:face*(_i_) +
-[small]#Returns the i-th <<face, face>> of the mesh, 
+[small]#Returns the i-th face of the mesh, 
 where _i_ = 1 .. <<mesh.num_xxx, num_faces>>(&nbsp;).#
 
 * <<bone, _bone_>> = *:bone*(_i_) +
-[small]#Returns the i-th <<bone, bone>> of the mesh, 
+[small]#Returns the i-th bone of the mesh, 
 where _i_ = 1 .. <<mesh.num_xxx, num_bones>>(&nbsp;).#
 
 * <<animmesh, _animmesh_>> = *:anim_mesh*(_i_) +
-[small]#Returns the i-th <<animmesh, anim mesh>> of the mesh, 
+[small]#Returns the i-th anim mesh of the mesh, 
 where _i_ = 1 .. <<mesh.num_xxx, num_anim_mesh>>(&nbsp;).#
 
-* _list_ = *:faces*( ) +
-[small]#Returns the list of the mesh's <<face, faces>>.#
+* {<<face, _face_>>} = *:faces*( ) +
+[small]#Returns the list of the faces for this mesh.#
 
-* _list_ = *:bones*( ) +
-[small]#Returns the list of the mesh's <<bone, bones>>.# 
+* {<<bone, _bone_>>} = *:bones*( ) +
+[small]#Returns the list of the bones for this mesh.# 
 
-* _list_ = *:anim_meshes*( ) +
-[small]#Returns the list of the mesh's <<animmesh, anim meshes>>.# 
+* {<<animmesh, _animmesh_>>} = *:anim_meshes*( ) +
+[small]#Returns the list of the anim meshes for this mesh.# 
 

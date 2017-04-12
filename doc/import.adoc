@@ -32,7 +32,7 @@ The scene is garbage collected at exit, together with the contained objects, so 
 <<release_import, ai.release_import>>(&nbsp;) function need not be called unless one wants
 to release memory when the scene is no more needed and the application is not exiting.
 
-Objects' methods are described in the <<methods, next chapter>>, while herafter are described
+Objects' methods are described in the <<methods, 'Methods'>> section, while herafter are described
 the general functions provided in the *ai* table for importing models, logging, etc.
 These are bindings to Assimp C API functions contained in the
 link:++http://www.assimp.org/lib_html/cimport_8h.html++[cimport.h] file, and typically

@@ -27,7 +27,7 @@ _n_ = *:num_textures*( ) +
 
 
 * <<node, _node_>> = *:root_node*( ) +
-[small]#Returns the root <<node, _node_>> of the _scene_.#
+[small]#Returns the root node of the _scene_.#
 
 * <<animation, _animation_>> = *:animation*(_i_) +
 <<camera, _camera_>> = *:camera*(_i_) +
@@ -35,14 +35,13 @@ _n_ = *:num_textures*( ) +
 <<material, _material_>> = *:material*(_i_) +
 <<mesh, _mesh_>> = *:mesh*(_i_) +
 <<texture, _texture_>> = *:texture*(_i_) +
-[small]#Returns the i-th object of the given type (_i_ = 1 .. <<num_xxx, num_xxx>>( )).#
+[small]#Each of these methods the i-th object of the given type (_i_ = 1 .. <<num_xxx, num_xxx>>( )).#
 
-* _list_ = *:animations*( ) +
-_list_ = *:cameras*( ) +
-_list_ = *:lights*( ) +
-_list_ = *:materials*( ) +
-_list_ = *:meshes*( ) +
-_list_ = *:textures*( ) +
-[small]#Returns a table containing the objects of the given type
-(_list[i]_ is the i-th object, _i_ = 1 .. <<num_xxx, num_xxx>>( )).#
+* {<<animation, _animation_>>} = *:animations*( ) +
+{<<camera, _camera_>>} = *:cameras*( ) +
+{<<light, _light_>>} = *:lights*( ) +
+{<<material, _material_>>} = *:materials*( ) +
+{<<mesh, _mesh_>>} = *:meshes*( ) +
+{<<texture, _texture_>>} = *:textures*( ) +
+[small]#Each of these methods returns a table containing the objects of the given type.#
 

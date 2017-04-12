@@ -10,12 +10,19 @@ v0.5, 2016-06-01
 :source-language: lua
 :exampledir: ../examples
 
+// Macros for trees: {tS} = "   ", {tI} = "│  ", {tH} = "├─ ", {tL} = "└─ "
+:tS: &#8192;&#8192;&#8192;&#8192;
+:tI: &#9474;&#8192;&#8192;&#8192;
+:tH: &#9500;&#9472;&#8192;
+:tL: &#9492;&#9472;&#8192;
+
 image::powered-by-lua.gif[Lua logo, link=http://www.lua.org]
 
 include::preface.adoc[]
 
 include::import.adoc[]
 
+include::objects.adoc[]
 
 [[methods]]
 == Methods
