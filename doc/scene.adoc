@@ -13,8 +13,8 @@ _boolean_ = *:has_textures*( ) +
 [small]#Returns _true_ if _scene_ contains one or more objects of the given type,
 _false_ otherwise.#
 
-* _flag1_, _..._ = *:flags*( ) +
-[small]#Returns the _scene_'s <<sceneflags, flags>>.#
+* <<sceneflags, _sceneflags_>> = *:flags*( ) +
+[small]#Returns the _scene_'s flags.#
 
 [[num_xxx]]
 * _n_ = *:num_animations*( ) +
