@@ -190,7 +190,7 @@ unsigned int checkpostprocessflags(lua_State *L, int arg)
         CASE(aiProcess_JoinIdenticalVertices,"join identical vertices");
         CASE(aiProcess_MakeLeftHanded,"make left handed");
         CASE(aiProcess_Triangulate,"triangulate");
-        CASE(aiProcess_RemoveComponent,"remove components");
+        CASE(aiProcess_RemoveComponent,"remove component");
         CASE(aiProcess_GenNormals,"gen normals");
         CASE(aiProcess_GenSmoothNormals,"gen smooth normals");
         CASE(aiProcess_SplitLargeMeshes,"split large meshes");
@@ -231,7 +231,7 @@ int pushpostprocessflags(lua_State *L, unsigned int flags, int pushcode)
         CASE(aiProcess_JoinIdenticalVertices,"join identical vertices");
         CASE(aiProcess_MakeLeftHanded,"make left handed");
         CASE(aiProcess_Triangulate,"triangulate");
-        CASE(aiProcess_RemoveComponent,"remove components");
+        CASE(aiProcess_RemoveComponent,"remove component");
         CASE(aiProcess_GenNormals,"gen normals");
         CASE(aiProcess_GenSmoothNormals,"gen smooth normals");
         CASE(aiProcess_SplitLargeMeshes,"split large meshes");
