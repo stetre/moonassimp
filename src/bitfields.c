@@ -206,7 +206,7 @@ unsigned int checkpostprocessflags(lua_State *L, int arg)
         CASE(aiProcess_GenUVCoords,"gen uv coords");
         CASE(aiProcess_TransformUVCoords,"transform uv coords");
         CASE(aiProcess_FindInstances,"find instances");
-        CASE(aiProcess_OptimizeMeshes ,"optimize mesh");
+        CASE(aiProcess_OptimizeMeshes ,"optimize meshes");
         CASE(aiProcess_OptimizeGraph ,"optimize graph");
         CASE(aiProcess_FlipUVs,"flip uvs");
         CASE(aiProcess_FlipWindingOrder ,"flip winding order");
@@ -247,7 +247,7 @@ int pushpostprocessflags(lua_State *L, unsigned int flags, int pushcode)
         CASE(aiProcess_GenUVCoords,"gen uv coords");
         CASE(aiProcess_TransformUVCoords,"transform uv coords");
         CASE(aiProcess_FindInstances,"find instances");
-        CASE(aiProcess_OptimizeMeshes ,"optimize mesh");
+        CASE(aiProcess_OptimizeMeshes ,"optimize meshes");
         CASE(aiProcess_OptimizeGraph ,"optimize graph");
         CASE(aiProcess_FlipUVs,"flip uvs");
         CASE(aiProcess_FlipWindingOrder ,"flip winding order");
