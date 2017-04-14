@@ -6,7 +6,7 @@
 
 ai = require("moonassimp")
 
--- Uncomment if you don't want verbose logging:
+-- Set to false or comment out if you don't want verbose logging:
 ai.enable_verbose_logging(true)
 
 -- Uncomment/comment items if you want to change the default post-process flags:
