@@ -25,7 +25,7 @@ A *bitfield*, when used as a function argument it may be passed either as an int
 * *postprocessflags*: bitfield. +
 [small]#Code: a combination of ai.Process_Xxx values (corresponding to 
 link:++http://www.assimp.org/lib_html/postprocess_8h.html++[aiProcess_Xxx] values in Assimp). +
-Strings: '_none_', '_calc tangent space_', '_join identical vertices_', '_make left handed_', '_triangulate_', '_remove components_', '_gen normals_', '_gen smooth normals_', '_split large meshes_', '_pre transform vertices_', '_limit bone weights_', '_validate data structure_', '_improve cache locality_', '_remove redundant materials_', '_fix infacing normals_', '_sort by type_', '_find degenerates_', '_find invalid data_', '_gen uv coords_', '_transform uv coords_', '_find instances_', '_optimize meshes_', '_optimize graph_', '_flip uvs_', '_flip winding order_', '_split by bone count_', '_debone_'.#
+Strings: '_none_', '_calc tangent space_', '_join identical vertices_', '_make left handed_', '_triangulate_', '_remove components_', '_gen normals_', '_gen smooth normals_', '_split large meshes_', '_pre transform vertices_', '_limit bone weights_', '_validate data structure_', '_improve cache locality_', '_remove redundant materials_', '_fix infacing normals_', '_sort by p type_', '_find degenerates_', '_find invalid data_', '_gen uv coords_', '_transform uv coords_', '_find instances_', '_optimize meshes_', '_optimize graph_', '_flip uvs_', '_flip winding order_', '_split by bone count_', '_debone_'.#
 
 [[primtypes]]
 * *primtypes*: bitfield. +

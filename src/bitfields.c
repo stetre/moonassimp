@@ -200,7 +200,7 @@ unsigned int checkpostprocessflags(lua_State *L, int arg)
         CASE(aiProcess_ImproveCacheLocality,"improve cache locality");
         CASE(aiProcess_RemoveRedundantMaterials,"remove redundant materials");
         CASE(aiProcess_FixInfacingNormals,"fix infacing normals");
-        CASE(aiProcess_SortByPType,"sort by type");
+        CASE(aiProcess_SortByPType,"sort by p type");
         CASE(aiProcess_FindDegenerates,"find degenerates");
         CASE(aiProcess_FindInvalidData,"find invalid data");
         CASE(aiProcess_GenUVCoords,"gen uv coords");
@@ -241,7 +241,7 @@ int pushpostprocessflags(lua_State *L, unsigned int flags, int pushcode)
         CASE(aiProcess_ImproveCacheLocality,"improve cache locality");
         CASE(aiProcess_RemoveRedundantMaterials,"remove redundant materials");
         CASE(aiProcess_FixInfacingNormals,"fix infacing normals");
-        CASE(aiProcess_SortByPType,"sort by type");
+        CASE(aiProcess_SortByPType,"sort by p type");
         CASE(aiProcess_FindDegenerates,"find degenerates");
         CASE(aiProcess_FindInvalidData,"find invalid data");
         CASE(aiProcess_GenUVCoords,"gen uv coords");
