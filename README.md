@@ -52,7 +52,7 @@ function print_node_names(node, indent) -- recursively prints the names of child
 end
 
 -- Import the scene from the model file:
-scene, errmsg = ai.import_file(filename, "triangulate", "join identical vertices", "sort by type")
+scene, errmsg = ai.import_file(filename, "triangulate", "join identical vertices", "sort by p type")
 -- Check that nothing went wrong:
 assert(scene, errmsg) 
 -- Get the root node and print the names of the nodes:

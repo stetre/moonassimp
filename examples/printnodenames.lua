@@ -10,7 +10,7 @@ if not filename then print("Usage: " .. arg[0] .. " <modelfile>") return end
 --ai.attach_log_stream("stdout")
 --ai.enable_verbose_logging(true)
 
-scene, errmsg = ai.import_file(filename, "triangulate", "join identical vertices", "sort by type")
+scene, errmsg = ai.import_file(filename, "triangulate", "join identical vertices", "sort by p type")
 assert(scene, errmsg)
 
 function print_node_names(node, indent)

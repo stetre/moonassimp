@@ -18,7 +18,7 @@ do the following:
 ai = require("moonassimp")
 
 scene, errmsg = ai.import_file("mymodel.obj", -- post-processing flags:
-                               "triangulate", "join identical vertices", "sort by type")
+                               "triangulate", "join identical vertices", "sort by p type")
 assert(scene, errmsg) -- check that nothing went wrong
 
 ----

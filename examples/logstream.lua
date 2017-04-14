@@ -25,5 +25,5 @@ end
 
 ai.enable_verbose_logging(true)
 
-scene = ai.import_file(filename, "triangulate", "join identical vertices", "sort by type")
+scene = ai.import_file(filename, "triangulate", "join identical vertices", "sort by p type")
 
