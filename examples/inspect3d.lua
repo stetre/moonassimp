@@ -103,9 +103,10 @@ end
 
 -- Print functions ------------------------------------------------------------
 
-function PrintMesh(indent, mesh)
-   print(indent .. "mesh: '" .. (mesh:name() or "???").."'")
-   local indent = indent .. "  "
+function PrintMesh(mesh, indent)
+   local indent = indent or ""
+   print(indent .. "mesh: '" .. (mesh:name() or "???").."'" .. " (" .. tostring(mesh) .. ")")
+   indent = indent .. "  "
    print(indent .. "vertices:          " .. mesh:num_vertices())
    print(indent .. "normals:           " .. (mesh:has_normals() and "yes" or "no"))
    print(indent .. "tangents:          " .. (mesh:has_tangents() and "yes" or "no"))
@@ -113,8 +114,8 @@ function PrintMesh(indent, mesh)
    print(indent .. "primitive types:   " .. concatflags({ai.primtypes(mesh:primitive_types())}))
    print(indent .. "bones:             " .. mesh:num_bones())
    print(indent .. "anim meshes:       " .. mesh:num_anim_meshes())
-   local material = mesh:material() 
-   print(indent .. "material:          '" .. material:name().."'")
+   local material = mesh:material()
+   print(indent .. "material:          '" .. material:name().."' (".. tostring(material)..")")
 -- print(indent .. "colors:            " .. (mesh:has_colors(1) and "yes" or "no"))
    local ncc = mesh:num_color_channels()
    print(indent .. "color channels:    " .. ncc)
@@ -128,9 +129,14 @@ end
 
 function PrintNodes(node, indent)
    local indent = indent or ""
-   print(indent .. "node: " .. "'".. (node:name() or "???") .. "' (" ..
-      "children:".. node:num_children() .. ", meshes:".. node:num_meshes() ..")")
-   for _, mesh in ipairs(node:meshes()) do PrintMesh(indent .. "  ", mesh) end
+   print(indent .. "node " .. "'".. (node:name() or "???") .. "' (" .. tostring(node) ..")" ..
+      " children:".. node:num_children() .. ", meshes:".. node:num_meshes())
+--[[
+   local indent1 = indent .. "  "
+   print(indent1 .. "meshes:")
+   indent1 = indent1 .. "  "
+   for _, mesh in ipairs(node:meshes()) do print(indent1 .. tostring(mesh)) end
+--]]
    for _, child in ipairs(node:children()) do
       PrintNodes(child, indent .. "  ")
    end
@@ -138,7 +144,7 @@ end
   
 function PrintMaterial(material, indent)
    local indent = indent or ""
-   print(indent .. "material: '" .. material:name() .."'")
+   print(indent .. "material: '" .. (material:name() or "???").."'" .. " (" .. tostring(material) .. ")")
    indent = indent .. "  "
    print(indent .. "twosided:          ".. concatboolean(material:twosided()))
    print(indent .. "wireframe:         ".. concatboolean(material:wireframe()))
@@ -209,7 +215,7 @@ end
 
 function PrintLight(light, indent)
    local indent = indent or ""
-   print(indent .. "light: '" .. light:name() .."'")
+   print(indent .. "light: '" .. (light:name() or "???").."'" .. " (" .. tostring(light) .. ")")
    indent = indent .. "  "
    print(indent .. "source_type:           ".. (light:source_type() or "-"))
    print(indent .. "attenuation_constant:  ".. (light:attenuation_constant() or "-"))
@@ -227,7 +233,7 @@ end
 
 function PrintCamera(camera, indent)
    local indent = indent or ""
-   print(indent .. "camera: '" .. camera:name() .."'")
+   print(indent .. "camera: '" .. (camera:name() or "???").."'" .. " (" .. tostring(camera) .. ")")
    indent = indent .. "  "
    print(indent .. "aspect:                ".. (camera:aspect() or "-"))
    print(indent .. "clip_plane_near:       ".. (camera:clip_plane_near() or "-"))
@@ -308,18 +314,17 @@ print("======================================================================")
 print("model file:         " .. filename)
 print("post process flags: ".. concatflags(postprocessflags))
 
-print("\n-- Memory ------------------------------------------------------------")
 mem = ai.get_memory_requirements(scene)
 
-print("memory requirements (bytes):")
-print("  total:      " .. mem.total)
-print("  nodes:      " .. mem.nodes)
-print("  meshes:     " .. mem.meshes)
-print("  textures:   " .. mem.textures)
-print("  materials:  " .. mem.materials)
-print("  lights:     " .. mem.lights)
-print("  cameras:    " .. mem.cameras)
-print("  animations: " .. mem.animations)
+print("\n-- Memory requirements: ----------------------------------------------")
+print("total:      " .. mem.total .. " bytes")
+print("nodes:      " .. mem.nodes .. " bytes")
+print("meshes:     " .. mem.meshes .. " bytes")
+print("textures:   " .. mem.textures .. " bytes")
+print("materials:  " .. mem.materials .. " bytes")
+print("lights:     " .. mem.lights .. " bytes")
+print("cameras:    " .. mem.cameras .. " bytes")
+print("animations: " .. mem.animations .. " bytes")
 
 print("\n-- Scene -------------------------------------------------------------")
 flags = scene:flags()
@@ -334,8 +339,15 @@ print("  cameras:    " .. scene:num_cameras())
 print("  animations: " .. scene:num_animations())
 
 root = scene:root_node()
-print("\n-- Nodes -------------------------------------------------------------")
-PrintNodes(root)
+print("\nNodes tree:")
+PrintNodes(root, "  ")
+
+print("\n-- Meshes ------------------------------------------------------------")
+meshes = scene:meshes()
+for k, mesh in ipairs(meshes) do
+   PrintMesh(mesh)
+   print()
+end
 
 print("\n-- Materials ---------------------------------------------------------")
 materials = scene:materials()
