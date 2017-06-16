@@ -145,6 +145,10 @@ unsigned int checkpostprocessflags(lua_State *L, int arg);
 #define pushpostprocessflags moonassimp_pushpostprocessflags
 int pushpostprocessflags(lua_State *L, unsigned int flags, int pushcode);
 
+/* face.c */
+#define pushfaceindices moonassimp_pushfaceindices
+int pushfaceindices(lua_State *L, face_t *face, int zero_based);
+
 /* main.c */
 int luaopen_moonassimp(lua_State *L);
 void moonassimp_open_import(lua_State *L);

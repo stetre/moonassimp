@@ -71,3 +71,37 @@ where _i_ = 1 .. <<mesh.num_xxx, num_anim_mesh>>(&nbsp;).#
 * {<<animmesh, _animmesh_>>} = *:anim_meshes*( ) +
 [small]#Returns the list of the anim meshes for this mesh.# 
 
+'''
+
+The following functions provide a more compact way to retrieve the mesh's vertex attributes
+and face indices.
+
+* _positions_ = *:all_positions*( ) +
+* _normals_ = *:all_normals*( ) +
+* _tangents_ = *:all_tangents*( ) +
+* _bitangents_ = *:all_bitangents*( ) +
+[small]#Each of these functions returns _nil_ if the mesh does not have the requested vertex attribute
+(position, normal, tangent, or bitangent),
+otherwise it returns a table of <<mesh.num_xxx, num_vertices>> 3D vectors (arrays of 3 numbers).#
+
+* _coords_ = *:all_texture_coords*( ) +
+[small]#Returns a table of <<mesh.num_xxx, num_texture_coords_channels>> tables of <<mesh.num_xxx, num_vertices>> texture coordinates. +
+More precisely, _coords[i]_ is a table containing all the texture coordinates in the _i-th_ channel,
+where _coords[i][k]_ are the texture coordinates for the _k-th_ vertex (coordinates are represented as
+a 1D, 2D or 3D vectors, i.e. an arrays of 1, 2, or 3 numbers). +
+Note that if the mesh has no textures coordinates channels, then an empty table is returned.#
+
+* _colors_ = *:all_colors*( ) +
+[small]#Returns a table of <<mesh.num_xxx, num_color_channels>> tables of <<mesh.num_xxx, num_vertices>> colors). +
+More precisely, _colors[i]_ is a table containing all the colors in the _i-th_ channel,
+where _colors[i][k]_ is the color for the _k-th_ vertex (a color is represented as
+as an array of 4 numbers, RGBA). +
+Note that if the mesh has no colors channels, then an empty table is returned.#
+
+* _indices_ = *:all_indices*([_zerobased_=_false_]) +
+[small]#Returns a table of <<mesh.num_xxx, num_faces>> tables of integer indices, identifying
+the vertices that compose each face. +
+If the optional _zerobased_ parameter (a boolean) is _true_, then the returned indices
+are 0-based (0,..,<<mesh.num_xxx, num_vertices>>-1),
+otherwise they are 1-based (1,..,<<mesh.num_xxx, num_vertices>>).#
+

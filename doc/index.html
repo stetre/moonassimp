@@ -1257,6 +1257,54 @@ where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_anim_mesh</a>(&nbsp;).</span
 </li>
 </ul>
 </div>
+<hr>
+<div class="paragraph">
+<p>The following functions provide a more compact way to retrieve the mesh&#8217;s vertex attributes
+and face indices.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>positions</em> = <strong>:all_positions</strong>( )<br></p>
+</li>
+<li>
+<p><em>normals</em> = <strong>:all_normals</strong>( )<br></p>
+</li>
+<li>
+<p><em>tangents</em> = <strong>:all_tangents</strong>( )<br></p>
+</li>
+<li>
+<p><em>bitangents</em> = <strong>:all_bitangents</strong>( )<br>
+<span class="small">Each of these functions returns <em>nil</em> if the mesh does not have the requested vertex attribute
+(position, normal, tangent, or bitangent),
+otherwise it returns a table of <a href="#mesh.num_xxx">num_vertices</a> 3D vectors (arrays of 3 numbers).</span></p>
+</li>
+<li>
+<p><em>coords</em> = <strong>:all_texture_coords</strong>( )<br>
+<span class="small">Returns a table of <a href="#mesh.num_xxx">num_texture_coords_channels</a> tables of <a href="#mesh.num_xxx">num_vertices</a> texture coordinates.<br>
+More precisely, <em>coords[i]</em> is a table containing all the texture coordinates in the <em>i-th</em> channel,
+where <em>coords[i][k]</em> are the texture coordinates for the <em>k-th</em> vertex (coordinates are represented as
+a 1D, 2D or 3D vectors, i.e. an arrays of 1, 2, or 3 numbers).<br>
+Note that if the mesh has no textures coordinates channels, then an empty table is returned.</span></p>
+</li>
+<li>
+<p><em>colors</em> = <strong>:all_colors</strong>( )<br>
+<span class="small">Returns a table of <a href="#mesh.num_xxx">num_color_channels</a> tables of <a href="#mesh.num_xxx">num_vertices</a> colors).<br>
+More precisely, <em>colors[i]</em> is a table containing all the colors in the <em>i-th</em> channel,
+where <em>colors[i][k]</em> is the color for the <em>k-th</em> vertex (a color is represented as
+as an array of 4 numbers, RGBA).<br>
+Note that if the mesh has no colors channels, then an empty table is returned.</span></p>
+</li>
+<li>
+<p><em>indices</em> = <strong>:all_indices</strong>([<em>zerobased</em>=<em>false</em>])<br>
+<span class="small">Returns a table of <a href="#mesh.num_xxx">num_faces</a> tables of integer indices, identifying
+the vertices that compose each face.<br>
+If the optional <em>zerobased</em> parameter (a boolean) is <em>true</em>, then the returned indices
+are 0-based (0,..,<a href="#mesh.num_xxx">num_vertices</a>-1),
+otherwise they are 1-based (1,..,<a href="#mesh.num_xxx">num_vertices</a>).</span></p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="animmesh">animmesh</h3>

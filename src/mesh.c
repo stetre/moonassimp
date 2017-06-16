@@ -161,6 +161,31 @@ F(Bitangent, Bitangents)
 
 #undef F
 
+
+#define F(func, what)                                       \
+static int func(lua_State *L)                               \
+    {                                                       \
+    mesh_t *mesh = checkmesh(L, 1);                         \
+    unsigned int i;                                         \
+    if(mesh->m##what == NULL)                               \
+        return 0;                                           \
+    lua_newtable(L);                                        \
+    for(i=0; i < mesh->mNumVertices; i++)                   \
+        {                                                   \
+        pushvector3(L, &(mesh->m##what[i]), 1);             \
+        lua_rawseti(L, -2, i+1);                            \
+        }                                                   \
+    return 1;                                               \
+    }
+
+F(AllPositions, Vertices)
+F(AllNormals, Normals)
+F(AllTangents, Tangents)
+F(AllBitangents, Bitangents)
+
+#undef F
+
+
 static int HasColors(lua_State *L)
     {
     mesh_t *mesh = checkmesh(L, 1);
@@ -191,6 +216,26 @@ static int Color(lua_State *L)
     if( i >= mesh->mNumVertices)
         return luaL_argerror(L, 3, "out of range");
     return pushcolor4(L, &(mesh->mColors[chan][i]), 0);
+    }
+
+static int AllColors(lua_State *L)
+    {
+    mesh_t *mesh = checkmesh(L, 1);
+    unsigned int chan;
+    unsigned int i;
+    lua_newtable(L);
+    for(chan = 0; chan < AI_MAX_NUMBER_OF_COLOR_SETS; chan++)
+        {
+        if(mesh->mColors[chan] == NULL) break;
+        lua_newtable(L);
+        for(i=0; i < mesh->mNumVertices; i++)
+            {
+            pushcolor4(L, &(mesh->mColors[chan][i]), 1);
+            lua_rawseti(L, -2, i+1);
+            }
+        lua_rawseti(L, -2, chan+1);
+        }
+    return 1;
     }
 
 
@@ -256,6 +301,49 @@ static int TextureCoords(lua_State *L)
     }
 
 
+static int AllTextureCoords(lua_State *L)
+    {
+    vector3_t *coords;
+    vector2_t vec2;
+    unsigned int ncomp;
+    mesh_t *mesh = checkmesh(L, 1);
+    unsigned int chan;
+    unsigned int i;
+
+    lua_newtable(L);
+    for(chan = 0; chan < AI_MAX_NUMBER_OF_TEXTURECOORDS; chan++)
+        {
+        if(mesh->mTextureCoords[chan] == NULL) break;
+        ncomp = mesh->mNumUVComponents[chan]; /* no. of components */
+        lua_newtable(L);
+        for(i=0; i<mesh->mNumVertices; i++)
+            {
+            coords =  &(mesh->mTextureCoords[chan][i]);
+            switch(ncomp)
+                {
+                case 3: pushvector3(L, coords, 1); break;
+                case 2: {
+                        vec2.x = coords->x;
+                        vec2.y = coords->y;
+                        pushvector2(L, &vec2, 1);
+                        break;
+                        }
+                case 1: {
+                        lua_newtable(L);
+                        lua_pushnumber(L, coords->x);
+                        lua_rawseti(L, -2, 1);
+                        break;
+                        }
+                default:
+                    return unexpected(L); /* 4 components are currently not supported */
+                }
+            lua_rawseti(L, -2, i+1);
+            }
+        lua_rawseti(L, -2, chan+1);
+        }
+    return 1;
+    }
+
 
 static int Face(lua_State *L)
     {
@@ -264,6 +352,24 @@ static int Face(lua_State *L)
     if(mesh->mFaces == NULL || mesh->mNumFaces == 0 || i >= mesh->mNumFaces)
         return luaL_argerror(L, 2, "out of range");
     return pushface(L, &(mesh->mFaces[i]));
+    }
+
+
+static int AllIndices(lua_State *L)
+    {
+    mesh_t *mesh = checkmesh(L, 1);
+    int zero_based = optboolean(L, 2, 0);
+    unsigned int i;
+
+    lua_newtable(L);
+    if(mesh->mFaces == NULL || mesh->mNumFaces == 0)
+        return 1;
+    for(i = 0; i < mesh->mNumFaces; i++)
+        {
+        pushfaceindices(L, &(mesh->mFaces[i]), zero_based);
+        lua_rawseti(L, -2, i+1);
+        }
+    return 1;
     }
 
 static int AnimMesh(lua_State *L)
@@ -354,10 +460,17 @@ static const struct luaL_Reg Methods[] =
         { "normal", Normal },
         { "tangent", Tangent  },
         { "bitangent", Bitangent },
+        { "all_positions", AllPositions },
+        { "all_normals", AllNormals },
+        { "all_tangents", AllTangents  },
+        { "all_bitangents", AllBitangents },
         { "color", Color },
+        { "all_colors", AllColors },
         { "texture_coords", TextureCoords },
+        { "all_texture_coords", AllTextureCoords },
         { "material", Material },
         { "face", Face },
+        { "all_indices", AllIndices },
         { "bone", Bone },
         { "anim_mesh", AnimMesh },
         { "faces", Faces },

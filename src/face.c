@@ -71,6 +71,32 @@ static int ZeroBasedIndices(lua_State *L)
     return face->mNumIndices;
     }
 
+int pushfaceindices(lua_State *L, face_t *face, int zero_based)
+/* pushes a table with the face indices */
+    {
+    unsigned int i;
+    lua_newtable(L);
+    if(face->mIndices == NULL || face->mNumIndices == 0)
+        return 1;
+    if(zero_based)
+        {
+        for(i=0; i < face->mNumIndices; i++)
+            {
+            lua_pushinteger(L, face->mIndices[i]);
+            lua_rawseti(L, -2, i+1);
+            }
+        }
+    else
+        {
+        for(i=0; i < face->mNumIndices; i++)
+            {
+            lua_pushinteger(L, face->mIndices[i] + 1);
+            lua_rawseti(L, -2, i+1);
+            }
+        }
+    return 1;
+    }
+
 
 /*------------------------------------------------------------------------------*
  | Registration                                                                 |
