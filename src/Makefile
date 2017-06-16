@@ -43,7 +43,7 @@ Src := $(wildcard *.c)
 Objs := $(Src:.c=.o)
 
  
-COPT	+= -O2
+COPT	+= -O3
 #COPT	+= -O0 -g
 COPT	+= -Wall -Wextra -Wpedantic
 COPT    += -std=gnu99
