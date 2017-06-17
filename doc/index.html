@@ -1447,6 +1447,7 @@ All these functions return <em>nil</em> if the given property is not defined for
 </li>
 </ul>
 </div>
+<hr>
 <div id="material.texture_count" class="ulist">
 <ul>
 <li>
@@ -1497,11 +1498,61 @@ where <em>i</em> must be in the range 1 .. <a href="#material.texture_count">tex
 </li>
 </ul>
 </div>
+<hr>
+<div class="paragraph">
+<p>The following functions provide a more compact way to retrieve the material textures.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>counts</em> =<strong>:all_texture_counts</strong>( )<br>
+<span class="small">Returns a table with the counts for all <a href="#texturetype"><em>texturetype</em></a>s
+(e.g. <em>counts.diffuse</em> = 2 if there are 2 '<em>diffuse</em>' textures).</span></p>
+</li>
+<li>
+<p><em>textures</em> =<strong>:all_textures</strong>([<a href="#texturetype"><em>texturetype</em></a>])<br>
+<span class="small">Returns a table with the properties of all the material textures.<br>
+If the optional <em>texturetype</em> parameter is given, only the textures of that type are listed.<br>
+Each entry of the table describes a texture, and has the following format
+(optional fields have a <em>nil</em> value when not defined for the texture):<br>
+<strong><em>textures[i]</em></strong> = {<br>
+<em>type</em>: <a href="#texturetype">texturetype</a>,<br>
+<em>flags</em>: <a href="#textureflags">textureflags</a>,<br>
+<em>path</em>: string,<br>
+<em>channel</em>: integer (1-based, opt.),<br>
+<em>op</em>: <a href="#textureop"><em>textureop</em></a> (opt.),<br>
+<em>mapping</em>: <a href="#texturemapping"><em>texturemapping</em></a> (opt.),<br>
+<em>blend</em>: number (opt.),<br>
+<em>mapmode_u</em>: <a href="#texturemapmode"><em>texturemapmode</em></a> (opt.),<br>
+<em>mapmode_v</em>: <a href="#texturemapmode"><em>texturemapmode</em></a> (opt.),<br>
+<em>axis</em>: {number, number, number} (opt.),<br>
+<em>translation</em>: {number, number} (opt.),<br>
+<em>scaling</em>: {number, number} (opt.),<br>
+<em>rotation</em>: number (radians, opt.),<br>
+}.</span></p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="texture">texture</h3>
 <div class="paragraph">
 <p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_texture.html">aiTexture</a>.</span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This object represents a texture that is embedded in the model file, since some file
+formats do this (see <a href="++http://www.assimp.org/lib_html/structai_texture.html#details">details</a>).
+More often, instead, textures are contained in external files and associated with
+<a href="#material">materials</a>.
+</td>
+</tr>
+</table>
 </div>
 <div class="ulist">
 <ul>

@@ -32,6 +32,9 @@ _r_, _g_, _b_, _a_ = *:color_transparent*( ) +
 
 * _string_ = *:global_bg_image*( ) +
 
+
+'''
+
 [[material.texture_count]]
 * _n_ = *:texture_count*(<<texturetype, _texturetype_>>) +
 [small]#Returns the number of textures of the given type.#
@@ -62,4 +65,32 @@ where _i_ must be in the range 1 .. <<material.texture_count, texture_count>>(&n
 
 * <<textureflags, _textureflags_>> = *:texture_flags*(<<texturetype, _texturetype_>>, _i_)
 
+'''
+
+The following functions provide a more compact way to retrieve the material textures.
+
+* _counts_ =*:all_texture_counts*( ) +
+[small]#Returns a table with the counts for all <<texturetype, _texturetype_>>s
+(e.g. _counts.diffuse_ = 2 if there are 2 '_diffuse_' textures).#
+
+* _textures_ =*:all_textures*([<<texturetype, _texturetype_>>]) +
+[small]#Returns a table with the properties of all the material textures. +
+If the optional _texturetype_ parameter is given, only the textures of that type are listed. +
+Each entry of the table describes a texture, and has the following format
+(optional fields have a _nil_ value when not defined for the texture): +
+*_textures[i]_* = { +
+_type_: <<texturetype, texturetype>>, +
+_flags_: <<textureflags, textureflags>>, +
+_path_: string, +
+_channel_: integer (1-based, opt.), +
+_op_: <<textureop, _textureop_>> (opt.), +
+_mapping_: <<texturemapping, _texturemapping_>> (opt.), +
+_blend_: number (opt.), +
+_mapmode_u_: <<texturemapmode, _texturemapmode_>> (opt.), +
+_mapmode_v_: <<texturemapmode, _texturemapmode_>> (opt.), +
+_axis_: {number, number, number} (opt.), +
+_translation_: {number, number} (opt.), +
+_scaling_: {number, number} (opt.), +
+_rotation_: number (radians, opt.), +
+}.#
 

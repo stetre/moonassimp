@@ -5,6 +5,11 @@
 
 [small]#Rfr: link:++http://www.assimp.org/lib_html/structai_texture.html++[aiTexture].#
 
+NOTE: This object represents a texture that is embedded in the model file, since some file
+formats do this (see link:++http://www.assimp.org/lib_html/structai_texture.html#details[details]).
+More often, instead, textures are contained in external files and associated with
+<<material, materials>>.
+
 * _boolean_ = *:is_compressed*( ) +
 [small]#Returns _true_ if the texture data is in a compressed format, _false_ otherwise.#
 

@@ -307,9 +307,167 @@ static int Texture_flags(lua_State *L)
     unsigned int type = checktexturetype(L, 2);
     unsigned int index = checkindex(L, 3);
     if(aiGetMaterialIntegerArray(material, _AI_MATKEY_TEXFLAGS_BASE, type, index, &val, NULL) 
-        != AI_SUCCESS) return 0;
+        != AI_SUCCESS) val = 0;
     return pushtextureflags(L, val, 1);
     }
+
+
+static int PushTexture(lua_State *L, material_t *material, unsigned int type, unsigned int index)
+/* Pushes a table with all the texture properties */
+    {
+    int val;
+    float floatval;
+    vector3_t vec;
+    struct aiUVTransform trafo;
+    unsigned int max = sizeof(vector3_t);
+
+    lua_newtable(L);
+    pushtexturetype(L, type);
+    lua_setfield(L, -2, "type");
+
+    if(aiGetMaterialIntegerArray(material, _AI_MATKEY_TEXFLAGS_BASE, type, index, &val, NULL)
+        != AI_SUCCESS) val = 0;
+    pushtextureflags(L, val, 1);
+    lua_setfield(L, -2, "flags");
+
+    if(GetString(L, material, _AI_MATKEY_TEXTURE_BASE, type, index)==1)
+        lua_setfield(L, -2, "path");
+
+    if(aiGetMaterialIntegerArray(material, _AI_MATKEY_UVWSRC_BASE, type, index, &val, NULL)
+        == AI_SUCCESS)
+        {
+        pushindex(L, val);
+        lua_setfield(L, -2, "channel");
+        }
+
+    if(aiGetMaterialIntegerArray(material, _AI_MATKEY_TEXOP_BASE, type, index, &val, NULL)
+        == AI_SUCCESS)
+        {
+        pushtextureop(L, val);
+        lua_setfield(L, -2, "op");
+        }
+
+    if(aiGetMaterialIntegerArray(material, _AI_MATKEY_MAPPING_BASE, type, index, &val, NULL)
+        == AI_SUCCESS)
+        {
+        pushtexturemapping(L, val);
+        lua_setfield(L, -2, "mapping");
+        }
+
+    if(aiGetMaterialFloatArray(material, _AI_MATKEY_TEXBLEND_BASE, type, index, &floatval, NULL)
+        == AI_SUCCESS)
+        {
+        lua_pushnumber(L, floatval);
+        lua_setfield(L, -2, "blend");
+        }
+
+    if(aiGetMaterialIntegerArray(material, _AI_MATKEY_MAPPINGMODE_U_BASE, type, index, &val, NULL)
+        == AI_SUCCESS)
+        {
+        pushtexturemapmode(L, val);
+        lua_setfield(L, -2, "mapmode_u");
+        }
+    if(aiGetMaterialIntegerArray(material, _AI_MATKEY_MAPPINGMODE_V_BASE, type, index, &val, NULL)
+        == AI_SUCCESS)
+        {
+        pushtexturemapmode(L, val);
+        lua_setfield(L, -2, "mapmode_v");
+        }
+
+    max = sizeof(vector3_t);
+    if(AI_SUCCESS == aiGetMaterialFloatArray(material, _AI_MATKEY_TEXMAP_AXIS_BASE, type, index,
+        (float*)&vec, &max) && sizeof(vector3_t) == max)
+        {
+        pushvector3(L, &vec, 1);
+        lua_setfield(L, -2, "axis");
+        }
+
+    max = sizeof(struct aiUVTransform);
+    if(AI_SUCCESS ==
+        aiGetMaterialFloatArray(material, _AI_MATKEY_UVTRANSFORM_BASE, type, index,
+        (float*)&trafo, &max) && sizeof(struct aiUVTransform) == max)
+        {
+        pushvector2(L, &(trafo.mTranslation), 1);
+        lua_setfield(L, -2, "translation");
+        pushvector2(L, &(trafo.mScaling), 1);
+        lua_setfield(L, -2, "scaling");
+        lua_pushnumber(L, trafo.mRotation);
+        lua_setfield(L, -2, "rotation");
+        }
+
+    return 1;
+    }
+
+static int AllTextureCounts(lua_State *L)
+    {
+    unsigned int count;
+    material_t *material = checkmaterial(L, 1);
+    lua_newtable(L);
+#define ADD(t, s) do {                                                  \
+    count = aiGetMaterialTextureCount(material, aiTextureType_##t);     \
+    lua_pushinteger(L, count);                                          \
+    lua_setfield(L, -2, s);                                             \
+} while(0)
+//  ADD(NONE, "none");
+    ADD(DIFFUSE, "diffuse");
+    ADD(SPECULAR, "specular");
+    ADD(AMBIENT, "ambient");
+    ADD(EMISSIVE, "emissive");
+    ADD(HEIGHT, "height");
+    ADD(NORMALS, "normals");
+    ADD(SHININESS, "shininess");
+    ADD(OPACITY, "opacity");
+    ADD(DISPLACEMENT, "displacement");
+    ADD(LIGHTMAP, "lightmap");
+    ADD(REFLECTION, "reflection");
+    ADD(UNKNOWN, "unknown");
+#undef ADD
+    return 1;
+    }
+
+
+static int AllTextures(lua_State *L)
+    {
+    unsigned int count, i, tot;
+    unsigned int type;
+    material_t *material = checkmaterial(L, 1);
+#define ADD(t) do {                                     \
+    count = aiGetMaterialTextureCount(material, t);     \
+    for(i=0; i < count; i++)                            \
+        {                                               \
+        PushTexture(L, material, t, i);                 \
+        lua_rawseti(L, -2, ++tot);                      \
+        }                                               \
+} while(0)
+
+    tot = 0;
+    if(!lua_isnoneornil(L, 2))
+        {
+        lua_newtable(L);
+        type = checktexturetype(L, 2);
+        ADD((enum aiTextureType)type);
+        }
+    else
+        {
+        lua_newtable(L);
+//      ADD(aiTextureType_NONE);
+        ADD(aiTextureType_DIFFUSE);
+        ADD(aiTextureType_SPECULAR);
+        ADD(aiTextureType_AMBIENT);
+        ADD(aiTextureType_EMISSIVE);
+        ADD(aiTextureType_HEIGHT);
+        ADD(aiTextureType_NORMALS);
+        ADD(aiTextureType_SHININESS);
+        ADD(aiTextureType_OPACITY);
+        ADD(aiTextureType_DISPLACEMENT);
+        ADD(aiTextureType_LIGHTMAP);
+        ADD(aiTextureType_REFLECTION);
+        ADD(aiTextureType_UNKNOWN);
+        }
+#undef ADD
+    return 1;
+    }
+
 
 
 /*------------------------------------------------------------------------------*
@@ -348,6 +506,8 @@ static const struct luaL_Reg Methods[] =
         { "texture_scaling", Texture_uvscaling },
         { "texture_rotation", Texture_uvrotation },
         { "texture_flags", Texture_flags },
+        { "all_texture_counts", AllTextureCounts },
+        { "all_textures", AllTextures },
         { NULL, NULL } /* sentinel */
     };
 
