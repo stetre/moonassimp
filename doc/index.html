@@ -789,15 +789,15 @@ p.tableblock.header { color: #6d6e71; }
 <li><a href="#scene">scene</a></li>
 <li><a href="#node">node</a></li>
 <li><a href="#mesh">mesh</a></li>
-<li><a href="#animmesh">animmesh</a></li>
 <li><a href="#face">face</a></li>
-<li><a href="#bone">bone</a></li>
 <li><a href="#material">material</a></li>
 <li><a href="#texture">texture</a></li>
 <li><a href="#light">light</a></li>
 <li><a href="#camera">camera</a></li>
 <li><a href="#animation">animation</a></li>
 <li><a href="#nodeanim">nodeanim</a></li>
+<li><a href="#animmesh">animmesh</a></li>
+<li><a href="#bone">bone</a></li>
 <li><a href="#meshanim">meshanim</a></li>
 </ul>
 </li>
@@ -1307,34 +1307,6 @@ otherwise they are 1-based (1,..,<a href="#mesh.num_xxx">num_vertices</a>).</spa
 </div>
 </div>
 <div class="sect2">
-<h3 id="animmesh">animmesh</h3>
-<div class="paragraph">
-<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_anim_mesh.html">aiAnimMesh</a>.</span></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="#mesh"><em>mesh</em></a> = <strong>:mesh</strong>( )<br>
-<span class="small">The mesh it belongs to (and is a replacement for).</span></p>
-</li>
-<li>
-<p><strong>:has_positions</strong>( )<br>
-<strong>:has_normals</strong>( )<br>
-<strong>:has_tangents</strong>( )<br>
-<strong>:has_colors</strong>(<em>channel</em>)<br>
-<strong>:has_texture_coords</strong>(<em>channel</em>)<br>
-<strong>:position</strong>(<em>i</em>)<br>
-<strong>:normal</strong>(<em>i</em>)<br>
-<strong>:tangent</strong>(<em>i</em>)<br>
-<strong>:bitangent</strong>(<em>i</em>)<br>
-<strong>:color</strong>(<em>channel</em>, <em>i</em>)<br>
-<strong>:texture_coords</strong>(<em>channel</em>, <em>i</em>)<br>
-<span class="small">Replacements for <a href="#mesh"><em>mesh</em></a> methods.</span></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
 <h3 id="face">face</h3>
 <div class="paragraph">
 <p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_face.html">aiFace</a>.</span></p>
@@ -1351,43 +1323,6 @@ vertices (<em>N</em> = <a href="#face.num_indices">num_indices</a>(&nbsp;)).</sp
 </li>
 <li>
 <p><em>i<sub>1</sub>-1</em>, <em>&#8230;&#8203;</em>, <em>i<sub>N</sub>-1</em> = <strong>:zero_based_indices</strong>( )</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="bone">bone</h3>
-<div class="paragraph">
-<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_bone.html">aiBone</a>.</span></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><em>name</em> = <strong>:name</strong>( )</p>
-</li>
-</ul>
-</div>
-<div id="bone.num_weights" class="ulist">
-<ul>
-<li>
-<p><em>n</em> = <strong>:num_weights</strong>( )</p>
-</li>
-<li>
-<p><em>t</em> = <strong>:weights</strong>( )<br>
-<span class="small">Returns a (possibly sparse) array <em>t</em>, where <em>t[v]</em> is the weight of the vertex
-indexed by <em>v</em> in the <a href="#mesh"><em>mesh</em></a>'s list of vertices (<em>t[v]</em>=<em>nil</em> if the vertex
-is not part of the bone).</span></p>
-</li>
-<li>
-<p><em>t</em> = <strong>:ordered_weights</strong>( )<br>
-<span class="small">Returns an array <em>t</em> of <a href="#bone.num_weights">num_weights</a>(&nbsp;) tables,
-each having two elements:
-<em>t[i].vertex</em> and <em>t[i].weight</em>, denoting the index of a vertex and its weight, respectively.
-The vertices are in the same order as in the underlying aiBone structure</span></p>
-</li>
-<li>
-<p><em>a<sub>11</sub></em>, <em>a<sub>12</sub></em>, <em>&#8230;&#8203;</em>, <em>a<sub>44</sub></em> = <strong>:offset_matrix</strong>( )<br>
-<span class="small">Returns the elements of the offset matrix, in row-major order.</span></p>
 </li>
 </ul>
 </div>
@@ -1754,6 +1689,71 @@ are added to the list.</span></p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="animmesh">animmesh</h3>
+<div class="paragraph">
+<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_anim_mesh.html">aiAnimMesh</a>.</span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#mesh"><em>mesh</em></a> = <strong>:mesh</strong>( )<br>
+<span class="small">The mesh it belongs to (and is a replacement for).</span></p>
+</li>
+<li>
+<p><strong>:has_positions</strong>( )<br>
+<strong>:has_normals</strong>( )<br>
+<strong>:has_tangents</strong>( )<br>
+<strong>:has_colors</strong>(<em>channel</em>)<br>
+<strong>:has_texture_coords</strong>(<em>channel</em>)<br>
+<strong>:position</strong>(<em>i</em>)<br>
+<strong>:normal</strong>(<em>i</em>)<br>
+<strong>:tangent</strong>(<em>i</em>)<br>
+<strong>:bitangent</strong>(<em>i</em>)<br>
+<strong>:color</strong>(<em>channel</em>, <em>i</em>)<br>
+<strong>:texture_coords</strong>(<em>channel</em>, <em>i</em>)<br>
+<span class="small">Replacements for <a href="#mesh"><em>mesh</em></a> methods.</span></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bone">bone</h3>
+<div class="paragraph">
+<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_bone.html">aiBone</a>.</span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>name</em> = <strong>:name</strong>( )</p>
+</li>
+</ul>
+</div>
+<div id="bone.num_weights" class="ulist">
+<ul>
+<li>
+<p><em>n</em> = <strong>:num_weights</strong>( )</p>
+</li>
+<li>
+<p><em>t</em> = <strong>:weights</strong>( )<br>
+<span class="small">Returns a (possibly sparse) array <em>t</em>, where <em>t[v]</em> is the weight of the vertex
+indexed by <em>v</em> in the <a href="#mesh"><em>mesh</em></a>'s list of vertices (<em>t[v]</em>=<em>nil</em> if the vertex
+is not part of the bone).</span></p>
+</li>
+<li>
+<p><em>t</em> = <strong>:ordered_weights</strong>( )<br>
+<span class="small">Returns an array <em>t</em> of <a href="#bone.num_weights">num_weights</a>(&nbsp;) tables,
+each having two elements:
+<em>t[i].vertex</em> and <em>t[i].weight</em>, denoting the index of a vertex and its weight, respectively.
+The vertices are in the same order as in the underlying aiBone structure</span></p>
+</li>
+<li>
+<p><em>a<sub>11</sub></em>, <em>a<sub>12</sub></em>, <em>&#8230;&#8203;</em>, <em>a<sub>44</sub></em> = <strong>:offset_matrix</strong>( )<br>
+<span class="small">Returns the elements of the offset matrix, in row-major order.</span></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
 <h3 id="meshanim">meshanim</h3>
 <div class="paragraph">
 <p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_mesh_anim.html">aiMeshAnim</a>.</span></p>
@@ -1969,7 +1969,7 @@ Strings: '<em>invert</em>', '<em>use alpha</em>', '<em>ignore alpha</em>'.</span
 <div id="footer">
 <div id="footer-text">
 Version 0.5<br>
-Last updated 2017-04-12 11:51:30 CEST
+Last updated 2017-06-17 12:02:41 CEST
 </div>
 </div>
 </body>

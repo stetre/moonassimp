@@ -33,11 +33,7 @@ include::node.adoc[]
 
 include::mesh.adoc[]
 
-include::animmesh.adoc[]
-
 include::face.adoc[]
-
-include::bone.adoc[]
 
 include::material.adoc[]
 
@@ -50,6 +46,10 @@ include::camera.adoc[]
 include::animation.adoc[]
 
 include::nodeanim.adoc[]
+
+include::animmesh.adoc[]
+
+include::bone.adoc[]
 
 include::meshanim.adoc[]
 
