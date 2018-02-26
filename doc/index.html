@@ -828,7 +828,7 @@ p.tableblock.header { color: #6d6e71; }
 <div class="paragraph">
 <p>This is the reference manual of <strong>MoonAssimp</strong>, which is a
 <a href="http://www.lua.org"><strong>Lua</strong></a> binding library for the
-<a href="http://www.assimp.org/"><strong>Open Asset Import Library (Assimp)</strong></a>.
+<a href="http://sir-kimmi.de/assimp/"><strong>Open Asset Import Library (Assimp)</strong></a>.
 <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup></p>
 </div>
 <div class="paragraph">
@@ -837,7 +837,7 @@ p.tableblock.header { color: #6d6e71; }
 <div class="paragraph">
 <p>For convenience of reference, this document contains external (deep) links to the
 <a href="http://www.lua.org/manual/5.3/manual.html">Lua Reference Manual</a> and to the
-<a href="http://www.assimp.org/main_doc.html">Assimp Documentation</a>.</p>
+<a href="http://sir-kimmi.de/assimp/index.php/docs">Assimp Documentation</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="_getting_and_installing">Getting and installing</h3>
@@ -887,8 +887,8 @@ of the <a href="https://github.com/stetre/moonassimp">official repository</a> on
 <h2 id="_usage">Usage</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/usage.html">Assimp usage</a> -
-<a href="http://www.assimp.org/lib_html/cimport_8h.html">cimport.h</a>.</span></p>
+<p><span class="small">Rfr: <a href="http://sir-kimmi.de/assimp/lib_html/usage.html">Assimp usage</a> -
+<a href="http://sir-kimmi.de/assimp/lib_html/cimport_8h.html">cimport.h</a>.</span></p>
 </div>
 <div class="paragraph">
 <p>Albeit presenting an object-oriented interface, MoonAssimp actually binds to the
@@ -923,7 +923,7 @@ to release memory when the scene is no more needed and the application is not ex
 <p>Objects' methods are described in the <a href="#methods">'Methods'</a> section, while herafter are described
 the general functions provided in the <strong>ai</strong> table for importing models, logging, etc.
 These are bindings to Assimp C API functions contained in the
-<a href="http://www.assimp.org/lib_html/cimport_8h.html">cimport.h</a> file, and typically
+<a href="http://sir-kimmi.de/assimp/lib_html/cimport_8h.html">cimport.h</a> file, and typically
 preserve their semantics (notice that not all Assimp functions are used or exposed by
 MoonAssimp, though).</p>
 </div>
@@ -1065,7 +1065,7 @@ If <em>logstream</em> is '<em>stdout</em>' or '<em>stderr</em>', the <em>arg</em
 <div class="sect2">
 <h3 id="scene">scene</h3>
 <div class="paragraph">
-<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_scene.html">aiScene</a>.</span></p>
+<p><span class="small">Rfr: <a href="http://sir-kimmi.de/assimp/lib_html/structai_scene.html">aiScene</a>.</span></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1124,7 +1124,7 @@ If <em>logstream</em> is '<em>stdout</em>' or '<em>stderr</em>', the <em>arg</em
 <div class="sect2">
 <h3 id="node">node</h3>
 <div class="paragraph">
-<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_node.html">aiNode</a>.</span></p>
+<p><span class="small">Rfr: <a href="http://sir-kimmi.de/assimp/lib_html/structai_node.html">aiNode</a>.</span></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1170,7 +1170,7 @@ Note that this is a subset of the <a href="#scene">scene</a>'s meshes list.</spa
 <div class="sect2">
 <h3 id="mesh">mesh</h3>
 <div class="paragraph">
-<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_mesh.html">aiMesh</a>.</span></p>
+<p><span class="small">Rfr: <a href="http://sir-kimmi.de/assimp/lib_html/structai_mesh.html">aiMesh</a>.</span></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1315,7 +1315,7 @@ otherwise they are 1-based (1,..,<a href="#mesh.num_xxx">num_vertices</a>).</spa
 <div class="sect2">
 <h3 id="face">face</h3>
 <div class="paragraph">
-<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_face.html">aiFace</a>.</span></p>
+<p><span class="small">Rfr: <a href="http://sir-kimmi.de/assimp/lib_html/structai_face.html">aiFace</a>.</span></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1336,7 +1336,7 @@ vertices (<em>N</em> = <a href="#face.num_indices">num_indices</a>(&nbsp;)).</sp
 <div class="sect2">
 <h3 id="material">material</h3>
 <div class="paragraph">
-<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_material.html">aiMaterial</a>.</span></p>
+<p><span class="small">Rfr: <a href="http://sir-kimmi.de/assimp/lib_html/structai_material.html">aiMaterial</a>.</span></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1478,7 +1478,7 @@ Each entry of the table describes a texture, and has the following format
 <div class="sect2">
 <h3 id="texture">texture</h3>
 <div class="paragraph">
-<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_texture.html">aiTexture</a>.</span></p>
+<p><span class="small">Rfr: <a href="http://sir-kimmi.de/assimp/lib_html/structai_texture.html">aiTexture</a>.</span></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1488,7 +1488,7 @@ Each entry of the table describes a texture, and has the following format
 </td>
 <td class="content">
 This object represents a texture that is embedded in the model file, since some file
-formats do this (see <a href="++http://www.assimp.org/lib_html/structai_texture.html#details">details</a>).
+formats do this (see <a href="++http://sir-kimmi.de/assimp/lib_html/structai_texture.html#details">details</a>).
 More often, instead, textures are contained in external files and associated with
 <a href="#material">materials</a>.
 </td>
@@ -1563,7 +1563,7 @@ as bytes (0..255).</span></p>
 <div class="sect2">
 <h3 id="light">light</h3>
 <div class="paragraph">
-<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_light.html">aiLight</a>.</span></p>
+<p><span class="small">Rfr: <a href="http://sir-kimmi.de/assimp/lib_html/structai_light.html">aiLight</a>.</span></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1595,7 +1595,7 @@ as bytes (0..255).</span></p>
 <div class="sect2">
 <h3 id="camera">camera</h3>
 <div class="paragraph">
-<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_camera.html">aiCamera</a>.</span></p>
+<p><span class="small">Rfr: <a href="http://sir-kimmi.de/assimp/lib_html/structai_camera.html">aiCamera</a>.</span></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1619,7 +1619,7 @@ as bytes (0..255).</span></p>
 <div class="sect2">
 <h3 id="animation">animation</h3>
 <div class="paragraph">
-<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_animation.html">aiAnimation</a>.</span></p>
+<p><span class="small">Rfr: <a href="http://sir-kimmi.de/assimp/lib_html/structai_animation.html">aiAnimation</a>.</span></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1657,7 +1657,7 @@ are added to the list.</span></p>
 <div class="sect2">
 <h3 id="nodeanim">nodeanim</h3>
 <div class="paragraph">
-<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_node_anim.html">aiNodeAnim</a>.</span></p>
+<p><span class="small">Rfr: <a href="http://sir-kimmi.de/assimp/lib_html/structai_node_anim.html">aiNodeAnim</a>.</span></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1697,7 +1697,7 @@ are added to the list.</span></p>
 <div class="sect2">
 <h3 id="animmesh">animmesh</h3>
 <div class="paragraph">
-<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_anim_mesh.html">aiAnimMesh</a>.</span></p>
+<p><span class="small">Rfr: <a href="http://sir-kimmi.de/assimp/lib_html/structai_anim_mesh.html">aiAnimMesh</a>.</span></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1725,7 +1725,7 @@ are added to the list.</span></p>
 <div class="sect2">
 <h3 id="bone">bone</h3>
 <div class="paragraph">
-<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_bone.html">aiBone</a>.</span></p>
+<p><span class="small">Rfr: <a href="http://sir-kimmi.de/assimp/lib_html/structai_bone.html">aiBone</a>.</span></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1762,7 +1762,7 @@ The vertices are in the same order as in the underlying aiBone structure</span><
 <div class="sect2">
 <h3 id="meshanim">meshanim</h3>
 <div class="paragraph">
-<p><span class="small">Rfr: <a href="http://www.assimp.org/lib_html/structai_mesh_anim.html">aiMeshAnim</a>.</span></p>
+<p><span class="small">Rfr: <a href="http://sir-kimmi.de/assimp/lib_html/structai_mesh_anim.html">aiMeshAnim</a>.</span></p>
 </div>
 <div id="meshanim.mesh_name" class="ulist">
 <ul>
@@ -1850,7 +1850,7 @@ at the indices contained in the keys returned by <a href="#meshanim.keys">meshan
 <li>
 <p><strong>postprocessflags</strong>: bitfield.<br>
 <span class="small">Code: a combination of ai.Process_Xxx values (corresponding to
-<a href="http://www.assimp.org/lib_html/postprocess_8h.html">aiProcess_Xxx</a> values in Assimp).<br>
+<a href="http://sir-kimmi.de/assimp/lib_html/postprocess_8h.html">aiProcess_Xxx</a> values in Assimp).<br>
 Strings: '<em>none</em>', '<em>calc tangent space</em>', '<em>join identical vertices</em>', '<em>make left handed</em>', '<em>triangulate</em>', '<em>remove component</em>', '<em>gen normals</em>', '<em>gen smooth normals</em>', '<em>split large meshes</em>', '<em>pre transform vertices</em>', '<em>limit bone weights</em>', '<em>validate data structure</em>', '<em>improve cache locality</em>', '<em>remove redundant materials</em>', '<em>fix infacing normals</em>', '<em>sort by p type</em>', '<em>find degenerates</em>', '<em>find invalid data</em>', '<em>gen uv coords</em>', '<em>transform uv coords</em>', '<em>find instances</em>', '<em>optimize meshes</em>', '<em>optimize graph</em>', '<em>flip uvs</em>', '<em>flip winding order</em>', '<em>split by bone count</em>', '<em>debone</em>'.</span></p>
 </li>
 </ul>
@@ -1975,7 +1975,7 @@ Strings: '<em>invert</em>', '<em>use alpha</em>', '<em>ignore alpha</em>'.</span
 <div id="footer">
 <div id="footer-text">
 Version 0.5<br>
-Last updated 2017-08-09 20:11:14 CEST
+Last updated 2018-02-26 09:52:57 CET
 </div>
 </div>
 </body>

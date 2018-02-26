@@ -2,7 +2,7 @@
 [[scene]]
 === scene
 
-[small]#Rfr: link:++http://www.assimp.org/lib_html/structai_scene.html++[aiScene].#
+[small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_scene.html++[aiScene].#
 
 * _boolean_ = *:has_animations*( ) +
 _boolean_ = *:has_cameras*( ) +

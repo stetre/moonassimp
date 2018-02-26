@@ -4,7 +4,7 @@
 
 This is the reference manual of *MoonAssimp*, which is a 
 http://www.lua.org[*Lua*] binding library for the
-http://www.assimp.org/[*Open Asset Import Library (Assimp)*].
+http://sir-kimmi.de/assimp/[*Open Asset Import Library (Assimp)*].
 footnote:[
 This manual is written in
 http://www.methods.co.nz/asciidoc/[AsciiDoc], rendered with
@@ -17,7 +17,7 @@ It is assumed that the reader is familiar with both Assimp and the Lua programmi
 
 For convenience of reference, this document contains external (deep) links to the 
 http://www.lua.org/manual/5.3/manual.html[Lua Reference Manual] and to the
-http://www.assimp.org/main_doc.html[Assimp Documentation].
+http://sir-kimmi.de/assimp/index.php/docs[Assimp Documentation].
 
 === Getting and installing
 
@@ -31,7 +31,7 @@ The *official repository* of MoonAssimp is on GitHub at the following link:
 
 MoonAssimp runs on GNU/Linux and requires 
 *http://www.lua.org[Lua]* version 5.3 or greater, and 
-*http://www.assimp.org/main_downloads.html[Assimp]*, version 3.0 or greater.
+*http://sir-kimmi.de/assimp/main_downloads.html[Assimp]*, version 3.0 or greater.
 
 To install MoonAssimp, download the 
 https://github.com/stetre/moonassimp/releases[latest release] and do the following:

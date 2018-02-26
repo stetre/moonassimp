@@ -2,7 +2,7 @@
 [[light]]
 === light
 
-[small]#Rfr: link:++http://www.assimp.org/lib_html/structai_light.html++[aiLight].#
+[small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_light.html++[aiLight].#
 
 * _name_ = *:name*( )
 

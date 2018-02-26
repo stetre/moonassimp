@@ -3,7 +3,7 @@
 [[node]]
 === node
 
-[small]#Rfr: link:++http://www.assimp.org/lib_html/structai_node.html++[aiNode].#
+[small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_node.html++[aiNode].#
 
 * _name_ = *:name*( )
 

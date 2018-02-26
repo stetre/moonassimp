@@ -1,8 +1,8 @@
 
 == Usage
 
-[small]#Rfr: link:++http://www.assimp.org/lib_html/usage.html++[Assimp usage] -
-link:++http://www.assimp.org/lib_html/cimport_8h.html++[cimport.h].#
+[small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/usage.html++[Assimp usage] -
+link:++http://sir-kimmi.de/assimp/lib_html/cimport_8h.html++[cimport.h].#
 
 
 
@@ -35,7 +35,7 @@ to release memory when the scene is no more needed and the application is not ex
 Objects' methods are described in the <<methods, 'Methods'>> section, while herafter are described
 the general functions provided in the *ai* table for importing models, logging, etc.
 These are bindings to Assimp C API functions contained in the
-link:++http://www.assimp.org/lib_html/cimport_8h.html++[cimport.h] file, and typically
+link:++http://sir-kimmi.de/assimp/lib_html/cimport_8h.html++[cimport.h] file, and typically
 preserve their semantics (notice that not all Assimp functions are used or exposed by
 MoonAssimp, though).
 

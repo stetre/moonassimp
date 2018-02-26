@@ -2,7 +2,7 @@
 [[animation]]
 === animation
 
-[small]#Rfr: link:++http://www.assimp.org/lib_html/structai_animation.html++[aiAnimation].#
+[small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_animation.html++[aiAnimation].#
 
 
 * _name_ = *:name*( )

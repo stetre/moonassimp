@@ -3,10 +3,10 @@
 [[texture]]
 === texture
 
-[small]#Rfr: link:++http://www.assimp.org/lib_html/structai_texture.html++[aiTexture].#
+[small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_texture.html++[aiTexture].#
 
 NOTE: This object represents a texture that is embedded in the model file, since some file
-formats do this (see link:++http://www.assimp.org/lib_html/structai_texture.html#details[details]).
+formats do this (see link:++http://sir-kimmi.de/assimp/lib_html/structai_texture.html#details[details]).
 More often, instead, textures are contained in external files and associated with
 <<material, materials>>.
 

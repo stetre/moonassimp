@@ -2,7 +2,7 @@
 [[camera]]
 === camera
 
-[small]#Rfr: link:++http://www.assimp.org/lib_html/structai_camera.html++[aiCamera].#
+[small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_camera.html++[aiCamera].#
 
 * _name_ = *:name*( ) +
 

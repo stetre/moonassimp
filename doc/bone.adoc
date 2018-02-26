@@ -2,7 +2,7 @@
 [[bone]]
 ===  bone
 
-[small]#Rfr: link:++http://www.assimp.org/lib_html/structai_bone.html++[aiBone].#
+[small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_bone.html++[aiBone].#
 
 * _name_ = *:name*( )
 

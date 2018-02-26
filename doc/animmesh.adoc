@@ -2,7 +2,7 @@
 [[animmesh]]
 ===  animmesh
 
-[small]#Rfr: link:++http://www.assimp.org/lib_html/structai_anim_mesh.html++[aiAnimMesh].#
+[small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_anim_mesh.html++[aiAnimMesh].#
 
 * <<mesh, _mesh_>> = *:mesh*( ) +
 [small]#The mesh it belongs to (and is a replacement for).#

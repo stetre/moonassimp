@@ -2,7 +2,7 @@
 [[face]]
 ===  face
 
-[small]#Rfr: link:++http://www.assimp.org/lib_html/structai_face.html++[aiFace].#
+[small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_face.html++[aiFace].#
 
 * _n_ = *:num_indices*( )
 
