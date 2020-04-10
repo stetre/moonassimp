@@ -28,8 +28,10 @@
 extern "C" {
 #endif
 
+#include <stdint.h>
 #include "lua.h"
 #include "lauxlib.h"
+#include "compat-5.3.h"
 
 #define udata_t  moonassimp_udata_t
 #define udata_s  moonassimp_udata_s

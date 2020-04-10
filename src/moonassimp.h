@@ -30,9 +30,11 @@
 #ifndef moonassimpDEFINED
 #define moonassimpDEFINED
 
+#include <stdint.h>
 #include <lua.h>
 #include "lualib.h"
 #include "lauxlib.h"
+#include "compat-5.3.h"
 #include <assimp/types.h>
 #include <assimp/version.h>
 #include <assimp/cimport.h>
