@@ -55,6 +55,7 @@ static int Indices(lua_State *L)
     face_t * face = checkface(L, 1);
     if(face->mIndices == NULL || face->mNumIndices == 0)
         return 0;
+    luaL_checkstack(L, face->mNumIndices, NULL);
     for(i=0; i < face->mNumIndices; i++)
         pushindex(L, face->mIndices[i]);
     return face->mNumIndices;
@@ -66,6 +67,7 @@ static int ZeroBasedIndices(lua_State *L)
     face_t * face = checkface(L, 1);
     if(face->mIndices == NULL || face->mNumIndices == 0)
         return 0;
+    luaL_checkstack(L, face->mNumIndices, NULL);
     for(i=0; i < face->mNumIndices; i++)
         lua_pushinteger(L, face->mIndices[i]);
     return face->mNumIndices;
