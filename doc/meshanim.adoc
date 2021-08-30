@@ -6,16 +6,16 @@
 [small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_mesh_anim.html++[aiMeshAnim].#
 
 [[meshanim.mesh_name]]
-* _name_ = *:mesh_name*( )
+* _name_ = _meshanim_++:++*mesh_name*( )
 
-* _n_ = *:num_keys*( )
+* _n_ = _meshanim_++:++*num_keys*( )
 
 [[meshanim.keys]]
-* {_key_} = *:keys*( ) +
+* {_key_} = _meshanim_++:++*keys*( ) +
 [small]#Returns the list of keys (or, more precisely, of  
 link:++https://en.wikipedia.org/wiki/Key_frame++[key frames]). 
 Each entry of the list is a table having the following fields: +
-_key.time_: a number denoting time, and +
+_key.time_: a float denoting time, and +
 _key.value_: an index into the <<mesh, mesh>>'s list of <<animmesh, anim meshes>>.#
 
 NOTE: (In my understanding) the <<meshanim.mesh_name, mesh_name>> should allow to identify

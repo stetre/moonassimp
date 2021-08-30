@@ -4,16 +4,16 @@
 
 [small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_camera.html++[aiCamera].#
 
-* _name_ = *:name*( ) +
+* _name_ = _camera_++:++*name*( ) +
 
-* _number_ = *:aspect*( ) +
-_number_ = *:clip_plane_near*( ) +
-_number_ = *:clip_plane_far*( ) +
-_number_ = *:horizontal_fov*( )
+* _float_ = _camera_++:++*aspect*( ) +
+_float_ = _camera_++:++*clip_plane_near*( ) +
+_float_ = _camera_++:++*clip_plane_far*( ) +
+_float_ = _camera_++:++*horizontal_fov*( )
 
 
-* _x_, _y_, _z_ = *:position*( ) +
-_x_, _y_, _z_ = *:up*( ) +
-_x_, _y_, _z_ = *:look_at*( )
+* _x_, _y_, _z_ = _camera_++:++*position*( ) +
+_x_, _y_, _z_ = _camera_++:++*up*( ) +
+_x_, _y_, _z_ = _camera_++:++*look_at*( )
 
 

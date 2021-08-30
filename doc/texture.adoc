@@ -6,52 +6,47 @@
 [small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_texture.html++[aiTexture].#
 
 NOTE: This object represents a texture that is embedded in the model file, since some file
-formats do this (see link:++http://sir-kimmi.de/assimp/lib_html/structai_texture.html#details[details]).
-More often, instead, textures are contained in external files and associated with
+formats do this (see link:++http://sir-kimmi.de/assimp/lib_html/structai_texture.html#details++[details]).
+More often, textures are instead contained in external files and associated with
 <<material, materials>>.
 
-* _boolean_ = *:is_compressed*( ) +
+* _boolean_ = _texture_++:++*is_compressed*( ) +
 [small]#Returns _true_ if the texture data is in a compressed format, _false_ otherwise.#
 
-* _fmt_ = *:format_hint*( ) +
+* _fmt_ = _texture_++:++*format_hint*( ) +
 [small]#Returns the format hint as a string, or 
 _nil_ if the texture data is not in a compressed format.#
 
 
 [[texture.dim]]
-*  _w_ = *:width*( ) +
-_h_ = *:height*( )
+*  _w_ = _texture_++:++*width*( ) +
+_h_ = _texture_++:++*height*( )
 
-* _n_ = *:size*( ) +
+* _n_ = _texture_++:++*size*( ) +
 [small]#Returns the size in byte of the texture data, or 
 _nil_ if the texture data is not in a compressed format.#
 
-* _data_ = *:data*( ) +
+* _data_ = _texture_++:++*data*( ) +
 [small]#Returns the texture data as a binary string, or 
 _nil_ if the texture data is not in a compressed format.#
 
 
 [[texture.texel]]
-* _r_, _g_, _b_, _a_ = *:texel*(_u_, _v_) +
-[small]#Returns the RGBA values of the texel with texture coordinates (_u_, _v_),
+* _r_, _g_, _b_, _a_ = _texture_++:++*texel*(_u_, _v_) +
+[small]#Returns the RGBA components (normalized float values) of the texel with texture coordinates (_u_, _v_),
 or _nil_ if the texture is in a compressed format.
 The coordinates _u_ and _v_ must be in the ranges 
 1 .. <<texture.dim, width>>(&nbsp;) and
 1 .. <<texture.dim, height>>(&nbsp;), respectively.
 The values are returned as normalized floating points.#
 
-* _r_, _g_, _b_, _a_ = *:btexel*(_u_, _v_) +
-[small]#Same as <<texture.texel, texel>>(&nbsp;), but returns the RGBA values 
-as bytes (0..255).#
-
 [[texture.texels]]
-* _t_ = *:texels*( ) +
+* _t_ = _texture_++:++*texels*( ) +
 [small]#Returns all the texels in a (table) matrix _t_, where _t[u][v]_ = _{ r, g, b, a }_
-are the RGBA values of the texel with texture coordinates (_u_, _v_).
-The RGBA values are normalized floating points.#
+are the RGBA components (normalized float values) of the texel with texture coordinates (_u_, _v_).#
 
-* _t_ = *:btexels*( ) +
-[small]#Same as <<texture.texels, texels>>(&nbsp;), but returns the RGBA values 
-as bytes (0..255).#
+* _r_, _g_, _b_, _a_ = _texture_++:++*btexel*(_u_, _v_) +
+_t_ = _texture_++:++*btexels*( ) +
+[small]#Same as <<texture.texel, texel>>(&nbsp;) and <<texture.texels, texels>>(&nbsp;), but the RGBA components are returned as 8 bit values (0..255).#
 
 

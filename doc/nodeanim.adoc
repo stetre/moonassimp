@@ -5,27 +5,27 @@
 
 [small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_node_anim.html++[aiNodeAnim].#
 
-* _name_ = *:node_name*( ) +
+* _name_ = _nodeanim_++:++*node_name*( ) +
 
-* _n_ = *:num_position_keys*( ) +
-_n_ = *:num_rotation_keys*( ) +
-_n_ = *:num_scaling_keys*( )
+* _n_ = _nodeanim_++:++*num_position_keys*( ) +
+_n_ = _nodeanim_++:++*num_rotation_keys*( ) +
+_n_ = _nodeanim_++:++*num_scaling_keys*( )
 
-* {_key_} = *:position_keys*( ) +
+* {_key_} = _nodeanim_++:++*position_keys*( ) +
 [small]#Returns the list of position keys. Each entry of the list is a table with the following fields: +
-_key.time_: a number denoting time, and +
-_key.value_: an array of 3 numbers representing the position vector.#
+_key.time_: a float denoting time, and +
+_key.value_: an array of 3 floats representing the position vector.#
 
-* {_key_} = *:rotation_keys*( ) +
+* {_key_} = _nodeanim_++:++*rotation_keys*( ) +
 [small]#Returns the list of rotation keys. Each entry of the list is a table with the following fields: +
-_key.time_: a number denoting time, and +
-_key.value_: an array of 4 numbers representing the rotation quaternion.#
+_key.time_: a float denoting time, and +
+_key.value_: an array of 4 floats representing the rotation quaternion.#
 
-* {_key_} = *:scaling_keys*( ) +
+* {_key_} = _nodeanim_++:++*scaling_keys*( ) +
 [small]#Returns the list of scaling keys. Each entry of the list is a table with the following fields: +
-_key.time_: a number denoting time, and +
-_key.value_: an array of 3 numbers representing the scaling factors.#
+_key.time_: a float denoting time, and +
+_key.value_: an array of 3 floats representing the scaling factors.#
 
-* <<animbehaviour, _animbehaviour_>> = *:pre_state*( ) +
-<<animbehaviour, _animbehaviour_>> = *:post_state*( )
+* <<animbehaviour, _animbehaviour_>> = _nodeanim_++:++*pre_state*( ) +
+<<animbehaviour, _animbehaviour_>> = _nodeanim_++:++*post_state*( )
 

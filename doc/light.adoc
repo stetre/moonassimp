@@ -4,20 +4,20 @@
 
 [small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_light.html++[aiLight].#
 
-* _name_ = *:name*( )
+* _name_ = _light_++:++*name*( )
 
-* <<lightsourcetype, _lightsourcetype_>> = *:source_type*( )
+* <<lightsourcetype, _lightsourcetype_>> = _light_++:++*source_type*( )
 
-* _number_ = *:attenuation_constant*( ) +
-_number_ = *:attenuation_linear*( ) +
-_number_ = *:attenuation_quadratic*( ) +
-_number_ = *:angle_inner_cone*( ) +
-_number_ = *:angle_outer_cone*( )
+* _float_ = _light_++:++*attenuation_constant*( ) +
+_float_ = _light_++:++*attenuation_linear*( ) +
+_float_ = _light_++:++*attenuation_quadratic*( ) +
+_float_ = _light_++:++*angle_inner_cone*( ) +
+_float_ = _light_++:++*angle_outer_cone*( )
 
-* _x_, _y_, _z_ = *:position*( ) +
-_x_, _y_, _z_ = *:direction*( )
+* _x_, _y_, _z_ = _light_++:++*position*( ) +
+_x_, _y_, _z_ = _light_++:++*direction*( )
 
-* _r_, _g_, _b_ = *:color_diffuse*( ) +
-_r_, _g_, _b_ = *:color_specular*( ) +
-_r_, _g_, _b_ = *:color_ambient*( )
+* _r_, _g_, _b_ = _light_++:++*color_diffuse*( ) +
+_r_, _g_, _b_ = _light_++:++*color_specular*( ) +
+_r_, _g_, _b_ = _light_++:++*color_ambient*( )
 

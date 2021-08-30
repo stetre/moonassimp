@@ -4,12 +4,12 @@
 
 [small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_face.html++[aiFace].#
 
-* _n_ = *:num_indices*( )
+* _N_ = _face_++:++*num_indices*( )
 
-* _i~1~_, _..._, _i~N~_ = *:indices*( ) +
-[small]#Returns the indices of the face's vertices in the <<mesh, _mesh_>>'s list of
-vertices (_N_ = <<face.num_indices, num_indices>>(&nbsp;)).#
+* _i~1~_, _..._, _i~N~_ = _face_++:++*indices*( ) +
+_i~1~-1_, _..._, _i~N~-1_ = _face_++:++*zero_based_indices*( ) +
+[small]#Return the indices, in the <<mesh, _mesh_>>'s list of vertices, of the vertices that compose the face. +
+The first function returns 1-based indices (table indices), while the second one returns 0-based indices (as expected by graphics APIs).#
 
-* _i~1~-1_, _..._, _i~N~-1_ = *:zero_based_indices*( )
 
 

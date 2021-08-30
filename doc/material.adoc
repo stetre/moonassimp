@@ -6,74 +6,64 @@
 
 NOTE: All these functions return _nil_ if the given property is not defined for the material.
 
-* _name_ = *:name*( ) +
+* _name_ = _material_++:++*name*( ) +
 
-* _boolean_ = *:twosided*( ) +
+* _boolean_ = _material_++:++*twosided*( ) +
 
-* <<shadingmode, _shadingmode_>> = *:shading*( ) +
+* <<shadingmode, _shadingmode_>> = _material_++:++*shading*( ) +
 
-* _boolean_ = *:wireframe*( ) +
+* _boolean_ = _material_++:++*wireframe*( ) +
 
-* <<blendmode, _blendmode_>> = *:blend*( ) +
+* <<blendmode, _blendmode_>> = _material_++:++*blend*( ) +
 
-* _number_ = *:opacity*( ) +
-_number_ = *:bumpscaling*( ) +
-_number_ = *:shininess*( ) +
-_number_ = *:shinpercent*( ) +
-_number_ = *:reflectivity*( ) +
-_number_ = *:refraction*( ) +
+* _float_ = _material_++:++*opacity*( ) +
+_float_ = _material_++:++*bumpscaling*( ) +
+_float_ = _material_++:++*shininess*( ) +
+_float_ = _material_++:++*shinpercent*( ) +
+_float_ = _material_++:++*reflectivity*( ) +
+_float_ = _material_++:++*refraction*( ) +
 
-* _r_, _g_, _b_, _a_ = *:color_ambient*( ) +
-_r_, _g_, _b_, _a_ = *:color_diffuse*( ) +
-_r_, _g_, _b_, _a_ = *:color_emissive*( ) +
-_r_, _g_, _b_, _a_ = *:color_reflective*( ) +
-_r_, _g_, _b_, _a_ = *:color_specular*( ) +
-_r_, _g_, _b_, _a_ = *:color_transparent*( ) +
+* _r_, _g_, _b_, _a_ = _material_++:++*color_ambient*( ) +
+_r_, _g_, _b_, _a_ = _material_++:++*color_diffuse*( ) +
+_r_, _g_, _b_, _a_ = _material_++:++*color_emissive*( ) +
+_r_, _g_, _b_, _a_ = _material_++:++*color_reflective*( ) +
+_r_, _g_, _b_, _a_ = _material_++:++*color_specular*( ) +
+_r_, _g_, _b_, _a_ = _material_++:++*color_transparent*( ) +
 
-* _string_ = *:global_bg_image*( ) +
+* _string_ = _material_++:++*global_bg_image*( ) +
 
 
 '''
 
 [[material.texture_count]]
-* _n_ = *:texture_count*(<<texturetype, _texturetype_>>) +
+* _n_ = _material_++:++*texture_count*(<<texturetype, _texturetype_>>) +
 [small]#Returns the number of textures of the given type.#
 
-The following methods refer to the i-th texture of the given texture type,
+The following methods refer to the _i_-th texture of the given texture type,
 where _i_ must be in the range 1 .. <<material.texture_count, texture_count>>(&nbsp;).
 
-* _string_ = *:texture_path*(<<texturetype, _texturetype_>>, _i_)
-
-* _channel_ = *:texture_channel*(<<texturetype, _texturetype_>>, _i_)
-
-* <<textureop, _op_>> = *:texture_op*(<<texturetype, _texturetype_>>, _i_)
-
-* <<texturemapping, _mapping_>> = *:texture_mapping*(<<texturetype, _texturetype_>>, _i_)
-
-* _number_ = *:texture_blend*(<<texturetype, _texturetype_>>, _i_)
-
-* <<texturemapmode, _mapmode_u_>>, <<texturemapmode, _mapmode_v_>> 
-= *:texture_mapmode*(<<texturetype, _texturetype_>>, _i_)
-
-* _x_, _y_, _z_ = *:texture_axis*(<<texturetype, _texturetype_>>, _i_)
-
-* _x_, _y_ = *:texture_translation*(<<texturetype, _texturetype_>>, _i_)
-
-* _x_, _y_ = *:texture_scaling*(<<texturetype, _texturetype_>>, _i_)
-
-* _radians_ = *:texture_rotation*(<<texturetype, _texturetype_>>, _i_)
-
-* <<textureflags, _textureflags_>> = *:texture_flags*(<<texturetype, _texturetype_>>, _i_)
+* _string_ = _material_++:++*texture_path*(<<texturetype, _texturetype_>>, _i_) +
+_channel_ = _material_++:++*texture_channel*(<<texturetype, _texturetype_>>, _i_) +
+<<textureop, _op_>> = _material_++:++*texture_op*(<<texturetype, _texturetype_>>, _i_) +
+<<texturemapping, _mapping_>> = _material_++:++*texture_mapping*(<<texturetype, _texturetype_>>, _i_) +
+_float_ = _material_++:++*texture_blend*(<<texturetype, _texturetype_>>, _i_) +
+<<texturemapmode, _mapmode_u_>>, <<texturemapmode, _mapmode_v_>> 
+= _material_++:++*texture_mapmode*(<<texturetype, _texturetype_>>, _i_) +
+_x_, _y_, _z_ = _material_++:++*texture_axis*(<<texturetype, _texturetype_>>, _i_) +
+_x_, _y_ = _material_++:++*texture_translation*(<<texturetype, _texturetype_>>, _i_) +
+_x_, _y_ = _material_++:++*texture_scaling*(<<texturetype, _texturetype_>>, _i_) +
+_radians_ = _material_++:++*texture_rotation*(<<texturetype, _texturetype_>>, _i_) +
+<<textureflags, _textureflags_>> = _material_++:++*texture_flags*(<<texturetype, _texturetype_>>, _i_)
 
 '''
 
 The following functions provide a more compact way to retrieve the material textures.
 
-* _counts_ =*:all_texture_counts*( ) +
+* _counts_ =_material_++:++*all_texture_counts*( ) +
 [small]#Returns a table with the counts for all <<texturetype, _texturetype_>>s
 (e.g. _counts.diffuse_ = 2 if there are 2 '_diffuse_' textures).#
 
-* _textures_ =*:all_textures*([<<texturetype, _texturetype_>>]) +
+* _textures_ =_material_++:++*all_textures*([<<texturetype, _texturetype_>>]) +
 [small]#Returns a table with the properties of all the material textures. +
 If the optional _texturetype_ parameter is given, only the textures of that type are listed. +
 Each entry of the table describes a texture, and has the following format
@@ -85,12 +75,12 @@ _path_: string, +
 _channel_: integer (1-based, opt.), +
 _op_: <<textureop, _textureop_>> (opt.), +
 _mapping_: <<texturemapping, _texturemapping_>> (opt.), +
-_blend_: number (opt.), +
+_blend_: float (opt.), +
 _mapmode_u_: <<texturemapmode, _texturemapmode_>> (opt.), +
 _mapmode_v_: <<texturemapmode, _texturemapmode_>> (opt.), +
-_axis_: {number, number, number} (opt.), +
-_translation_: {number, number} (opt.), +
-_scaling_: {number, number} (opt.), +
-_rotation_: number (radians, opt.), +
+_axis_: {float, float, float} (opt.), +
+_translation_: {float, float} (opt.), +
+_scaling_: {float, float} (opt.), +
+_rotation_: float (radians, opt.), +
 }.#
 

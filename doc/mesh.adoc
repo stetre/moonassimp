@@ -5,100 +5,96 @@
 
 [small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_mesh.html++[aiMesh].#
 
-* _name_ = *:name*( )
+* _name_ = _mesh_++:++*name*( )
 
-* <<primtypes, _primtypes_>> = *:primitive_types*( )
+* <<primtypes, _primtypes_>> = _mesh_++:++*primitive_types*( )
 
-* _boolean_ = *:has_positions*( ) +
-_boolean_ = *:has_normals*( ) +
-_boolean_ = *:has_tangents*( ) +
-_boolean_ = *:has_faces*( ) +
-_boolean_ = *:has_bones*( ) +
-_boolean_ = *:has_anim_meshes*( ) +
-_boolean_ = *:has_colors*(_channel_) +
-_boolean_ = *:has_texture_coords*(_channel_)
+* _boolean_ = _mesh_++:++*has_positions*( ) +
+_boolean_ = _mesh_++:++*has_normals*( ) +
+_boolean_ = _mesh_++:++*has_tangents*( ) +
+_boolean_ = _mesh_++:++*has_faces*( ) +
+_boolean_ = _mesh_++:++*has_bones*( ) +
+_boolean_ = _mesh_++:++*has_anim_meshes*( ) +
+_boolean_ = _mesh_++:++*has_colors*(_channel_) +
+_boolean_ = _mesh_++:++*has_texture_coords*(_channel_)
 
 [[mesh.num_xxx]]
-* _n_ = *:num_vertices*( ) +
-_n_ = *:num_faces*( ) +
-_n_ = *:num_bones*( ) +
-_n_ = *:num_anim_meshes*( ) +
-_n_ = *:num_color_channels*( ) +
-_n_ = *:num_texture_coords_channels*( )
+* _n_ = _mesh_++:++*num_vertices*( ) +
+_n_ = _mesh_++:++*num_faces*( ) +
+_n_ = _mesh_++:++*num_bones*( ) +
+_n_ = _mesh_++:++*num_anim_meshes*( ) +
+_n_ = _mesh_++:++*num_color_channels*( ) +
+_n_ = _mesh_++:++*num_texture_coords_channels*( )
 
 [[num_texture_coords_components]]
-* _n_ = *:num_texture_coords_components*(_channel_) +
+* _n_ = _mesh_++:++*num_texture_coords_components*(_channel_) +
 
-* _x_, _y_, _z_ = *:position*(_i_) +
-_x_, _y_, _z_ = *:normal*(_i_) +
-_x_, _y_, _z_ = *:tangent*(_i_) +
-_x_, _y_, _z_ = *:bitangent*(_i_) +
+* _x_, _y_, _z_ = _mesh_++:++*position*(_i_) +
+_x_, _y_, _z_ = _mesh_++:++*normal*(_i_) +
+_x_, _y_, _z_ = _mesh_++:++*tangent*(_i_) +
+_x_, _y_, _z_ = _mesh_++:++*bitangent*(_i_) +
 [small]#Return the components of the affected 3D vector for the vertex indexed by _i_,
 where _i_ = 1 .. <<mesh.num_xxx, num_vertices>>(&nbsp;).#
 
-* _r_, _g_, _b_, _a_ = *:color*(_channel_, _i_) +
+* _r_, _g_, _b_, _a_ = _mesh_++:++*color*(_channel_, _i_) +
 [small]#Returns the _channel_ color components for the vertex indexed by _i_,
 where _channel_ = 1 .. <<mesh.num_xxx, num_color_channels>>(&nbsp;) 
 and _i_ = 1 .. <<mesh.num_xxx, num_vertices>>(&nbsp;).#
 
-* _u_, _v_, _w_ = *:texture_coords*(_channel_, _i_) +
+* _u_, _v_, _w_ = _mesh_++:++*texture_coords*(_channel_, _i_) +
 [small]#Returns the _channel_ texture components for the vertex indexed by _i_,
 where _channel_ = 1 .. <<mesh.num_xxx, num_texture_coords_channels>> 
 and _i_ = 1 .. <<mesh.num_xxx, num_vertices>>(&nbsp;). 
 Only <<num_texture_coords_components, num_texture_coords_components>>(_channel_) are returned.#
 
-* <<material, _material_>> = *:material*( ) +
+* <<material, _material_>> = _mesh_++:++*material*( ) +
 [small]#Returns the mesh's material.#
 
-* <<face, _face_>> = *:face*(_i_) +
+* <<face, _face_>> = _mesh_++:++*face*(_i_) +
 [small]#Returns the i-th face of the mesh, 
 where _i_ = 1 .. <<mesh.num_xxx, num_faces>>(&nbsp;).#
 
-* <<bone, _bone_>> = *:bone*(_i_) +
+* <<bone, _bone_>> = _mesh_++:++*bone*(_i_) +
 [small]#Returns the i-th bone of the mesh, 
 where _i_ = 1 .. <<mesh.num_xxx, num_bones>>(&nbsp;).#
 
-* <<animmesh, _animmesh_>> = *:anim_mesh*(_i_) +
+* <<animmesh, _animmesh_>> = _mesh_++:++*anim_mesh*(_i_) +
 [small]#Returns the i-th anim mesh of the mesh, 
 where _i_ = 1 .. <<mesh.num_xxx, num_anim_mesh>>(&nbsp;).#
 
-* {<<face, _face_>>} = *:faces*( ) +
-[small]#Returns the list of the faces for this mesh.#
+* {<<face, _face_>>} = _mesh_++:++*faces*( ) +
+{<<bone, _bone_>>} = _mesh_++:++*bones*( ) +
+{<<animmesh, _animmesh_>>} = _mesh_++:++*anim_meshes*( ) +
+[small]#Return the list of the faces, bones, or anim meshes for this mesh.#
 
-* {<<bone, _bone_>>} = *:bones*( ) +
-[small]#Returns the list of the bones for this mesh.# 
-
-* {<<animmesh, _animmesh_>>} = *:anim_meshes*( ) +
-[small]#Returns the list of the anim meshes for this mesh.# 
 
 '''
 
 The following functions provide a more compact way to retrieve the mesh's vertex attributes
 and face indices.
 
-* _positions_ = *:all_positions*( ) +
-* _normals_ = *:all_normals*( ) +
-* _tangents_ = *:all_tangents*( ) +
-* _bitangents_ = *:all_bitangents*( ) +
+* _positions_ = _mesh_++:++*all_positions*( ) +
+_normals_ = _mesh_++:++*all_normals*( ) +
+_tangents_ = _mesh_++:++*all_tangents*( ) +
+_bitangents_ = _mesh_++:++*all_bitangents*( ) +
 [small]#Each of these functions returns _nil_ if the mesh does not have the requested vertex attribute
 (position, normal, tangent, or bitangent),
-otherwise it returns a table of <<mesh.num_xxx, num_vertices>> 3D vectors (arrays of 3 numbers).#
+otherwise it returns a table of <<mesh.num_xxx, num_vertices>> 3D vectors (arrays of 3 floats).#
 
-* _coords_ = *:all_texture_coords*( ) +
-[small]#Returns a table of <<mesh.num_xxx, num_texture_coords_channels>> tables of <<mesh.num_xxx, num_vertices>> texture coordinates. +
-More precisely, _coords[i]_ is a table containing all the texture coordinates in the _i-th_ channel,
-where _coords[i][k]_ are the texture coordinates for the _k-th_ vertex (coordinates are represented as
-a 1D, 2D or 3D vectors, i.e. an arrays of 1, 2, or 3 numbers). +
-Note that if the mesh has no textures coordinates channels, then an empty table is returned.#
+* _coords_ = _mesh_++:++*all_texture_coords*( ) +
+[small]#Returns a table of <<mesh.num_xxx, num_texture_coords_channels>> tables, each containing <<mesh.num_xxx, num_vertices>> texture coordinates. +
+More precisely, _coords[i]_ is a table containing all the texture coordinates in the _i_-th channel,
+so that _coords[i][k]_ are the texture coordinates for the _k_-th vertex in that channel. Texture coordinates are represented as 1D, 2D or 3D vectors, i.e. arrays of 1, 2, or 3 floats. +
+If the mesh has no textures coordinates channels, then an empty table is returned.#
 
-* _colors_ = *:all_colors*( ) +
-[small]#Returns a table of <<mesh.num_xxx, num_color_channels>> tables of <<mesh.num_xxx, num_vertices>> colors). +
-More precisely, _colors[i]_ is a table containing all the colors in the _i-th_ channel,
-where _colors[i][k]_ is the color for the _k-th_ vertex (a color is represented as
-as an array of 4 numbers, RGBA). +
-Note that if the mesh has no colors channels, then an empty table is returned.#
+* _colors_ = _mesh_++:++*all_colors*( ) +
+[small]#Returns a table of <<mesh.num_xxx, num_color_channels>> tables, each containing <<mesh.num_xxx, num_vertices>> colors. +
+More precisely, _colors[i]_ is a table containing all the colors in the _i_-th channel,
+so that _colors[i][k]_ is the color for the _k_-th vertex in that channel. Colors are represented a
+arrays of 4 floats (normalized RGBA components). +
+If the mesh has no colors channels, then an empty table is returned.#
 
-* _indices_ = *:all_indices*([_zerobased_=_false_]) +
+* _indices_ = _mesh_++:++*all_indices*([_zerobased_=_false_]) +
 [small]#Returns a table of <<mesh.num_xxx, num_faces>> tables of integer indices, identifying
 the vertices that compose each face. +
 If the optional _zerobased_ parameter (a boolean) is _true_, then the returned indices

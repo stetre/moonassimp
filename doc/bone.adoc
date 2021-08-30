@@ -4,22 +4,22 @@
 
 [small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_bone.html++[aiBone].#
 
-* _name_ = *:name*( )
+* _name_ = _bone_++:++*name*( )
 
 [[bone.num_weights]]
-* _n_ = *:num_weights*( )
+* _n_ = _bone_++:++*num_weights*( )
 
-* _t_ = *:weights*( ) +
-[small]#Returns a (possibly sparse) array _t_, where _t[v]_ is the weight of the vertex
-indexed by _v_ in the <<mesh, _mesh_>>'s list of vertices (_t[v]_=_nil_ if the vertex 
-is not part of the bone).#
+* _t_ = _bone_++:++*weights*( ) +
+[small]#Returns a table _t_, where _t[i]_ is the weight of the _i_-th vertex (its 1-based index
+in the <<mesh, _mesh_>>'s list of vertices), or _nil_ if the vertex is not part of the bone. +
+(Note that the returned table is likely to contain holes, so do not iterate with ipairs().)#
 
-* _t_ = *:ordered_weights*( ) +
+* _t_ = _bone_++:++*ordered_weights*( ) +
 [small]#Returns an array _t_ of <<bone.num_weights, num_weights>>(&nbsp;) tables, 
 each having two elements: 
-_t[i].vertex_ and _t[i].weight_, denoting the index of a vertex and its weight, respectively.
+_t[i].vertex_ and _t[i].weight_, denoting respectively the 1-based index of a vertex and its weight. 
 The vertices are in the same order as in the underlying aiBone structure#
 
-* _a~11~_, _a~12~_, _..._, _a~44~_ = *:offset_matrix*( ) +
+* _a~11~_, _a~12~_, _..._, _a~44~_ = _bone_++:++*offset_matrix*( ) +
 [small]#Returns the elements of the offset matrix, in row-major order.#
 

@@ -891,12 +891,10 @@ of the <a href="https://github.com/stetre/moonassimp">official repository</a> on
 <a href="http://sir-kimmi.de/assimp/lib_html/cimport_8h.html">cimport.h</a>.</span></p>
 </div>
 <div class="paragraph">
-<p>Albeit presenting an object-oriented interface, MoonAssimp actually binds to the
+<p>MoonAssimp presents an object-oriented interface but it actually binds to the
 Assimp C API, so loading a scene with MoonAssimp in Lua is very similar to loading
-a scene with Assimp in C.</p>
-</div>
-<div class="paragraph">
-<p>For example, to load a scene from a 3D model file named 'mymodel.obj', one could
+a scene with Assimp in C.
+For example, to load a scene from a 3D model file named 'mymodel.obj', one could
 do the following:</p>
 </div>
 <div class="listingblock">
@@ -909,23 +907,33 @@ do the following:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If the file is loaded with success, the <a href="#import_file">ai.import_file</a>( ) function in
-the above example returns an instance of the <a href="#scene">scene</a> object type. The contents
-of the scene can then be retrieved with the methods of the scene object and of the
-contained objects.</p>
+<p>If the file is loaded with success then <a href="#import_file">ai.import_file</a>( )
+returns a <a href="#scene">scene</a> object. The contents of the scene can then be retrieved with the object&#8217;s methods and with those of the objects it contains.</p>
 </div>
 <div class="paragraph">
-<p>The scene is garbage collected at exit, together with the contained objects, so the
-<a href="#release_import">ai.release_import</a>(&nbsp;) function need not be called unless one wants
+<p>At exit, the scene object is garbage collected together with the contained objects, so the
+<a href="#release_import">ai.release_import</a>(&nbsp;) function need not be called, unless one wants
 to release memory when the scene is no more needed and the application is not exiting.</p>
 </div>
 <div class="paragraph">
 <p>Objects' methods are described in the <a href="#methods">'Methods'</a> section, while herafter are described
 the general functions provided in the <strong>ai</strong> table for importing models, logging, etc.
-These are bindings to Assimp C API functions contained in the
-<a href="http://sir-kimmi.de/assimp/lib_html/cimport_8h.html">cimport.h</a> file, and typically
-preserve their semantics (notice that not all Assimp functions are used or exposed by
-MoonAssimp, though).</p>
+These are bindings to functions of the Assimp C API (defined in
+<a href="http://sir-kimmi.de/assimp/lib_html/cimport_8h.html">cimport.h</a>), and usually
+preserve their semantics. Not all Assimp functions are used or exposed by MoonAssimp.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+In this document the terms <em>float</em> and <em>integer</em> are used to denote Lua values of
+type <em>number</em> that are, respectively, floating-point numbers or integers.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_scene_import_functions">Scene import functions</h3>
@@ -962,7 +970,7 @@ the memory (in bytes) used by the various items contained in the scene.</span></
 <ul>
 <li>
 <p><strong>ai.release_import</strong>(<a href="#scene"><em>scene</em></a>)<br>
-<span class="small">Note that this invalidates all the references to imported objects.</span></p>
+<span class="small">This also invalidates all the references to imported objects.</span></p>
 </li>
 </ul>
 </div>
@@ -1070,17 +1078,17 @@ If <em>logstream</em> is '<em>stdout</em>' or '<em>stderr</em>', the <em>arg</em
 <div class="ulist">
 <ul>
 <li>
-<p><em>boolean</em> = <strong>:has_animations</strong>( )<br>
-<em>boolean</em> = <strong>:has_cameras</strong>( )<br>
-<em>boolean</em> = <strong>:has_lights</strong>( )<br>
-<em>boolean</em> = <strong>:has_materials</strong>( )<br>
-<em>boolean</em> = <strong>:has_meshes</strong>( )<br>
-<em>boolean</em> = <strong>:has_textures</strong>( )<br>
-<span class="small">Returns <em>true</em> if <em>scene</em> contains one or more objects of the given type,
+<p><em>boolean</em> = <em>scene</em>:<strong>has_animations</strong>( )<br>
+<em>boolean</em> = <em>scene</em>:<strong>has_cameras</strong>( )<br>
+<em>boolean</em> = <em>scene</em>:<strong>has_lights</strong>( )<br>
+<em>boolean</em> = <em>scene</em>:<strong>has_materials</strong>( )<br>
+<em>boolean</em> = <em>scene</em>:<strong>has_meshes</strong>( )<br>
+<em>boolean</em> = <em>scene</em>:<strong>has_textures</strong>( )<br>
+<span class="small">Return <em>true</em> if <em>scene</em> contains one or more objects of the given type,
 <em>false</em> otherwise.</span></p>
 </li>
 <li>
-<p><a href="#sceneflags"><em>sceneflags</em></a> = <strong>:flags</strong>( )<br>
+<p><a href="#sceneflags"><em>sceneflags</em></a> = <em>scene</em>:<strong>flags</strong>( )<br>
 <span class="small">Returns the <em>scene</em>'s flags.</span></p>
 </li>
 </ul>
@@ -1088,35 +1096,35 @@ If <em>logstream</em> is '<em>stdout</em>' or '<em>stderr</em>', the <em>arg</em
 <div id="num_xxx" class="ulist">
 <ul>
 <li>
-<p><em>n</em> = <strong>:num_animations</strong>( )<br>
-<em>n</em> = <strong>:num_cameras</strong>( )<br>
-<em>n</em> = <strong>:num_lights</strong>( )<br>
-<em>n</em> = <strong>:num_materials</strong>( )<br>
-<em>n</em> = <strong>:num_meshes</strong>( )<br>
-<em>n</em> = <strong>:num_textures</strong>( )<br>
-<span class="small">Returns the number of objects, contained in <em>scene</em>, of the given type.</span></p>
+<p><em>n</em> = <em>scene</em>:<strong>num_animations</strong>( )<br>
+<em>n</em> = <em>scene</em>:<strong>num_cameras</strong>( )<br>
+<em>n</em> = <em>scene</em>:<strong>num_lights</strong>( )<br>
+<em>n</em> = <em>scene</em>:<strong>num_materials</strong>( )<br>
+<em>n</em> = <em>scene</em>:<strong>num_meshes</strong>( )<br>
+<em>n</em> = <em>scene</em>:<strong>num_textures</strong>( )<br>
+<span class="small">Return the number of objects of the given type that are contained in <em>scene</em>.</span></p>
 </li>
 <li>
-<p><a href="#node"><em>node</em></a> = <strong>:root_node</strong>( )<br>
+<p><a href="#node"><em>node</em></a> = <em>scene</em>:<strong>root_node</strong>( )<br>
 <span class="small">Returns the root node of the <em>scene</em>.</span></p>
 </li>
 <li>
-<p><a href="#animation"><em>animation</em></a> = <strong>:animation</strong>(<em>i</em>)<br>
-<a href="#camera"><em>camera</em></a> = <strong>:camera</strong>(<em>i</em>)<br>
-<a href="#light"><em>light</em></a> = <strong>:light</strong>(<em>i</em>)<br>
-<a href="#material"><em>material</em></a> = <strong>:material</strong>(<em>i</em>)<br>
-<a href="#mesh"><em>mesh</em></a> = <strong>:mesh</strong>(<em>i</em>)<br>
-<a href="#texture"><em>texture</em></a> = <strong>:texture</strong>(<em>i</em>)<br>
-<span class="small">Each of these methods the i-th object of the given type (<em>i</em> = 1 .. <a href="#num_xxx">num_xxx</a>( )).</span></p>
+<p><a href="#animation"><em>animation</em></a> = <em>scene</em>:<strong>animation</strong>(<em>i</em>)<br>
+<a href="#camera"><em>camera</em></a> = <em>scene</em>:<strong>camera</strong>(<em>i</em>)<br>
+<a href="#light"><em>light</em></a> = <em>scene</em>:<strong>light</strong>(<em>i</em>)<br>
+<a href="#material"><em>material</em></a> = <em>scene</em>:<strong>material</strong>(<em>i</em>)<br>
+<a href="#mesh"><em>mesh</em></a> = <em>scene</em>:<strong>mesh</strong>(<em>i</em>)<br>
+<a href="#texture"><em>texture</em></a> = <em>scene</em>:<strong>texture</strong>(<em>i</em>)<br>
+<span class="small">Each of these methods the <em>i</em>-th object of the given type (<em>i</em> = 1 .. <a href="#num_xxx">num_xxx</a>( )).</span></p>
 </li>
 <li>
-<p>{<a href="#animation"><em>animation</em></a>} = <strong>:animations</strong>( )<br>
-{<a href="#camera"><em>camera</em></a>} = <strong>:cameras</strong>( )<br>
-{<a href="#light"><em>light</em></a>} = <strong>:lights</strong>( )<br>
-{<a href="#material"><em>material</em></a>} = <strong>:materials</strong>( )<br>
-{<a href="#mesh"><em>mesh</em></a>} = <strong>:meshes</strong>( )<br>
-{<a href="#texture"><em>texture</em></a>} = <strong>:textures</strong>( )<br>
-<span class="small">Each of these methods returns a table containing the objects of the given type.</span></p>
+<p>{<a href="#animation"><em>animation</em></a>} = <em>scene</em>:<strong>animations</strong>( )<br>
+{<a href="#camera"><em>camera</em></a>} = <em>scene</em>:<strong>cameras</strong>( )<br>
+{<a href="#light"><em>light</em></a>} = <em>scene</em>:<strong>lights</strong>( )<br>
+{<a href="#material"><em>material</em></a>} = <em>scene</em>:<strong>materials</strong>( )<br>
+{<a href="#mesh"><em>mesh</em></a>} = <em>scene</em>:<strong>meshes</strong>( )<br>
+{<a href="#texture"><em>texture</em></a>} = <em>scene</em>:<strong>textures</strong>( )<br>
+<span class="small">Each of these methods returns a table with the objects of the given type that are contained in <em>scene</em>.</span></p>
 </li>
 </ul>
 </div>
@@ -1129,39 +1137,39 @@ If <em>logstream</em> is '<em>stdout</em>' or '<em>stderr</em>', the <em>arg</em
 <div class="ulist">
 <ul>
 <li>
-<p><em>name</em> = <strong>:name</strong>( )</p>
+<p><em>name</em> = <em>node</em>:<strong>name</strong>( )</p>
 </li>
 </ul>
 </div>
 <div id="node.num_xxx" class="ulist">
 <ul>
 <li>
-<p><em>n</em> = <strong>:num_children</strong>( )<br>
-<em>n</em> = <strong>:num_meshes</strong>( )</p>
+<p><em>n</em> = <em>node</em>:<strong>num_children</strong>( )<br>
+<em>n</em> = <em>node</em>:<strong>num_meshes</strong>( )</p>
 </li>
 <li>
-<p><em>node</em> = <strong>:child</strong>(<em>i</em>)<br>
-<span class="small">Returns the i-th child node of this node (<em>i</em> = 1 .. <a href="#node.num_xxx">num_children</a>( )).</span></p>
+<p><em>node</em> = <em>node</em>:<strong>child</strong>(<em>i</em>)<br>
+<span class="small">Returns the <em>i</em>-th child node of this node (<em>i</em> = 1 .. <a href="#node.num_xxx">num_children</a>( )).</span></p>
 </li>
 <li>
-<p>{<em>node</em>} = <strong>:children</strong>( )<br>
+<p>{<em>node</em>} = <em>node</em>:<strong>children</strong>( )<br>
 <span class="small">Returns a table containing the children of this node.</span></p>
 </li>
 <li>
-<p><a href="#mesh"><em>mesh</em></a> = <strong>:mesh</strong>(<em>i</em>)<br>
-<span class="small">Returns the node&#8217;s i-th <a href="#mesh"><em>mesh</em></a> (<em>i</em> = 1 .. <a href="#node.num_xxx">num_meshes</a>( )).</span></p>
+<p><a href="#mesh"><em>mesh</em></a> = <em>node</em>:<strong>mesh</strong>(<em>i</em>)<br>
+<span class="small">Returns the node&#8217;s <em>i</em>-th <a href="#mesh"><em>mesh</em></a> (<em>i</em> = 1 .. <a href="#node.num_xxx">num_meshes</a>( )).</span></p>
 </li>
 <li>
-<p>{<a href="#mesh"><em>mesh</em></a>} = <strong>:meshes</strong>( )<br>
+<p>{<a href="#mesh"><em>mesh</em></a>} = <em>node</em>:<strong>meshes</strong>( )<br>
 <span class="small">Returns a table containing this node&#8217;s meshes.<br>
 Note that this is a subset of the <a href="#scene">scene</a>'s meshes list.</span></p>
 </li>
 <li>
-<p><em>node</em> = <strong>:parent</strong>( )<br>
+<p><em>node</em> = <em>node</em>:<strong>parent</strong>( )<br>
 <span class="small">Returns the parent node for this node, or <em>nil</em> if this node is the root.</span></p>
 </li>
 <li>
-<p><em>a<sub>11</sub></em>, <em>a<sub>12</sub></em>, <em>&#8230;&#8203;</em>, <em>a<sub>44</sub></em> = <strong>:transformation</strong>( )<br>
+<p><em>a<sub>11</sub></em>, <em>a<sub>12</sub></em>, <em>&#8230;&#8203;</em>, <em>a<sub>44</sub></em> = <em>node</em>:<strong>transformation</strong>( )<br>
 <span class="small">Returns the elements of the transformation matrix, in row-major order.</span></p>
 </li>
 </ul>
@@ -1175,91 +1183,85 @@ Note that this is a subset of the <a href="#scene">scene</a>'s meshes list.</spa
 <div class="ulist">
 <ul>
 <li>
-<p><em>name</em> = <strong>:name</strong>( )</p>
+<p><em>name</em> = <em>mesh</em>:<strong>name</strong>( )</p>
 </li>
 <li>
-<p><a href="#primtypes"><em>primtypes</em></a> = <strong>:primitive_types</strong>( )</p>
+<p><a href="#primtypes"><em>primtypes</em></a> = <em>mesh</em>:<strong>primitive_types</strong>( )</p>
 </li>
 <li>
-<p><em>boolean</em> = <strong>:has_positions</strong>( )<br>
-<em>boolean</em> = <strong>:has_normals</strong>( )<br>
-<em>boolean</em> = <strong>:has_tangents</strong>( )<br>
-<em>boolean</em> = <strong>:has_faces</strong>( )<br>
-<em>boolean</em> = <strong>:has_bones</strong>( )<br>
-<em>boolean</em> = <strong>:has_anim_meshes</strong>( )<br>
-<em>boolean</em> = <strong>:has_colors</strong>(<em>channel</em>)<br>
-<em>boolean</em> = <strong>:has_texture_coords</strong>(<em>channel</em>)</p>
+<p><em>boolean</em> = <em>mesh</em>:<strong>has_positions</strong>( )<br>
+<em>boolean</em> = <em>mesh</em>:<strong>has_normals</strong>( )<br>
+<em>boolean</em> = <em>mesh</em>:<strong>has_tangents</strong>( )<br>
+<em>boolean</em> = <em>mesh</em>:<strong>has_faces</strong>( )<br>
+<em>boolean</em> = <em>mesh</em>:<strong>has_bones</strong>( )<br>
+<em>boolean</em> = <em>mesh</em>:<strong>has_anim_meshes</strong>( )<br>
+<em>boolean</em> = <em>mesh</em>:<strong>has_colors</strong>(<em>channel</em>)<br>
+<em>boolean</em> = <em>mesh</em>:<strong>has_texture_coords</strong>(<em>channel</em>)</p>
 </li>
 </ul>
 </div>
 <div id="mesh.num_xxx" class="ulist">
 <ul>
 <li>
-<p><em>n</em> = <strong>:num_vertices</strong>( )<br>
-<em>n</em> = <strong>:num_faces</strong>( )<br>
-<em>n</em> = <strong>:num_bones</strong>( )<br>
-<em>n</em> = <strong>:num_anim_meshes</strong>( )<br>
-<em>n</em> = <strong>:num_color_channels</strong>( )<br>
-<em>n</em> = <strong>:num_texture_coords_channels</strong>( )</p>
+<p><em>n</em> = <em>mesh</em>:<strong>num_vertices</strong>( )<br>
+<em>n</em> = <em>mesh</em>:<strong>num_faces</strong>( )<br>
+<em>n</em> = <em>mesh</em>:<strong>num_bones</strong>( )<br>
+<em>n</em> = <em>mesh</em>:<strong>num_anim_meshes</strong>( )<br>
+<em>n</em> = <em>mesh</em>:<strong>num_color_channels</strong>( )<br>
+<em>n</em> = <em>mesh</em>:<strong>num_texture_coords_channels</strong>( )</p>
 </li>
 </ul>
 </div>
 <div id="num_texture_coords_components" class="ulist">
 <ul>
 <li>
-<p><em>n</em> = <strong>:num_texture_coords_components</strong>(<em>channel</em>)<br></p>
+<p><em>n</em> = <em>mesh</em>:<strong>num_texture_coords_components</strong>(<em>channel</em>)<br></p>
 </li>
 <li>
-<p><em>x</em>, <em>y</em>, <em>z</em> = <strong>:position</strong>(<em>i</em>)<br>
-<em>x</em>, <em>y</em>, <em>z</em> = <strong>:normal</strong>(<em>i</em>)<br>
-<em>x</em>, <em>y</em>, <em>z</em> = <strong>:tangent</strong>(<em>i</em>)<br>
-<em>x</em>, <em>y</em>, <em>z</em> = <strong>:bitangent</strong>(<em>i</em>)<br>
+<p><em>x</em>, <em>y</em>, <em>z</em> = <em>mesh</em>:<strong>position</strong>(<em>i</em>)<br>
+<em>x</em>, <em>y</em>, <em>z</em> = <em>mesh</em>:<strong>normal</strong>(<em>i</em>)<br>
+<em>x</em>, <em>y</em>, <em>z</em> = <em>mesh</em>:<strong>tangent</strong>(<em>i</em>)<br>
+<em>x</em>, <em>y</em>, <em>z</em> = <em>mesh</em>:<strong>bitangent</strong>(<em>i</em>)<br>
 <span class="small">Return the components of the affected 3D vector for the vertex indexed by <em>i</em>,
 where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_vertices</a>(&nbsp;).</span></p>
 </li>
 <li>
-<p><em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <strong>:color</strong>(<em>channel</em>, <em>i</em>)<br>
+<p><em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <em>mesh</em>:<strong>color</strong>(<em>channel</em>, <em>i</em>)<br>
 <span class="small">Returns the <em>channel</em> color components for the vertex indexed by <em>i</em>,
 where <em>channel</em> = 1 .. <a href="#mesh.num_xxx">num_color_channels</a>(&nbsp;)
 and <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_vertices</a>(&nbsp;).</span></p>
 </li>
 <li>
-<p><em>u</em>, <em>v</em>, <em>w</em> = <strong>:texture_coords</strong>(<em>channel</em>, <em>i</em>)<br>
+<p><em>u</em>, <em>v</em>, <em>w</em> = <em>mesh</em>:<strong>texture_coords</strong>(<em>channel</em>, <em>i</em>)<br>
 <span class="small">Returns the <em>channel</em> texture components for the vertex indexed by <em>i</em>,
 where <em>channel</em> = 1 .. <a href="#mesh.num_xxx">num_texture_coords_channels</a>
 and <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_vertices</a>(&nbsp;).
 Only <a href="#num_texture_coords_components">num_texture_coords_components</a>(<em>channel</em>) are returned.</span></p>
 </li>
 <li>
-<p><a href="#material"><em>material</em></a> = <strong>:material</strong>( )<br>
+<p><a href="#material"><em>material</em></a> = <em>mesh</em>:<strong>material</strong>( )<br>
 <span class="small">Returns the mesh&#8217;s material.</span></p>
 </li>
 <li>
-<p><a href="#face"><em>face</em></a> = <strong>:face</strong>(<em>i</em>)<br>
+<p><a href="#face"><em>face</em></a> = <em>mesh</em>:<strong>face</strong>(<em>i</em>)<br>
 <span class="small">Returns the i-th face of the mesh,
 where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_faces</a>(&nbsp;).</span></p>
 </li>
 <li>
-<p><a href="#bone"><em>bone</em></a> = <strong>:bone</strong>(<em>i</em>)<br>
+<p><a href="#bone"><em>bone</em></a> = <em>mesh</em>:<strong>bone</strong>(<em>i</em>)<br>
 <span class="small">Returns the i-th bone of the mesh,
 where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_bones</a>(&nbsp;).</span></p>
 </li>
 <li>
-<p><a href="#animmesh"><em>animmesh</em></a> = <strong>:anim_mesh</strong>(<em>i</em>)<br>
+<p><a href="#animmesh"><em>animmesh</em></a> = <em>mesh</em>:<strong>anim_mesh</strong>(<em>i</em>)<br>
 <span class="small">Returns the i-th anim mesh of the mesh,
 where <em>i</em> = 1 .. <a href="#mesh.num_xxx">num_anim_mesh</a>(&nbsp;).</span></p>
 </li>
 <li>
-<p>{<a href="#face"><em>face</em></a>} = <strong>:faces</strong>( )<br>
-<span class="small">Returns the list of the faces for this mesh.</span></p>
-</li>
-<li>
-<p>{<a href="#bone"><em>bone</em></a>} = <strong>:bones</strong>( )<br>
-<span class="small">Returns the list of the bones for this mesh.</span></p>
-</li>
-<li>
-<p>{<a href="#animmesh"><em>animmesh</em></a>} = <strong>:anim_meshes</strong>( )<br>
-<span class="small">Returns the list of the anim meshes for this mesh.</span></p>
+<p>{<a href="#face"><em>face</em></a>} = <em>mesh</em>:<strong>faces</strong>( )<br>
+{<a href="#bone"><em>bone</em></a>} = <em>mesh</em>:<strong>bones</strong>( )<br>
+{<a href="#animmesh"><em>animmesh</em></a>} = <em>mesh</em>:<strong>anim_meshes</strong>( )<br>
+<span class="small">Return the list of the faces, bones, or anim meshes for this mesh.</span></p>
 </li>
 </ul>
 </div>
@@ -1271,38 +1273,31 @@ and face indices.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><em>positions</em> = <strong>:all_positions</strong>( )<br></p>
-</li>
-<li>
-<p><em>normals</em> = <strong>:all_normals</strong>( )<br></p>
-</li>
-<li>
-<p><em>tangents</em> = <strong>:all_tangents</strong>( )<br></p>
-</li>
-<li>
-<p><em>bitangents</em> = <strong>:all_bitangents</strong>( )<br>
+<p><em>positions</em> = <em>mesh</em>:<strong>all_positions</strong>( )<br>
+<em>normals</em> = <em>mesh</em>:<strong>all_normals</strong>( )<br>
+<em>tangents</em> = <em>mesh</em>:<strong>all_tangents</strong>( )<br>
+<em>bitangents</em> = <em>mesh</em>:<strong>all_bitangents</strong>( )<br>
 <span class="small">Each of these functions returns <em>nil</em> if the mesh does not have the requested vertex attribute
 (position, normal, tangent, or bitangent),
-otherwise it returns a table of <a href="#mesh.num_xxx">num_vertices</a> 3D vectors (arrays of 3 numbers).</span></p>
+otherwise it returns a table of <a href="#mesh.num_xxx">num_vertices</a> 3D vectors (arrays of 3 floats).</span></p>
 </li>
 <li>
-<p><em>coords</em> = <strong>:all_texture_coords</strong>( )<br>
-<span class="small">Returns a table of <a href="#mesh.num_xxx">num_texture_coords_channels</a> tables of <a href="#mesh.num_xxx">num_vertices</a> texture coordinates.<br>
-More precisely, <em>coords[i]</em> is a table containing all the texture coordinates in the <em>i-th</em> channel,
-where <em>coords[i][k]</em> are the texture coordinates for the <em>k-th</em> vertex (coordinates are represented as
-a 1D, 2D or 3D vectors, i.e. an arrays of 1, 2, or 3 numbers).<br>
-Note that if the mesh has no textures coordinates channels, then an empty table is returned.</span></p>
+<p><em>coords</em> = <em>mesh</em>:<strong>all_texture_coords</strong>( )<br>
+<span class="small">Returns a table of <a href="#mesh.num_xxx">num_texture_coords_channels</a> tables, each containing <a href="#mesh.num_xxx">num_vertices</a> texture coordinates.<br>
+More precisely, <em>coords[i]</em> is a table containing all the texture coordinates in the <em>i</em>-th channel,
+so that <em>coords[i][k]</em> are the texture coordinates for the <em>k</em>-th vertex in that channel. Texture coordinates are represented as 1D, 2D or 3D vectors, i.e. arrays of 1, 2, or 3 floats.<br>
+If the mesh has no textures coordinates channels, then an empty table is returned.</span></p>
 </li>
 <li>
-<p><em>colors</em> = <strong>:all_colors</strong>( )<br>
-<span class="small">Returns a table of <a href="#mesh.num_xxx">num_color_channels</a> tables of <a href="#mesh.num_xxx">num_vertices</a> colors).<br>
-More precisely, <em>colors[i]</em> is a table containing all the colors in the <em>i-th</em> channel,
-where <em>colors[i][k]</em> is the color for the <em>k-th</em> vertex (a color is represented as
-as an array of 4 numbers, RGBA).<br>
-Note that if the mesh has no colors channels, then an empty table is returned.</span></p>
+<p><em>colors</em> = <em>mesh</em>:<strong>all_colors</strong>( )<br>
+<span class="small">Returns a table of <a href="#mesh.num_xxx">num_color_channels</a> tables, each containing <a href="#mesh.num_xxx">num_vertices</a> colors.<br>
+More precisely, <em>colors[i]</em> is a table containing all the colors in the <em>i</em>-th channel,
+so that <em>colors[i][k]</em> is the color for the <em>k</em>-th vertex in that channel. Colors are represented a
+arrays of 4 floats (normalized RGBA components).<br>
+If the mesh has no colors channels, then an empty table is returned.</span></p>
 </li>
 <li>
-<p><em>indices</em> = <strong>:all_indices</strong>([<em>zerobased</em>=<em>false</em>])<br>
+<p><em>indices</em> = <em>mesh</em>:<strong>all_indices</strong>([<em>zerobased</em>=<em>false</em>])<br>
 <span class="small">Returns a table of <a href="#mesh.num_xxx">num_faces</a> tables of integer indices, identifying
 the vertices that compose each face.<br>
 If the optional <em>zerobased</em> parameter (a boolean) is <em>true</em>, then the returned indices
@@ -1320,15 +1315,13 @@ otherwise they are 1-based (1,..,<a href="#mesh.num_xxx">num_vertices</a>).</spa
 <div class="ulist">
 <ul>
 <li>
-<p><em>n</em> = <strong>:num_indices</strong>( )</p>
+<p><em>N</em> = <em>face</em>:<strong>num_indices</strong>( )</p>
 </li>
 <li>
-<p><em>i<sub>1</sub></em>, <em>&#8230;&#8203;</em>, <em>i<sub>N</sub></em> = <strong>:indices</strong>( )<br>
-<span class="small">Returns the indices of the face&#8217;s vertices in the <a href="#mesh"><em>mesh</em></a>'s list of
-vertices (<em>N</em> = <a href="#face.num_indices">num_indices</a>(&nbsp;)).</span></p>
-</li>
-<li>
-<p><em>i<sub>1</sub>-1</em>, <em>&#8230;&#8203;</em>, <em>i<sub>N</sub>-1</em> = <strong>:zero_based_indices</strong>( )</p>
+<p><em>i<sub>1</sub></em>, <em>&#8230;&#8203;</em>, <em>i<sub>N</sub></em> = <em>face</em>:<strong>indices</strong>( )<br>
+<em>i<sub>1</sub>-1</em>, <em>&#8230;&#8203;</em>, <em>i<sub>N</sub>-1</em> = <em>face</em>:<strong>zero_based_indices</strong>( )<br>
+<span class="small">Return the indices, in the <a href="#mesh"><em>mesh</em></a>'s list of vertices, of the vertices that compose the face.<br>
+The first function returns 1-based indices (table indices), while the second one returns 0-based indices (as expected by graphics APIs).</span></p>
 </li>
 </ul>
 </div>
@@ -1353,38 +1346,38 @@ All these functions return <em>nil</em> if the given property is not defined for
 <div class="ulist">
 <ul>
 <li>
-<p><em>name</em> = <strong>:name</strong>( )<br></p>
+<p><em>name</em> = <em>material</em>:<strong>name</strong>( )<br></p>
 </li>
 <li>
-<p><em>boolean</em> = <strong>:twosided</strong>( )<br></p>
+<p><em>boolean</em> = <em>material</em>:<strong>twosided</strong>( )<br></p>
 </li>
 <li>
-<p><a href="#shadingmode"><em>shadingmode</em></a> = <strong>:shading</strong>( )<br></p>
+<p><a href="#shadingmode"><em>shadingmode</em></a> = <em>material</em>:<strong>shading</strong>( )<br></p>
 </li>
 <li>
-<p><em>boolean</em> = <strong>:wireframe</strong>( )<br></p>
+<p><em>boolean</em> = <em>material</em>:<strong>wireframe</strong>( )<br></p>
 </li>
 <li>
-<p><a href="#blendmode"><em>blendmode</em></a> = <strong>:blend</strong>( )<br></p>
+<p><a href="#blendmode"><em>blendmode</em></a> = <em>material</em>:<strong>blend</strong>( )<br></p>
 </li>
 <li>
-<p><em>number</em> = <strong>:opacity</strong>( )<br>
-<em>number</em> = <strong>:bumpscaling</strong>( )<br>
-<em>number</em> = <strong>:shininess</strong>( )<br>
-<em>number</em> = <strong>:shinpercent</strong>( )<br>
-<em>number</em> = <strong>:reflectivity</strong>( )<br>
-<em>number</em> = <strong>:refraction</strong>( )<br></p>
+<p><em>float</em> = <em>material</em>:<strong>opacity</strong>( )<br>
+<em>float</em> = <em>material</em>:<strong>bumpscaling</strong>( )<br>
+<em>float</em> = <em>material</em>:<strong>shininess</strong>( )<br>
+<em>float</em> = <em>material</em>:<strong>shinpercent</strong>( )<br>
+<em>float</em> = <em>material</em>:<strong>reflectivity</strong>( )<br>
+<em>float</em> = <em>material</em>:<strong>refraction</strong>( )<br></p>
 </li>
 <li>
-<p><em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <strong>:color_ambient</strong>( )<br>
-<em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <strong>:color_diffuse</strong>( )<br>
-<em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <strong>:color_emissive</strong>( )<br>
-<em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <strong>:color_reflective</strong>( )<br>
-<em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <strong>:color_specular</strong>( )<br>
-<em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <strong>:color_transparent</strong>( )<br></p>
+<p><em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <em>material</em>:<strong>color_ambient</strong>( )<br>
+<em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <em>material</em>:<strong>color_diffuse</strong>( )<br>
+<em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <em>material</em>:<strong>color_emissive</strong>( )<br>
+<em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <em>material</em>:<strong>color_reflective</strong>( )<br>
+<em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <em>material</em>:<strong>color_specular</strong>( )<br>
+<em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <em>material</em>:<strong>color_transparent</strong>( )<br></p>
 </li>
 <li>
-<p><em>string</em> = <strong>:global_bg_image</strong>( )<br></p>
+<p><em>string</em> = <em>material</em>:<strong>global_bg_image</strong>( )<br></p>
 </li>
 </ul>
 </div>
@@ -1392,50 +1385,30 @@ All these functions return <em>nil</em> if the given property is not defined for
 <div id="material.texture_count" class="ulist">
 <ul>
 <li>
-<p><em>n</em> = <strong>:texture_count</strong>(<a href="#texturetype"><em>texturetype</em></a>)<br>
+<p><em>n</em> = <em>material</em>:<strong>texture_count</strong>(<a href="#texturetype"><em>texturetype</em></a>)<br>
 <span class="small">Returns the number of textures of the given type.</span></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The following methods refer to the i-th texture of the given texture type,
+<p>The following methods refer to the <em>i</em>-th texture of the given texture type,
 where <em>i</em> must be in the range 1 .. <a href="#material.texture_count">texture_count</a>(&nbsp;).</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><em>string</em> = <strong>:texture_path</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)</p>
-</li>
-<li>
-<p><em>channel</em> = <strong>:texture_channel</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)</p>
-</li>
-<li>
-<p><a href="#textureop"><em>op</em></a> = <strong>:texture_op</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)</p>
-</li>
-<li>
-<p><a href="#texturemapping"><em>mapping</em></a> = <strong>:texture_mapping</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)</p>
-</li>
-<li>
-<p><em>number</em> = <strong>:texture_blend</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)</p>
-</li>
-<li>
-<p><a href="#texturemapmode"><em>mapmode_u</em></a>, <a href="#texturemapmode"><em>mapmode_v</em></a>
-= <strong>:texture_mapmode</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)</p>
-</li>
-<li>
-<p><em>x</em>, <em>y</em>, <em>z</em> = <strong>:texture_axis</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)</p>
-</li>
-<li>
-<p><em>x</em>, <em>y</em> = <strong>:texture_translation</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)</p>
-</li>
-<li>
-<p><em>x</em>, <em>y</em> = <strong>:texture_scaling</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)</p>
-</li>
-<li>
-<p><em>radians</em> = <strong>:texture_rotation</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)</p>
-</li>
-<li>
-<p><a href="#textureflags"><em>textureflags</em></a> = <strong>:texture_flags</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)</p>
+<p><em>string</em> = <em>material</em>:<strong>texture_path</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)<br>
+<em>channel</em> = <em>material</em>:<strong>texture_channel</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)<br>
+<a href="#textureop"><em>op</em></a> = <em>material</em>:<strong>texture_op</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)<br>
+<a href="#texturemapping"><em>mapping</em></a> = <em>material</em>:<strong>texture_mapping</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)<br>
+<em>float</em> = <em>material</em>:<strong>texture_blend</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)<br>
+<a href="#texturemapmode"><em>mapmode_u</em></a>, <a href="#texturemapmode"><em>mapmode_v</em></a>
+= <em>material</em>:<strong>texture_mapmode</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)<br>
+<em>x</em>, <em>y</em>, <em>z</em> = <em>material</em>:<strong>texture_axis</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)<br>
+<em>x</em>, <em>y</em> = <em>material</em>:<strong>texture_translation</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)<br>
+<em>x</em>, <em>y</em> = <em>material</em>:<strong>texture_scaling</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)<br>
+<em>radians</em> = <em>material</em>:<strong>texture_rotation</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)<br>
+<a href="#textureflags"><em>textureflags</em></a> = <em>material</em>:<strong>texture_flags</strong>(<a href="#texturetype"><em>texturetype</em></a>, <em>i</em>)</p>
 </li>
 </ul>
 </div>
@@ -1446,12 +1419,12 @@ where <em>i</em> must be in the range 1 .. <a href="#material.texture_count">tex
 <div class="ulist">
 <ul>
 <li>
-<p><em>counts</em> =<strong>:all_texture_counts</strong>( )<br>
+<p><em>counts</em> =<em>material</em>:<strong>all_texture_counts</strong>( )<br>
 <span class="small">Returns a table with the counts for all <a href="#texturetype"><em>texturetype</em></a>s
 (e.g. <em>counts.diffuse</em> = 2 if there are 2 '<em>diffuse</em>' textures).</span></p>
 </li>
 <li>
-<p><em>textures</em> =<strong>:all_textures</strong>([<a href="#texturetype"><em>texturetype</em></a>])<br>
+<p><em>textures</em> =<em>material</em>:<strong>all_textures</strong>([<a href="#texturetype"><em>texturetype</em></a>])<br>
 <span class="small">Returns a table with the properties of all the material textures.<br>
 If the optional <em>texturetype</em> parameter is given, only the textures of that type are listed.<br>
 Each entry of the table describes a texture, and has the following format
@@ -1463,13 +1436,13 @@ Each entry of the table describes a texture, and has the following format
 <em>channel</em>: integer (1-based, opt.),<br>
 <em>op</em>: <a href="#textureop"><em>textureop</em></a> (opt.),<br>
 <em>mapping</em>: <a href="#texturemapping"><em>texturemapping</em></a> (opt.),<br>
-<em>blend</em>: number (opt.),<br>
+<em>blend</em>: float (opt.),<br>
 <em>mapmode_u</em>: <a href="#texturemapmode"><em>texturemapmode</em></a> (opt.),<br>
 <em>mapmode_v</em>: <a href="#texturemapmode"><em>texturemapmode</em></a> (opt.),<br>
-<em>axis</em>: {number, number, number} (opt.),<br>
-<em>translation</em>: {number, number} (opt.),<br>
-<em>scaling</em>: {number, number} (opt.),<br>
-<em>rotation</em>: number (radians, opt.),<br>
+<em>axis</em>: {float, float, float} (opt.),<br>
+<em>translation</em>: {float, float} (opt.),<br>
+<em>scaling</em>: {float, float} (opt.),<br>
+<em>rotation</em>: float (radians, opt.),<br>
 }.</span></p>
 </li>
 </ul>
@@ -1488,8 +1461,8 @@ Each entry of the table describes a texture, and has the following format
 </td>
 <td class="content">
 This object represents a texture that is embedded in the model file, since some file
-formats do this (see <a href="++http://sir-kimmi.de/assimp/lib_html/structai_texture.html#details">details</a>).
-More often, instead, textures are contained in external files and associated with
+formats do this (see <a href="http://sir-kimmi.de/assimp/lib_html/structai_texture.html#details">details</a>).
+More often, textures are instead contained in external files and associated with
 <a href="#material">materials</a>.
 </td>
 </tr>
@@ -1498,11 +1471,11 @@ More often, instead, textures are contained in external files and associated wit
 <div class="ulist">
 <ul>
 <li>
-<p><em>boolean</em> = <strong>:is_compressed</strong>( )<br>
+<p><em>boolean</em> = <em>texture</em>:<strong>is_compressed</strong>( )<br>
 <span class="small">Returns <em>true</em> if the texture data is in a compressed format, <em>false</em> otherwise.</span></p>
 </li>
 <li>
-<p><em>fmt</em> = <strong>:format_hint</strong>( )<br>
+<p><em>fmt</em> = <em>texture</em>:<strong>format_hint</strong>( )<br>
 <span class="small">Returns the format hint as a string, or
 <em>nil</em> if the texture data is not in a compressed format.</span></p>
 </li>
@@ -1511,16 +1484,16 @@ More often, instead, textures are contained in external files and associated wit
 <div id="texture.dim" class="ulist">
 <ul>
 <li>
-<p><em>w</em> = <strong>:width</strong>( )<br>
-<em>h</em> = <strong>:height</strong>( )</p>
+<p><em>w</em> = <em>texture</em>:<strong>width</strong>( )<br>
+<em>h</em> = <em>texture</em>:<strong>height</strong>( )</p>
 </li>
 <li>
-<p><em>n</em> = <strong>:size</strong>( )<br>
+<p><em>n</em> = <em>texture</em>:<strong>size</strong>( )<br>
 <span class="small">Returns the size in byte of the texture data, or
 <em>nil</em> if the texture data is not in a compressed format.</span></p>
 </li>
 <li>
-<p><em>data</em> = <strong>:data</strong>( )<br>
+<p><em>data</em> = <em>texture</em>:<strong>data</strong>( )<br>
 <span class="small">Returns the texture data as a binary string, or
 <em>nil</em> if the texture data is not in a compressed format.</span></p>
 </li>
@@ -1529,33 +1502,27 @@ More often, instead, textures are contained in external files and associated wit
 <div id="texture.texel" class="ulist">
 <ul>
 <li>
-<p><em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <strong>:texel</strong>(<em>u</em>, <em>v</em>)<br>
-<span class="small">Returns the RGBA values of the texel with texture coordinates (<em>u</em>, <em>v</em>),
+<p><em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <em>texture</em>:<strong>texel</strong>(<em>u</em>, <em>v</em>)<br>
+<span class="small">Returns the RGBA components (normalized float values) of the texel with texture coordinates (<em>u</em>, <em>v</em>),
 or <em>nil</em> if the texture is in a compressed format.
 The coordinates <em>u</em> and <em>v</em> must be in the ranges
 1 .. <a href="#texture.dim">width</a>(&nbsp;) and
 1 .. <a href="#texture.dim">height</a>(&nbsp;), respectively.
 The values are returned as normalized floating points.</span></p>
 </li>
-<li>
-<p><em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <strong>:btexel</strong>(<em>u</em>, <em>v</em>)<br>
-<span class="small">Same as <a href="#texture.texel">texel</a>(&nbsp;), but returns the RGBA values
-as bytes (0..255).</span></p>
-</li>
 </ul>
 </div>
 <div id="texture.texels" class="ulist">
 <ul>
 <li>
-<p><em>t</em> = <strong>:texels</strong>( )<br>
+<p><em>t</em> = <em>texture</em>:<strong>texels</strong>( )<br>
 <span class="small">Returns all the texels in a (table) matrix <em>t</em>, where <em>t[u][v]</em> = <em>{ r, g, b, a }</em>
-are the RGBA values of the texel with texture coordinates (<em>u</em>, <em>v</em>).
-The RGBA values are normalized floating points.</span></p>
+are the RGBA components (normalized float values) of the texel with texture coordinates (<em>u</em>, <em>v</em>).</span></p>
 </li>
 <li>
-<p><em>t</em> = <strong>:btexels</strong>( )<br>
-<span class="small">Same as <a href="#texture.texels">texels</a>(&nbsp;), but returns the RGBA values
-as bytes (0..255).</span></p>
+<p><em>r</em>, <em>g</em>, <em>b</em>, <em>a</em> = <em>texture</em>:<strong>btexel</strong>(<em>u</em>, <em>v</em>)<br>
+<em>t</em> = <em>texture</em>:<strong>btexels</strong>( )<br>
+<span class="small">Same as <a href="#texture.texel">texel</a>(&nbsp;) and <a href="#texture.texels">texels</a>(&nbsp;), but the RGBA components are returned as 8 bit values (0..255).</span></p>
 </li>
 </ul>
 </div>
@@ -1568,26 +1535,26 @@ as bytes (0..255).</span></p>
 <div class="ulist">
 <ul>
 <li>
-<p><em>name</em> = <strong>:name</strong>( )</p>
+<p><em>name</em> = <em>light</em>:<strong>name</strong>( )</p>
 </li>
 <li>
-<p><a href="#lightsourcetype"><em>lightsourcetype</em></a> = <strong>:source_type</strong>( )</p>
+<p><a href="#lightsourcetype"><em>lightsourcetype</em></a> = <em>light</em>:<strong>source_type</strong>( )</p>
 </li>
 <li>
-<p><em>number</em> = <strong>:attenuation_constant</strong>( )<br>
-<em>number</em> = <strong>:attenuation_linear</strong>( )<br>
-<em>number</em> = <strong>:attenuation_quadratic</strong>( )<br>
-<em>number</em> = <strong>:angle_inner_cone</strong>( )<br>
-<em>number</em> = <strong>:angle_outer_cone</strong>( )</p>
+<p><em>float</em> = <em>light</em>:<strong>attenuation_constant</strong>( )<br>
+<em>float</em> = <em>light</em>:<strong>attenuation_linear</strong>( )<br>
+<em>float</em> = <em>light</em>:<strong>attenuation_quadratic</strong>( )<br>
+<em>float</em> = <em>light</em>:<strong>angle_inner_cone</strong>( )<br>
+<em>float</em> = <em>light</em>:<strong>angle_outer_cone</strong>( )</p>
 </li>
 <li>
-<p><em>x</em>, <em>y</em>, <em>z</em> = <strong>:position</strong>( )<br>
-<em>x</em>, <em>y</em>, <em>z</em> = <strong>:direction</strong>( )</p>
+<p><em>x</em>, <em>y</em>, <em>z</em> = <em>light</em>:<strong>position</strong>( )<br>
+<em>x</em>, <em>y</em>, <em>z</em> = <em>light</em>:<strong>direction</strong>( )</p>
 </li>
 <li>
-<p><em>r</em>, <em>g</em>, <em>b</em> = <strong>:color_diffuse</strong>( )<br>
-<em>r</em>, <em>g</em>, <em>b</em> = <strong>:color_specular</strong>( )<br>
-<em>r</em>, <em>g</em>, <em>b</em> = <strong>:color_ambient</strong>( )</p>
+<p><em>r</em>, <em>g</em>, <em>b</em> = <em>light</em>:<strong>color_diffuse</strong>( )<br>
+<em>r</em>, <em>g</em>, <em>b</em> = <em>light</em>:<strong>color_specular</strong>( )<br>
+<em>r</em>, <em>g</em>, <em>b</em> = <em>light</em>:<strong>color_ambient</strong>( )</p>
 </li>
 </ul>
 </div>
@@ -1600,18 +1567,18 @@ as bytes (0..255).</span></p>
 <div class="ulist">
 <ul>
 <li>
-<p><em>name</em> = <strong>:name</strong>( )<br></p>
+<p><em>name</em> = <em>camera</em>:<strong>name</strong>( )<br></p>
 </li>
 <li>
-<p><em>number</em> = <strong>:aspect</strong>( )<br>
-<em>number</em> = <strong>:clip_plane_near</strong>( )<br>
-<em>number</em> = <strong>:clip_plane_far</strong>( )<br>
-<em>number</em> = <strong>:horizontal_fov</strong>( )</p>
+<p><em>float</em> = <em>camera</em>:<strong>aspect</strong>( )<br>
+<em>float</em> = <em>camera</em>:<strong>clip_plane_near</strong>( )<br>
+<em>float</em> = <em>camera</em>:<strong>clip_plane_far</strong>( )<br>
+<em>float</em> = <em>camera</em>:<strong>horizontal_fov</strong>( )</p>
 </li>
 <li>
-<p><em>x</em>, <em>y</em>, <em>z</em> = <strong>:position</strong>( )<br>
-<em>x</em>, <em>y</em>, <em>z</em> = <strong>:up</strong>( )<br>
-<em>x</em>, <em>y</em>, <em>z</em> = <strong>:look_at</strong>( )</p>
+<p><em>x</em>, <em>y</em>, <em>z</em> = <em>camera</em>:<strong>position</strong>( )<br>
+<em>x</em>, <em>y</em>, <em>z</em> = <em>camera</em>:<strong>up</strong>( )<br>
+<em>x</em>, <em>y</em>, <em>z</em> = <em>camera</em>:<strong>look_at</strong>( )</p>
 </li>
 </ul>
 </div>
@@ -1624,29 +1591,29 @@ as bytes (0..255).</span></p>
 <div class="ulist">
 <ul>
 <li>
-<p><em>name</em> = <strong>:name</strong>( )</p>
+<p><em>name</em> = <em>animation</em>:<strong>name</strong>( )</p>
 </li>
 <li>
-<p><em>duration</em> = <strong>:duration</strong>( )<br></p>
+<p><em>duration</em> = <em>animation</em>:<strong>duration</strong>( )<br></p>
 </li>
 <li>
-<p><em>ticks</em> = <strong>:ticks_per_second</strong>( )<br></p>
+<p><em>ticks</em> = <em>animation</em>:<strong>ticks_per_second</strong>( )<br></p>
 </li>
 <li>
-<p><em>n</em> = <strong>:num_node_anims</strong>( )<br>
-<em>n</em> = <strong>:num_mesh_anims</strong>( )</p>
+<p><em>n</em> = <em>animation</em>:<strong>num_node_anims</strong>( )<br>
+<em>n</em> = <em>animation</em>:<strong>num_mesh_anims</strong>( )</p>
 </li>
 <li>
-<p><a href="#nodeanim"><em>nodeanim</em></a> = <strong>:node_anim</strong>(<em>name</em>)<br>
+<p><a href="#nodeanim"><em>nodeanim</em></a> = <em>animation</em>:<strong>node_anim</strong>(<em>name</em>)<br>
 <span class="small">Returns the node anim for the given <a href="#node">node</a> <em>name</em>, or <em>nil</em>
 if not found.</span></p>
 </li>
 <li>
-<p>{<a href="#nodeanim"><em>nodeanim</em></a>} = <strong>:node_anims</strong>( )<br>
+<p>{<a href="#nodeanim"><em>nodeanim</em></a>} = <em>animation</em>:<strong>node_anims</strong>( )<br>
 <span class="small">Returns the list of node anims.</span></p>
 </li>
 <li>
-<p>{<a href="#meshanim"><em>meshanim</em></a>} = <strong>:mesh_anims</strong>([<em>name</em>])<br>
+<p>{<a href="#meshanim"><em>meshanim</em></a>} = <em>animation</em>:<strong>mesh_anims</strong>([<em>name</em>])<br>
 <span class="small">Returns the list of mesh anims.<br>
 If the optional <em>name</em> parameter (a string) is passed, only meshanims with such name
 are added to the list.</span></p>
@@ -1662,34 +1629,34 @@ are added to the list.</span></p>
 <div class="ulist">
 <ul>
 <li>
-<p><em>name</em> = <strong>:node_name</strong>( )<br></p>
+<p><em>name</em> = <em>nodeanim</em>:<strong>node_name</strong>( )<br></p>
 </li>
 <li>
-<p><em>n</em> = <strong>:num_position_keys</strong>( )<br>
-<em>n</em> = <strong>:num_rotation_keys</strong>( )<br>
-<em>n</em> = <strong>:num_scaling_keys</strong>( )</p>
+<p><em>n</em> = <em>nodeanim</em>:<strong>num_position_keys</strong>( )<br>
+<em>n</em> = <em>nodeanim</em>:<strong>num_rotation_keys</strong>( )<br>
+<em>n</em> = <em>nodeanim</em>:<strong>num_scaling_keys</strong>( )</p>
 </li>
 <li>
-<p>{<em>key</em>} = <strong>:position_keys</strong>( )<br>
+<p>{<em>key</em>} = <em>nodeanim</em>:<strong>position_keys</strong>( )<br>
 <span class="small">Returns the list of position keys. Each entry of the list is a table with the following fields:<br>
-<em>key.time</em>: a number denoting time, and<br>
-<em>key.value</em>: an array of 3 numbers representing the position vector.</span></p>
+<em>key.time</em>: a float denoting time, and<br>
+<em>key.value</em>: an array of 3 floats representing the position vector.</span></p>
 </li>
 <li>
-<p>{<em>key</em>} = <strong>:rotation_keys</strong>( )<br>
+<p>{<em>key</em>} = <em>nodeanim</em>:<strong>rotation_keys</strong>( )<br>
 <span class="small">Returns the list of rotation keys. Each entry of the list is a table with the following fields:<br>
-<em>key.time</em>: a number denoting time, and<br>
-<em>key.value</em>: an array of 4 numbers representing the rotation quaternion.</span></p>
+<em>key.time</em>: a float denoting time, and<br>
+<em>key.value</em>: an array of 4 floats representing the rotation quaternion.</span></p>
 </li>
 <li>
-<p>{<em>key</em>} = <strong>:scaling_keys</strong>( )<br>
+<p>{<em>key</em>} = <em>nodeanim</em>:<strong>scaling_keys</strong>( )<br>
 <span class="small">Returns the list of scaling keys. Each entry of the list is a table with the following fields:<br>
-<em>key.time</em>: a number denoting time, and<br>
-<em>key.value</em>: an array of 3 numbers representing the scaling factors.</span></p>
+<em>key.time</em>: a float denoting time, and<br>
+<em>key.value</em>: an array of 3 floats representing the scaling factors.</span></p>
 </li>
 <li>
-<p><a href="#animbehaviour"><em>animbehaviour</em></a> = <strong>:pre_state</strong>( )<br>
-<a href="#animbehaviour"><em>animbehaviour</em></a> = <strong>:post_state</strong>( )</p>
+<p><a href="#animbehaviour"><em>animbehaviour</em></a> = <em>nodeanim</em>:<strong>pre_state</strong>( )<br>
+<a href="#animbehaviour"><em>animbehaviour</em></a> = <em>nodeanim</em>:<strong>post_state</strong>( )</p>
 </li>
 </ul>
 </div>
@@ -1702,21 +1669,21 @@ are added to the list.</span></p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#mesh"><em>mesh</em></a> = <strong>:mesh</strong>( )<br>
+<p><a href="#mesh"><em>mesh</em></a> = <em>animmesh</em>:<strong>mesh</strong>( )<br>
 <span class="small">The mesh it belongs to (and is a replacement for).</span></p>
 </li>
 <li>
-<p><strong>:has_positions</strong>( )<br>
-<strong>:has_normals</strong>( )<br>
-<strong>:has_tangents</strong>( )<br>
-<strong>:has_colors</strong>(<em>channel</em>)<br>
-<strong>:has_texture_coords</strong>(<em>channel</em>)<br>
-<strong>:position</strong>(<em>i</em>)<br>
-<strong>:normal</strong>(<em>i</em>)<br>
-<strong>:tangent</strong>(<em>i</em>)<br>
-<strong>:bitangent</strong>(<em>i</em>)<br>
-<strong>:color</strong>(<em>channel</em>, <em>i</em>)<br>
-<strong>:texture_coords</strong>(<em>channel</em>, <em>i</em>)<br>
+<p><em>animmesh</em>:<strong>has_positions</strong>( )<br>
+<em>animmesh</em>:<strong>has_normals</strong>( )<br>
+<em>animmesh</em>:<strong>has_tangents</strong>( )<br>
+<em>animmesh</em>:<strong>has_colors</strong>(<em>channel</em>)<br>
+<em>animmesh</em>:<strong>has_texture_coords</strong>(<em>channel</em>)<br>
+<em>animmesh</em>:<strong>position</strong>(<em>i</em>)<br>
+<em>animmesh</em>:<strong>normal</strong>(<em>i</em>)<br>
+<em>animmesh</em>:<strong>tangent</strong>(<em>i</em>)<br>
+<em>animmesh</em>:<strong>bitangent</strong>(<em>i</em>)<br>
+<em>animmesh</em>:<strong>color</strong>(<em>channel</em>, <em>i</em>)<br>
+<em>animmesh</em>:<strong>texture_coords</strong>(<em>channel</em>, <em>i</em>)<br>
 <span class="small">Replacements for <a href="#mesh"><em>mesh</em></a> methods.</span></p>
 </li>
 </ul>
@@ -1730,30 +1697,30 @@ are added to the list.</span></p>
 <div class="ulist">
 <ul>
 <li>
-<p><em>name</em> = <strong>:name</strong>( )</p>
+<p><em>name</em> = <em>bone</em>:<strong>name</strong>( )</p>
 </li>
 </ul>
 </div>
 <div id="bone.num_weights" class="ulist">
 <ul>
 <li>
-<p><em>n</em> = <strong>:num_weights</strong>( )</p>
+<p><em>n</em> = <em>bone</em>:<strong>num_weights</strong>( )</p>
 </li>
 <li>
-<p><em>t</em> = <strong>:weights</strong>( )<br>
-<span class="small">Returns a (possibly sparse) array <em>t</em>, where <em>t[v]</em> is the weight of the vertex
-indexed by <em>v</em> in the <a href="#mesh"><em>mesh</em></a>'s list of vertices (<em>t[v]</em>=<em>nil</em> if the vertex
-is not part of the bone).</span></p>
+<p><em>t</em> = <em>bone</em>:<strong>weights</strong>( )<br>
+<span class="small">Returns a table <em>t</em>, where <em>t[i]</em> is the weight of the <em>i</em>-th vertex (its 1-based index
+in the <a href="#mesh"><em>mesh</em></a>'s list of vertices), or <em>nil</em> if the vertex is not part of the bone.<br>
+(Note that the returned table is likely to contain holes, so do not iterate with ipairs().)</span></p>
 </li>
 <li>
-<p><em>t</em> = <strong>:ordered_weights</strong>( )<br>
+<p><em>t</em> = <em>bone</em>:<strong>ordered_weights</strong>( )<br>
 <span class="small">Returns an array <em>t</em> of <a href="#bone.num_weights">num_weights</a>(&nbsp;) tables,
 each having two elements:
-<em>t[i].vertex</em> and <em>t[i].weight</em>, denoting the index of a vertex and its weight, respectively.
+<em>t[i].vertex</em> and <em>t[i].weight</em>, denoting respectively the 1-based index of a vertex and its weight.
 The vertices are in the same order as in the underlying aiBone structure</span></p>
 </li>
 <li>
-<p><em>a<sub>11</sub></em>, <em>a<sub>12</sub></em>, <em>&#8230;&#8203;</em>, <em>a<sub>44</sub></em> = <strong>:offset_matrix</strong>( )<br>
+<p><em>a<sub>11</sub></em>, <em>a<sub>12</sub></em>, <em>&#8230;&#8203;</em>, <em>a<sub>44</sub></em> = <em>bone</em>:<strong>offset_matrix</strong>( )<br>
 <span class="small">Returns the elements of the offset matrix, in row-major order.</span></p>
 </li>
 </ul>
@@ -1767,21 +1734,21 @@ The vertices are in the same order as in the underlying aiBone structure</span><
 <div id="meshanim.mesh_name" class="ulist">
 <ul>
 <li>
-<p><em>name</em> = <strong>:mesh_name</strong>( )</p>
+<p><em>name</em> = <em>meshanim</em>:<strong>mesh_name</strong>( )</p>
 </li>
 <li>
-<p><em>n</em> = <strong>:num_keys</strong>( )</p>
+<p><em>n</em> = <em>meshanim</em>:<strong>num_keys</strong>( )</p>
 </li>
 </ul>
 </div>
 <div id="meshanim.keys" class="ulist">
 <ul>
 <li>
-<p>{<em>key</em>} = <strong>:keys</strong>( )<br>
+<p>{<em>key</em>} = <em>meshanim</em>:<strong>keys</strong>( )<br>
 <span class="small">Returns the list of keys (or, more precisely, of
 <a href="https://en.wikipedia.org/wiki/Key_frame">key frames</a>).
 Each entry of the list is a table having the following fields:<br>
-<em>key.time</em>: a number denoting time, and<br>
+<em>key.time</em>: a float denoting time, and<br>
 <em>key.value</em>: an index into the <a href="#mesh">mesh</a>'s list of <a href="#animmesh">anim meshes</a>.</span></p>
 </li>
 </ul>

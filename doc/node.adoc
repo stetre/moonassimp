@@ -5,28 +5,28 @@
 
 [small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_node.html++[aiNode].#
 
-* _name_ = *:name*( )
+* _name_ = _node_++:++*name*( )
 
 [[node.num_xxx]]
-* _n_ = *:num_children*( ) +
-_n_ = *:num_meshes*( )
+* _n_ = _node_++:++*num_children*( ) +
+_n_ = _node_++:++*num_meshes*( )
 
-* _node_ = *:child*(_i_) +
-[small]#Returns the i-th child node of this node (_i_ = 1 .. <<node.num_xxx, num_children>>( )).#
+* _node_ = _node_++:++*child*(_i_) +
+[small]#Returns the _i_-th child node of this node (_i_ = 1 .. <<node.num_xxx, num_children>>( )).#
 
-* {_node_} = *:children*( ) +
+* {_node_} = _node_++:++*children*( ) +
 [small]#Returns a table containing the children of this node.#
 
-* <<mesh, _mesh_>> = *:mesh*(_i_) +
-[small]#Returns the node's i-th <<mesh, _mesh_>> (_i_ = 1 .. <<node.num_xxx, num_meshes>>( )).#
+* <<mesh, _mesh_>> = _node_++:++*mesh*(_i_) +
+[small]#Returns the node's _i_-th <<mesh, _mesh_>> (_i_ = 1 .. <<node.num_xxx, num_meshes>>( )).#
 
-* {<<mesh, _mesh_>>} = *:meshes*( ) +
+* {<<mesh, _mesh_>>} = _node_++:++*meshes*( ) +
 [small]#Returns a table containing this node's meshes. +
 Note that this is a subset of the <<scene, scene>>'s meshes list.#
 
-* _node_ = *:parent*( ) +
+* _node_ = _node_++:++*parent*( ) +
 [small]#Returns the parent node for this node, or _nil_ if this node is the root.#
 
-* _a~11~_, _a~12~_, _..._, _a~44~_ = *:transformation*( ) +
+* _a~11~_, _a~12~_, _..._, _a~44~_ = _node_++:++*transformation*( ) +
 [small]#Returns the elements of the transformation matrix, in row-major order.#
 

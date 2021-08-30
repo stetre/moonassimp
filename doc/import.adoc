@@ -4,12 +4,9 @@
 [small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/usage.html++[Assimp usage] -
 link:++http://sir-kimmi.de/assimp/lib_html/cimport_8h.html++[cimport.h].#
 
-
-
-Albeit presenting an object-oriented interface, MoonAssimp actually binds to the
+MoonAssimp presents an object-oriented interface but it actually binds to the
 Assimp C API, so loading a scene with MoonAssimp in Lua is very similar to loading
-a scene with Assimp in C.
-
+a scene with Assimp in C. 
 For example, to load a scene from a 3D model file named 'mymodel.obj', one could
 do the following:
 
@@ -23,23 +20,22 @@ assert(scene, errmsg) -- check that nothing went wrong
 
 ----
 
-If the file is loaded with success, the <<import_file, ai.import_file>>( ) function in 
-the above example returns an instance of the <<scene, scene>> object type. The contents
-of the scene can then be retrieved with the methods of the scene object and of the
-contained objects. 
+If the file is loaded with success then <<import_file, ai.import_file>>( ) 
+returns a <<scene, scene>> object. The contents of the scene can then be retrieved with the object's methods and with those of the objects it contains.
 
-The scene is garbage collected at exit, together with the contained objects, so the
-<<release_import, ai.release_import>>(&nbsp;) function need not be called unless one wants
+At exit, the scene object is garbage collected together with the contained objects, so the
+<<release_import, ai.release_import>>(&nbsp;) function need not be called, unless one wants
 to release memory when the scene is no more needed and the application is not exiting.
 
 Objects' methods are described in the <<methods, 'Methods'>> section, while herafter are described
 the general functions provided in the *ai* table for importing models, logging, etc.
-These are bindings to Assimp C API functions contained in the
-link:++http://sir-kimmi.de/assimp/lib_html/cimport_8h.html++[cimport.h] file, and typically
-preserve their semantics (notice that not all Assimp functions are used or exposed by
-MoonAssimp, though).
+These are bindings to functions of the Assimp C API (defined in
+link:++http://sir-kimmi.de/assimp/lib_html/cimport_8h.html++[cimport.h]), and usually
+preserve their semantics. Not all Assimp functions are used or exposed by MoonAssimp.
 
 
+NOTE: In this document the terms _float_ and _integer_ are used to denote Lua values of
+type _number_ that are, respectively, floating-point numbers or integers.
 
 === Scene import functions
 
@@ -67,7 +63,7 @@ the memory (in bytes) used by the various items contained in the scene.#
 
 [[release_import]]
 * *ai.release_import*(<<scene, _scene_>>) +
-[small]#Note that this invalidates all the references to imported objects.#
+[small]#This also invalidates all the references to imported objects.#
 
 === Querying for supported formats
 

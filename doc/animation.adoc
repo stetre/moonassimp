@@ -5,23 +5,23 @@
 [small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_animation.html++[aiAnimation].#
 
 
-* _name_ = *:name*( )
+* _name_ = _animation_++:++*name*( )
 
-* _duration_ = *:duration*( ) +
+* _duration_ = _animation_++:++*duration*( ) +
 
-* _ticks_ = *:ticks_per_second*( ) +
+* _ticks_ = _animation_++:++*ticks_per_second*( ) +
 
-* _n_ = *:num_node_anims*( ) +
-_n_ = *:num_mesh_anims*( )
+* _n_ = _animation_++:++*num_node_anims*( ) +
+_n_ = _animation_++:++*num_mesh_anims*( )
 
-* <<nodeanim, _nodeanim_>> = *:node_anim*(_name_) +
+* <<nodeanim, _nodeanim_>> = _animation_++:++*node_anim*(_name_) +
 [small]#Returns the node anim for the given <<node, node>> _name_, or _nil_
 if not found.#
 
-* {<<nodeanim, _nodeanim_>>} = *:node_anims*( ) +
+* {<<nodeanim, _nodeanim_>>} = _animation_++:++*node_anims*( ) +
 [small]#Returns the list of node anims.#
 
-* {<<meshanim, _meshanim_>>} = *:mesh_anims*([_name_]) +
+* {<<meshanim, _meshanim_>>} = _animation_++:++*mesh_anims*([_name_]) +
 [small]#Returns the list of mesh anims. +
 If the optional _name_ parameter (a string) is passed, only meshanims with such name
 are added to the list.#

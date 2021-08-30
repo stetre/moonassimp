@@ -4,44 +4,44 @@
 
 [small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_scene.html++[aiScene].#
 
-* _boolean_ = *:has_animations*( ) +
-_boolean_ = *:has_cameras*( ) +
-_boolean_ = *:has_lights*( ) +
-_boolean_ = *:has_materials*( ) +
-_boolean_ = *:has_meshes*( ) +
-_boolean_ = *:has_textures*( ) +
-[small]#Returns _true_ if _scene_ contains one or more objects of the given type,
+* _boolean_ = _scene_++:++*has_animations*( ) +
+_boolean_ = _scene_++:++*has_cameras*( ) +
+_boolean_ = _scene_++:++*has_lights*( ) +
+_boolean_ = _scene_++:++*has_materials*( ) +
+_boolean_ = _scene_++:++*has_meshes*( ) +
+_boolean_ = _scene_++:++*has_textures*( ) +
+[small]#Return _true_ if _scene_ contains one or more objects of the given type,
 _false_ otherwise.#
 
-* <<sceneflags, _sceneflags_>> = *:flags*( ) +
+* <<sceneflags, _sceneflags_>> = _scene_++:++*flags*( ) +
 [small]#Returns the _scene_'s flags.#
 
 [[num_xxx]]
-* _n_ = *:num_animations*( ) +
-_n_ = *:num_cameras*( ) +
-_n_ = *:num_lights*( ) +
-_n_ = *:num_materials*( ) +
-_n_ = *:num_meshes*( ) +
-_n_ = *:num_textures*( ) +
-[small]#Returns the number of objects, contained in _scene_, of the given type.#
+* _n_ = _scene_++:++*num_animations*( ) +
+_n_ = _scene_++:++*num_cameras*( ) +
+_n_ = _scene_++:++*num_lights*( ) +
+_n_ = _scene_++:++*num_materials*( ) +
+_n_ = _scene_++:++*num_meshes*( ) +
+_n_ = _scene_++:++*num_textures*( ) +
+[small]#Return the number of objects of the given type that are contained in _scene_.#
 
 
-* <<node, _node_>> = *:root_node*( ) +
+* <<node, _node_>> = _scene_++:++*root_node*( ) +
 [small]#Returns the root node of the _scene_.#
 
-* <<animation, _animation_>> = *:animation*(_i_) +
-<<camera, _camera_>> = *:camera*(_i_) +
-<<light, _light_>> = *:light*(_i_) +
-<<material, _material_>> = *:material*(_i_) +
-<<mesh, _mesh_>> = *:mesh*(_i_) +
-<<texture, _texture_>> = *:texture*(_i_) +
-[small]#Each of these methods the i-th object of the given type (_i_ = 1 .. <<num_xxx, num_xxx>>( )).#
+* <<animation, _animation_>> = _scene_++:++*animation*(_i_) +
+<<camera, _camera_>> = _scene_++:++*camera*(_i_) +
+<<light, _light_>> = _scene_++:++*light*(_i_) +
+<<material, _material_>> = _scene_++:++*material*(_i_) +
+<<mesh, _mesh_>> = _scene_++:++*mesh*(_i_) +
+<<texture, _texture_>> = _scene_++:++*texture*(_i_) +
+[small]#Each of these methods the _i_-th object of the given type (_i_ = 1 .. <<num_xxx, num_xxx>>( )).#
 
-* {<<animation, _animation_>>} = *:animations*( ) +
-{<<camera, _camera_>>} = *:cameras*( ) +
-{<<light, _light_>>} = *:lights*( ) +
-{<<material, _material_>>} = *:materials*( ) +
-{<<mesh, _mesh_>>} = *:meshes*( ) +
-{<<texture, _texture_>>} = *:textures*( ) +
-[small]#Each of these methods returns a table containing the objects of the given type.#
+* {<<animation, _animation_>>} = _scene_++:++*animations*( ) +
+{<<camera, _camera_>>} = _scene_++:++*cameras*( ) +
+{<<light, _light_>>} = _scene_++:++*lights*( ) +
+{<<material, _material_>>} = _scene_++:++*materials*( ) +
+{<<mesh, _mesh_>>} = _scene_++:++*meshes*( ) +
+{<<texture, _texture_>>} = _scene_++:++*textures*( ) +
+[small]#Each of these methods returns a table with the objects of the given type that are contained in _scene_.#
 

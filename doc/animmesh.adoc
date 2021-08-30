@@ -4,19 +4,19 @@
 
 [small]#Rfr: link:++http://sir-kimmi.de/assimp/lib_html/structai_anim_mesh.html++[aiAnimMesh].#
 
-* <<mesh, _mesh_>> = *:mesh*( ) +
+* <<mesh, _mesh_>> = _animmesh_++:++*mesh*( ) +
 [small]#The mesh it belongs to (and is a replacement for).#
 
-* *:has_positions*( ) +
-*:has_normals*( ) +
-*:has_tangents*( ) +
-*:has_colors*(_channel_) +
-*:has_texture_coords*(_channel_) +
-*:position*(_i_) +
-*:normal*(_i_) +
-*:tangent*(_i_) +
-*:bitangent*(_i_) +
-*:color*(_channel_, _i_) +
-*:texture_coords*(_channel_, _i_) +
+* _animmesh_++:++*has_positions*( ) +
+_animmesh_++:++*has_normals*( ) +
+_animmesh_++:++*has_tangents*( ) +
+_animmesh_++:++*has_colors*(_channel_) +
+_animmesh_++:++*has_texture_coords*(_channel_) +
+_animmesh_++:++*position*(_i_) +
+_animmesh_++:++*normal*(_i_) +
+_animmesh_++:++*tangent*(_i_) +
+_animmesh_++:++*bitangent*(_i_) +
+_animmesh_++:++*color*(_channel_, _i_) +
+_animmesh_++:++*texture_coords*(_channel_, _i_) +
 [small]#Replacements for <<mesh, _mesh_>> methods.#
 
